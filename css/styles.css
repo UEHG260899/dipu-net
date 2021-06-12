@@ -48,3 +48,12 @@ html {
   background-color: var(--color-acento-light);
   color: white;
 }
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+.mb-large {
+  margin-bottom: 100px ;
+}

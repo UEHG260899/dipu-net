@@ -24,8 +24,9 @@ require_once './includes/navbar.php';
         </div>
     </div>
 </div>
-
+<hr class="container">
 <main class="container principal mb-5">
+
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -64,8 +65,74 @@ require_once './includes/navbar.php';
             <span class="sr-only">Siguiente</span>
         </a>
     </div>
+    <hr>
 </main>
+<section class="container mb-large">
+    <h2 class="mb-3">Últimos articulos</h2>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="d-flex justify-content-between">
+                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
 
+                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                    </div>
+
+                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-info">Ver más tarde</button>
+                        <button class="btn bg-boton">Ver articulo completo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="d-flex justify-content-between">
+                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+
+                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                    </div>
+
+                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-info">Ver más tarde</button>
+                        <button class="btn bg-boton">Ver articulo completo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="card">
+                <div class="d-flex justify-content-between">
+                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+
+                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                    </div>
+
+                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-info">Ver más tarde</button>
+                        <button class="btn bg-boton">Ver articulo completo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 <?php
 require_once './includes/footer.php';
 ?>
