@@ -1,0 +1,25 @@
+:root {
+  --color-principal: #7f00b2;
+  --color-secundario: #8e22bb;
+  --color-secundario-light: #ab49cc;
+  --color-acento: #ff0077;
+  --color-acento-light: #ff3885;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+}
+.bg-principal {
+  background-color: var(--color-principal);
+  color: white;
+}
+.footer-copyright > a {
+  text-decoration: none;
+  color: white;
+}
