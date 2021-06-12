@@ -1,5 +1,6 @@
 <?php
-    require_once(../includes/navbar.php);
+    $root_dir = "http://localhost/dipu-net";
+    require_once(realpath(dirname(__FILE__) . '/../includes/navbar.php'));
 ?>
 <main>
     <section class="container">
@@ -124,5 +125,5 @@
 </main>
 
 <?php
-    require_once(../includes/footer.php);
+    require_once(realpath(dirname(__FILE__) . '/../includes/footer.php'));
 ?>
