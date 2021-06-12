@@ -23,3 +23,17 @@ html {
   text-decoration: none;
   color: white;
 }
+
+.banner {
+  height: 30vh !important;
+  background: url('../img/banner.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+.banner > p{
+  padding-left: 50px;
+  padding-top: 30px;
+  font-size: 36px;
+  color: white;
+}
