@@ -1,4 +1,8 @@
-<section class="container">
+<?php
+    require_once(../includes/navbar.php);
+?>
+<main>
+    <section class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3">
                     <div>
@@ -75,45 +79,50 @@
                 </div>
             </div>
             <hr>
-</section>
+    </section>
 
-<section class="container">
-    <h3>Artículo</h3>
-    <h4>Por: <a href="#">Uriel Hernández</a></h4>
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nostrum quasi tempore obcaecati facilis veritatis, unde itaque repellendus suscipit rem optio ex ratione nulla numquam sit voluptate ipsum consectetur sequi.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, molestias. Odit libero aliquam facere sed numquam? Quidem nam aliquid ipsam perferendis ducimus saepe quod incidunt eos facilis. Soluta, explicabo sequi!
-            </p>
-        </div>    
-    </div>
-    <hr>
-</section>
+    <section class="container">
+        <h3>Artículo</h3>
+        <h4>Por: <a href="#">Uriel Hernández</a></h4>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nostrum quasi tempore obcaecati facilis veritatis, unde itaque repellendus suscipit rem optio ex ratione nulla numquam sit voluptate ipsum consectetur sequi.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, molestias. Odit libero aliquam facere sed numquam? Quidem nam aliquid ipsam perferendis ducimus saepe quod incidunt eos facilis. Soluta, explicabo sequi!
+                </p>
+            </div>    
+        </div>
+        <hr>
+    </section>
 
-<section class="container">
-    <h3>Comentarios</h3>
-    <div class="card">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Do</li>
-            <li class="list-group-item">Re</li>
-            <li class="list-group-item">Mi</li>
-            <li class="list-group-item">Fa</li>
-            <li class="list-group-item">Sol</li>
-            <li class="list-group-item">
-                <h6>Agregar un comentario:</h6>
-                <div class="row">
-                    <div class="col-12">
-                        <textarea style="width: 100%"></textarea>
+    <section class="container">
+        <h3>Comentarios</h3>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Do</li>
+                <li class="list-group-item">Re</li>
+                <li class="list-group-item">Mi</li>
+                <li class="list-group-item">Fa</li>
+                <li class="list-group-item">Sol</li>
+                <li class="list-group-item">
+                    <h6>Agregar un comentario:</h6>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea style="width: 100%"></textarea>
+                        </div>
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="col-12 text-right">
-                        <button class="btn btn-success">Agregar</button>
+                    <div class="row ">
+                        <div class="col-12 text-right">
+                            <button class="btn btn-success">Agregar</button>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<?php
+    require_once(../includes/footer.php);
+?>
