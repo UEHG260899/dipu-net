@@ -1,5 +1,53 @@
 <?php
 require_once './includes/navbar.php';
+$servidor = "localhost";
+$usuario = "root";
+$pwd = "";
+$nombreBD = "examen-u5";
+$conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
+
+if (!$conn) {
+    echo 'Error de conexión: ' . mysqli_connect_error();
+}
+/**
+ * Si la peticion es de tipo post
+ * $email= correo electronico del usuario
+ * $pwd = contraseña  del usuario (encriptada)
+ */
+if (isset($_POST['submit'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
+    $pwd = sha1($pwd);
+
+    /**
+     * Se crea la cuenta 
+     * rol  = default('lector')
+     */
+    $sql = "INSERT INTO usuarios( correo, contrasenia, rol) "
+        . "VALUES( '$email', '$pwd', 'lector')";
+    if (mysqli_query($conn, $sql)) {
+        /**
+         * * Se inicia sesion para guardar al usuario en sesion
+         */
+        $sql = "SELECT correo, contrasenia, rol FROM usuarios "
+            . "WHERE correo = '$email' AND "
+            . "contrasenia = '$pwd'";
+        $resultado = mysqli_query($conn, $sql);
+        if ($resultado->num_rows == 1) {
+            session_start();
+            $usuario = mysqli_fetch_assoc($resultado);
+            $_SESSION['usuario'] = $usuario;
+            if ($_SESSION['usuario']['rol'] == 'lector') {
+                header('Location: index.php');
+            }
+        } else {
+            header('Location: index.php');
+        }
+        mysqli_free_result($resultado);
+    } else {
+        echo 'Error en la creación de usuario: ' . mysqli_error($conn);
+    }
+}
 ?>
 
 <div class="container mt-5">
@@ -13,7 +61,7 @@ require_once './includes/navbar.php';
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Crear nueva cuenta</h3>
 
-                <form action="index.php" id="form-login" name="form-login" method="POST" enctype="multipart/form-data">
+                <form action="register.php" id="form-register" name="form-register" method="POST">
                     <div class="form-group">
                         <label for="">Correo electrónico</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="correo@correo.com">
