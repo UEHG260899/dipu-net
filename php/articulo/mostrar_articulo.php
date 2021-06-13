@@ -60,15 +60,15 @@
     ?>
     <section class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
                     <div>
                         <img src="../hola.jpg" alt="Nombre del candidato">
                     </div>
                     <div>
-                        <img src="../hola2.jpg" alt="Imagen Partido">
+                        <img src="<?php echo $root_dir . '/img/partidos/iconos/' . $imagen_partido;?>" alt="Imagen Partido">
                     </div>
                     <div class="row">
-                        <h3>Nombre del candidato</h3>
+                        <h3><?php echo $nombre . " " . $apP . " " . $apM;?></h3>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-9 col-lg-9">
@@ -77,25 +77,25 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Nombre Completo:</h5>
-                                    <p>Uriel Enrique Hernández González</p>
+                                    <p><?php echo $nombre . " " . $apP . " " . $apM;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Genero:</h5>
-                                    <p>Masculino</p>
+                                    <p><?php echo $genero;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Fecha de nacimiento:</h5>
-                                    <p>26/08/1999</p>
+                                    <p><?php echo $fecha_nacimiento;?></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <h5>Estado de Nacimiento:</h5>
-                                    <p>México</p>
+                                    <p><?php echo $estado;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <h5>Municipio:</h5>
-                                    <p>Toluca</p>
+                                    <p><?php echo $municipio;?></p>
                                 </div>
                             </div>
                         </div>
@@ -109,25 +109,25 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Carrera:</h5>
-                                    <p>Ingeniería en Sistemas Computacionales</p>
+                                    <p><?php echo $carrera;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Escuela de procedencia:</h5>
-                                    <p>Instituto Tecnológico de Toluca</p>
+                                    <p><?php echo $escuela;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-4 col-lg-4">
                                     <h5>Puesto Actual:</h5>
-                                    <p>Estudiante de 8vo Semestre.</p>
+                                    <p><?php echo $puesto;?></p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <h5>Distrito:</h5>
-                                    <p>Toluca</p>
+                                    <p><?php echo $distrito;?></p>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                     <h5>Tipo de candidatura</h5>
-                                    <p>Diputación Federal</p>
+                                    <p><?php echo $distrito;?></p>
                                 </div>
                             </div>
                         </div>
