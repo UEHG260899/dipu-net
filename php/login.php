@@ -1,5 +1,40 @@
 <?php
 require_once './includes/navbar.php';
+$servidor = "localhost";
+$usuario = "root";
+$pwd = "";
+$nombreBD = "examen-u5";
+$conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
+
+if (!$conn) {
+    echo 'Error de conexión: ' . mysqli_connect_error();
+}
+/**
+ * La peticion es tipo POST -> Se realiza el login
+ */
+if (isset($_POST['submit'])) {
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
+    $pwd = sha1($pwd);
+
+    $sql = "SELECT correo, contrasenia, rol FROM usuarios "
+        . "WHERE correo = '$email' AND "
+        . "contrasenia = '$pwd'";
+    $resultado = mysqli_query($conn, $sql);
+    if ($resultado->num_rows == 1) {
+        session_start();
+        $usuario = mysqli_fetch_assoc($resultado);
+        $_SESSION['usuario'] = $usuario;
+        if ($_SESSION['usuario']['rol'] == 'lector') {
+            header('Location: lector.php');
+        } else {
+            header('Location: escritor.php');
+        }
+    } else {
+        header('Location: index.php');
+    }
+    mysqli_free_result($resultado);
+}
 ?>
 
 <div class="container mt-5">
@@ -10,7 +45,7 @@ require_once './includes/navbar.php';
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Iniciar Sesión</h3>
 
-                <form action="login.php" id="form-login" name="form-login" method="POST" enctype="multipart/form-data">
+                <form action="login.php" id="form-login" name="form-login" method="POST">
                     <div class="form-group">
                         <label for="">Correo electrónico</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="correo@correo.com">
@@ -19,7 +54,7 @@ require_once './includes/navbar.php';
                         <label for="">Contraseña</label>
                         <input type="password" class="form-control" name="pwd" id="pwd">
                     </div>
-                   
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
