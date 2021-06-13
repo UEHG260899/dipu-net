@@ -55,5 +55,22 @@ hr {
   border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 .mb-large {
-  margin-bottom: 100px ;
+  margin-bottom: 100px;
+}
+.form-panel {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+hr.dotted {
+  border-top: 2px dotted #999;
+}
+.section-register {
+  display: flex;
+  justify-content: space-between;
+}
+.text-acento {
+  color: var(--color-acento);
+}
+.text-acento:hover {
+  color: var(--color-acento);
 }
