@@ -1,5 +1,5 @@
 <?php
-require_once './includes/header.php';
+require_once (realpath(dirname(__DIR__) . '/includes/header.php'));
 ?>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-principal ">
     <div class="container">
