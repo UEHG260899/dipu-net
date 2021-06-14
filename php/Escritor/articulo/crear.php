@@ -175,6 +175,7 @@ require_once '../../includes/navbar_escritor.php';
         </div>
     </div>
     <!--Fin sección ver articulo-->
+    
     <div class="mb-5">
         <br>
     </div>

@@ -1,49 +1,7 @@
 <?php
 require_once '../includes/navbar_escritor.php';
 ?>
-<style>
-.btn-floating {
-    box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
-    width: 47px;
-    height: 47px;
-    z-index: 1;
-    display: inline-block;
-    overflow: hidden;
-    -webkit-transition: all .2s ease-in-out;
-    transition: all .2s ease-in-out;
-    margin: 10px;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    padding: 0;
-    cursor: pointer;
-    background: #4285f4;
-}
-
-.btn-floating i {
-    font-size: 1.25rem;
-    line-height: 47px;
-    display: inline-block;
-    width: inherit;
-    text-align: center;
-    color: #fff;
-}
-
-.controls-top {
-    text-align: center;
-    margin-bottom: 1rem;
-    margin-top: 1.88rem;
-}
-
-.co {
-    font-size: 0.8rem;
-    padding: 0.4rem;
-    text-align: center;
-}
-.card{
-    margin-bottom:10px;
-}
-</style>
-
+<link rel="stylesheet" href="<?php echo $root . "/css/escritor/estilos.css"; ?>">
 <div class="container mb-5">
     <div class="col-12 mt-5" style="text-align:right">
         <img src="../../img/avatar.png" alt="" width="65px" height="65px" class="text-center mt-4">
