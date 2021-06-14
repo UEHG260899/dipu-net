@@ -1,8 +1,13 @@
 <?php
 require_once '../includes/navbar.php';
 ?>
-
-<div class="row">
+<br>
+<br>
+<br>
+<div class="container mb-large">
+    <h4>Para una búsqueda más exacta, ingrese el nombre del candidato</h4>
+    <br>
+    <div class="row">
         <div class="col-md-4">
             <input type="text" class="form-control" id="iptNomCandidato">
         </div>
