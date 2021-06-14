@@ -3,12 +3,12 @@ require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
 session_start();
 if ($_SERVER['QUERY_STRING'] == 'logout') {
     session_unset();
-    header('Location: index.php');
+    header('Location:' . $root . '/php/index.php');
 }
 ?>
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-principal ">
     <div class="container">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href=<?php echo $root . '/php/index.php' ?>>
             <p class="my-0">Dipu-net</p>
         </a>
 
@@ -18,10 +18,10 @@ if ($_SERVER['QUERY_STRING'] == 'logout') {
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link " href="index.php">Inicio</a>
+                    <a class="nav-link " href=<?php echo $root . '/php/index.php' ?>>Inicio</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link " href="articulos.php">Articulos</a>
+                    <a class="nav-link " href=<?php echo $root . '/php/catalogo.php' ?>>Articulos</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
@@ -29,19 +29,19 @@ if ($_SERVER['QUERY_STRING'] == 'logout') {
                 if (isset($_SESSION['usuario']['correo'])) {
                 ?>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="mi-cuenta.php"><?php echo $_SESSION['usuario']['correo']; ?></a>
+                        <a class="nav-link " href=<?php echo $root . '/php/mi-cuenta.php' ?>><?php echo $_SESSION['usuario']['correo']; ?></a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="index.php?logout">Cerrar sesión</a>
+                        <a class="nav-link " href=<?php echo $root . '/php/index.php?logout' ?>>Cerrar sesión</a>
                     </li>
                 <?php
                 } else {
                 ?>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="login.php">iniciar sesión</a>
+                        <a class="nav-link " href=<?php echo $root . '/php/login.php' ?>>iniciar sesión</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="register.php">registrarse</a>
+                        <a class="nav-link " href=<?php echo $root . '/php/register.php' ?>>registrarse</a>
                     </li>
                 <?php
                 }
