@@ -39,7 +39,9 @@ require_once '../includes/navbar_escritor.php';
     padding: 0.4rem;
     text-align: center;
 }
-
+.card{
+    margin-bottom:10px;
+}
 </style>
 
 <div class="container mb-5">
@@ -233,6 +235,152 @@ require_once '../includes/navbar_escritor.php';
         </div>
     </div>
     <!--Fin Sección articulos publicados-->
+    <!--Sección articulos guardados-->
+    <div class="col-md-12">
+        <hr />
+    </div>
+    <!--Sección articulos guardados-->
+
+    <div class="row justify-content-md-center justify-content-sm-center mt-5">
+        <div class="col-md-6 col-sm-8" style="text-align:center">
+            <h2>Artículos guardados</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-sm-4" style="text-align:left">
+            <button class="btn btn-sm btn-primary">Crear Artículo</button>
+        </div>
+    </div>
+    <div class="mb-5">
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+            <!--Controls-->
+            <div class="controls-top">
+                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
+                        class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                        class="fas fa-chevron-right"></i></a>
+            </div>
+            <!--/.Controls-->
+
+            <!--Indicators
+            <ol class="carousel-indicators" style="text-align: center;">
+                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+                <li data-target="#multi-item-example" data-slide-to="1"></li>
+            </ol>
+            /.Indicators-->
+
+            <!--Slides-->
+            <div class="carousel-inner" role="listbox">
+
+                <!--First slide-->
+                <div class="carousel-item active">
+
+                    <div class="col-md-4" style="float:left">
+                        <div class="card" style="border-radius: 10px;">
+                            <div class="card-header">
+                                <p class="card-text text-left">Jose Antonio Garcia Garcia <a
+                                        style="color:coral; float:right"> Guardado</a></p>
+                            </div>
+                            <div class="d-flex align-self-end">
+                                <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px"
+                                    class="po">
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+
+                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
+                                        class="text-center">
+                                </div>
+                                <div class="row justify-content-center mt-3">
+                                    <div class="col-md-12" style="text-align:center">
+                                        <button class="btn btn-sm btn-success">Publicar artículo</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-info">Actualizar</button>
+                                    </div>
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="float:left">
+                        <div class="card" style="border-radius: 10px;">
+                            <div class="card-header">
+                                <p class="card-text text-left">Jose Antonio Garcia Garcia <a
+                                        style="color:coral; float:right"> Guardado</a></p>
+                            </div>
+                            <div class="d-flex align-self-end">
+                                <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px"
+                                    class="po">
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+
+                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
+                                        class="text-center">
+                                </div>
+                                <div class="row justify-content-center mt-3">
+                                    <div class="col-md-12" style="text-align:center">
+                                        <button class="btn btn-sm btn-success">Publicar artículo</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-info">Actualizar</button>
+                                    </div>
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="float:left">
+                        <div class="card" style="border-radius: 10px;">
+                            <div class="card-header">
+                                <p class="card-text text-left">Jose Antonio Garcia Garcia <a
+                                        style="color:coral; float:right"> Guardado</a></p>
+                            </div>
+                            <div class="d-flex align-self-end">
+                                <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px"
+                                    class="po">
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center">
+
+                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
+                                        class="text-center">
+                                </div>
+                                <div class="row justify-content-center mt-3">
+                                    <div class="col-md-12" style="text-align:center">
+                                        <button class="btn btn-sm btn-success" style="text-align:center">Publicar
+                                            artículo</button>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mt-2">
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-info">Actualizar</button>
+                                    </div>
+                                    <div class="col-md-5" style="text-align:center">
+                                        <button class="btn btn-sm btn-danger">Eliminar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fin Sección articulos guardados-->
     <div class="mb-5">
         <br>
     </div>
