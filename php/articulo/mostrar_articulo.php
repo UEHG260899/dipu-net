@@ -136,7 +136,39 @@
             </div>
             <hr>
     </section>
+        <?php
+           $query_articulo = "SELECT e.nombre,
+                                e.ap_paterno,
+                                a.articulo,
+                                a.no_vistas,
+                                a.id
+                                FROM escritor e JOIN articulo a
+                                ON e.id = a.id_escritor
+                                WHERE a.estatus = 'publicado'
+                                AND a.id_candidato = $id_candidato";
+            $result_art = mysqli_query($db, $query_articulo);
+            if($result_art){
+                while($row_art = mysqli_fetch_array($result_art, MYSQLI_ASSOC)){
+                    $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
+                    $articulo = $row_art["articulo"];
+                    $vistas = (int) $row_art["no_vistas"];
+                    $id_art = (int) $row_art["id"];
+                }
 
+                $vistas ++;
+                $sql = "UPDATE articulo
+                            SET no_vistas = $vistas
+                            WHERE articulo.id_candidato = $id_candidato
+                            AND articulo.id = $id_art";
+                $result_sql = mysqli_query($db, $sql);
+                if(!$result_sql){
+                    echo "Algo fallo en la actualización de las vistas del articulo";
+                }
+
+            }else{
+                echo "Algo ocurrió al momento de ejecutar la consulta";
+            }
+        ?>
     <section class="container">
         <h3>Artículo</h3>
         <h4>Por: <a href="#">Uriel Hernández</a></h4>
