@@ -60,18 +60,29 @@ require_once '../includes/navbar.php';
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
+        <div class="row  mb-3">
+            <div class="col-md-8 col-lg-8 col-sm-12 col-12">
                 <div class="form-group">
                     <label for="pwd">Partido Político:</label>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Buscar" id="iptPartidoPolitico">
+                        <input type="text" class="form-control" placeholder="Todos" id="iptPartidoPolitico" disabled>
                             <div class="input-group-append disabled">
-                            <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos" type="button"><span><i class="fa fa-search"></i></span></button>  
+                            <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos" type="button"><span><i class="fa fa-hand-pointer"></i></span></button>  
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-12">
+                <label for="pwd" style="color:white;">Partido Político:</label>
+                <button class="btn bg-boton" type="button" ><span><i class="fa fa-search" ></i></span> Filtrar</button>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-12">
+                <label for="pwd" style="color:white;">Partido Político:</label>
+                <button type="button" class="btn btn-info" data-dismiss="modal" ><span><i class="fa fa-times-circle"></i></span> Limpiar Campos</button>  
+            </div>
+        </div>
+        <div class="row mb-1">
+            
         </div>
     </form>
     <br>
