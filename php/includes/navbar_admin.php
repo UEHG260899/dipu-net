@@ -17,11 +17,11 @@ require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            Artículo
+                            Candidatos
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Crear artículo</a>
-                            <a class="dropdown-item" href="#">Actualizar artículo</a>
+                            <a class="dropdown-item" href="#">Crear candidato</a>
+                            <a class="dropdown-item" href="#">Actualizar candidato</a>
                         </div>
                     </li>
                 </ul>
