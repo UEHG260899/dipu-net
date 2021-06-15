@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
             $usuario = mysqli_fetch_assoc($resultado);
             $_SESSION['usuario'] = $usuario;
             if ($_SESSION['usuario']['rol'] == 'lector') {
-                header('Location: index.php');
+                header('Location: terminar_registro.php');
             }
         } else {
             header('Location: index.php');
