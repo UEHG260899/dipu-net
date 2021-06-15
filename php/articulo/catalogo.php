@@ -12,7 +12,7 @@ require_once '../includes/navbar.php';
             <input type="text" class="form-control" id="iptNomCandidato">
         </div>
         <div class="col-md-4">
-            <button class="btn bg-boton"><span><i class="fa fa-search"></i></span> Buscar</button>
+            <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos"><span><i class="fa fa-search"></i></span> Buscar</button>
         </div>
     </div>
     <br>
@@ -142,6 +142,44 @@ require_once '../includes/navbar.php';
 
     </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="mdlPartidos">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Seleccione un Partido Político o Coalición</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+            <!--
+                <div class="radio">
+
+                </div>
+            </div>-->
+            <div class="form-check">
+                <label class="form-check-label" for="radio1">
+                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked><img src="../../img/partidos/iconos/fuerza.png" alt="" width="30px" height="30px" class="text-center">Option 1
+                </label>
+            </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 
 <?php
 require_once '../includes/footer.php';
