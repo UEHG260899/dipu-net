@@ -156,19 +156,120 @@ require_once '../includes/navbar.php';
 
       <!-- Modal body -->
       <div class="modal-body">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-md-6">
-            <!--
-                <div class="radio">
-
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdTodos" name="optradio" value="option1" checked> Todos
+                    </label>
                 </div>
-            </div>-->
-            <div class="form-check">
-                <label class="form-check-label" for="radio1">
-                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked><img src="../../img/partidos/iconos/fuerza.png" alt="" width="30px" height="30px" class="text-center">Option 1
-                </label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPan" name="optradio" value="option1" ><img src="../../img/partidos/iconos/pan.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO ACCIÓN NACIONAL
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/pri.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO REVOLUCIONARIO INSTITUTUCIONAL
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/prd.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO DE LA REVOLUCIÓN DEMOCRÁTICA
+                    </label>
+                </div>
             </div>
         </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/pt.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO DEL TRABAJO
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/verde.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO VERDE ECOLOGISTA DE MÉXICO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/movimiento_ciudadano.png" alt="" width="30px" height="30px" class="text-center"> MOVIMIENTO CIUDADANO
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/morena.png" alt="" width="30px" height="30px" class="text-center"> MORENA
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/pes.png" alt="" width="30px" height="30px" class="text-center"> PARTIDO ENCUENTRO SOLIDARIO
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/rsp.png" alt="" width="30px" height="30px" class="text-center"> REDES SOCIALES PROGRESISTAS
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/fuerza.png" alt="" width="30px" height="30px" class="text-center"> FUERZA POR MÉXICO
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/asset 13.png" alt="" width="60px" height="30px" class="text-center"> VA POR MÉXICO
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/asset 14.png" alt="" width="60px" height="30px" class="text-center"> JUNTOS HAREMOS HISTORIA
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="rdPri" name="optradio" value="option1" ><img src="../../img/partidos/iconos/independiente.png" alt="" width="60px" height="30px" class="text-center"> CANDIDATURA INDEPENDIENTE
+                    </label>
+                </div>
+            </div>
+        </div>
+
       </div>
 
       <!-- Modal footer -->
