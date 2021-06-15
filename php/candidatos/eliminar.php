@@ -1,5 +1,5 @@
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php"));
+require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_admin.php"));
 ?>
 
 <main>
