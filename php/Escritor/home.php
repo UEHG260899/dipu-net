@@ -1,5 +1,5 @@
 <?php
-require_once '../includes/navbar_escritor.php';
+require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"));
 ?>
 <link rel="stylesheet" href="<?php echo $root . "/css/escritor/estilos.css"; ?>">
 <div class="container mb-5">
@@ -68,13 +68,13 @@ require_once '../includes/navbar_escritor.php';
                 </div>
                 <!--/.Controls-->
 
-                <!--Indicators-->
+                <!--Indicators
                 <ol class="carousel-indicators" style="text-align: center;">
                     <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
                     <li data-target="#multi-item-example" data-slide-to="1"></li>
 
                 </ol>
-                <!--/.Indicators-->
+                Indicators-->
 
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
@@ -344,5 +344,5 @@ require_once '../includes/navbar_escritor.php';
     </div>
 </div>
 <?php
-require_once '../includes/footer.php';
+require_once(realpath(dirname(__FILE__) . "../../includes/footer.php"));
 ?>
