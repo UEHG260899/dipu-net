@@ -26,9 +26,12 @@ if (isset($_POST['submit'])) {
         $usuario = mysqli_fetch_assoc($resultado);
         $_SESSION['usuario'] = $usuario;
         if ($_SESSION['usuario']['rol'] == 'lector') {
-            header('Location: lector.php');
-        } else {
-            header('Location: escritor.php');
+            header('Location: articulo/catalogo.php');
+        } elseif ($_SESSION['usuario']['rol'] == 'escritor'){
+            
+            header('Location: Escritor/home.php');
+        }else{
+            header('Location: Administrador/home.php');
         }
     } else {
         header('Location: index.php');
