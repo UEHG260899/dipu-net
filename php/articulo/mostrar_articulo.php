@@ -136,16 +136,47 @@
             </div>
             <hr>
     </section>
+        <?php
+           $query_articulo = "SELECT e.nombre,
+                                e.ap_paterno,
+                                a.articulo,
+                                a.no_vistas,
+                                a.id
+                                FROM escritor e JOIN articulo a
+                                ON e.id = a.id_escritor
+                                WHERE a.estatus = 'publicado'
+                                AND a.id_candidato = $id_candidato";
+            $result_art = mysqli_query($db, $query_articulo);
+            if($result_art){
+                while($row_art = mysqli_fetch_array($result_art, MYSQLI_ASSOC)){
+                    $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
+                    $articulo = $row_art["articulo"];
+                    $vistas = (int) $row_art["no_vistas"];
+                    $id_art = (int) $row_art["id"];
+                }
 
+                $vistas ++;
+                $sql = "UPDATE articulo
+                            SET no_vistas = $vistas
+                            WHERE articulo.id_candidato = $id_candidato
+                            AND articulo.id = $id_art";
+                $result_sql = mysqli_query($db, $sql);
+                if(!$result_sql){
+                    echo "Algo fallo en la actualización de las vistas del articulo";
+                }
+
+            }else{
+                echo "Algo ocurrió al momento de ejecutar la consulta";
+            }
+        ?>
     <section class="container">
         <h3>Artículo</h3>
-        <h4>Por: <a href="#">Uriel Hernández</a></h4>
+        <h4>Por: <a href="#"><?php echo $nombre_autor;?></a></h4>
         <br>
         <div class="row">
             <div class="col-12">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nostrum quasi tempore obcaecati facilis veritatis, unde itaque repellendus suscipit rem optio ex ratione nulla numquam sit voluptate ipsum consectetur sequi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, molestias. Odit libero aliquam facere sed numquam? Quidem nam aliquid ipsam perferendis ducimus saepe quod incidunt eos facilis. Soluta, explicabo sequi!
+                   <?php echo $articulo;?>
                 </p>
             </div>    
         </div>
@@ -156,12 +187,29 @@
         <h3>Comentarios</h3>
         <div class="card">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Do</li>
-                <li class="list-group-item">Re</li>
-                <li class="list-group-item">Mi</li>
-                <li class="list-group-item">Fa</li>
-                <li class="list-group-item">Sol</li>
-                <li class="list-group-item">
+                <?php
+                    $query_coment = "SELECT c.comentario,
+                                        l.nombre,
+                                        l.ap_paterno
+                                        FROM comentarios c JOIN lector l
+                                        ON c.id_lector = l.id
+                                        WHERE c.id_articulo = $id_art";
+                    $resul_coment = mysqli_query($db, $query_coment);
+                    if($resul_coment){
+                        while($row_com = mysqli_fetch_array($resul_coment, MYSQLI_ASSOC)){
+                            $nombre_lector = $row_com["nombre"];
+                            $comentario = $row_com["comentario"];
+                            $ap_pat = $row_com["ap_paterno"];
+                            echo '<li class="list-group-item">
+                                    <h6>' . $nombre_lector . ' ' . $ap_pat .'</h6>
+                                    <p>'. $comentario .'</p>
+                                  </li>';
+                        }
+                        mysqli_close($db);
+                    }else{
+                        echo "Algo sucedio al momento de obtener los comentarios";
+                    }
+                ?>
                     <h6>Agregar un comentario:</h6>
                     <div class="row">
                         <div class="col-12">
