@@ -1,3 +1,42 @@
+<?php
+    require_once './includes/navbar.php';
+    session_start();
+    $root_directory = "http://localhost/dipu-net";
+    $servidor = "localhost";
+    $usuarioBD = "root";
+    $pwdBD = "";
+    $nombreBD = "examen-u5";
+    $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nombreBD);
+
+    if(isset($_POST["nombre"])){
+        $nombre = $_POST["nombre"];
+        $ap_pat = $_POST["ap_pat"];
+        $ap_mat = $_POST["ap_mat"];
+        $fecha_nac = date("Y-m-d", strtotime($_POST["fecha_nac"]));
+
+        $correo = $_SESSION["usuario"]["correo"];
+        $query_usr = "SELECT id
+                        FROM usuarios
+                        WHERE correo = '$correo'";
+        $result = mysqli_query($db, $query_usr);
+        if($result){
+            while($rows = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                $id = $rows["id"];
+            }
+            $sql = "INSERT INTO lector VALUES(NULL, $id, '$nombre', '$ap_pat', '$ap_mat', '$fecha_nac')";
+            $res_insert = mysqli_query($db, $sql);
+            if(!$res_insert){
+                //TODO : Redirigir a la página de error
+                echo "Error al insertar al nuevo lector: " . mysqli_error($db);
+            }else{
+                header("Location: index.php");
+            }
+        }else{
+            echo "Error al obtener el id del usuario: " . mysqli_error($db);
+        }
+    }
+?>
+
 <link href="<?php echo $root_directory . '/css/styles_fin_registro.css'?>" rel="stylesheet">
 <main>
     <section class="container">
@@ -72,3 +111,8 @@
     </div>
 </div>
 <!--Fin modal de errores-->
+
+<?php
+    require_once './includes/footer.php';
+?>
+<script src="<?php echo $root_directory . '/js/termina_registro/script.js'?>" type="text/javascript"></script>
