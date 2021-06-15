@@ -12,7 +12,7 @@ require_once '../includes/navbar.php';
             <input type="text" class="form-control" id="iptNomCandidato">
         </div>
         <div class="col-md-4">
-            <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos"><span><i class="fa fa-search"></i></span> Buscar</button>
+            <button class="btn bg-boton"><span><i class="fa fa-search"></i></span> Buscar</button>
         </div>
     </div>
     <br>
@@ -49,12 +49,12 @@ require_once '../includes/navbar.php';
                     <label for="selRangoEdad">Sexo:</label><br>
                     <div class="form-check-inline">
                         <label class="form-check-label" for="rbMasculino">
-                            <input type="radio" class="form-check-input" id="rbMasculino" name="rbMasculino" value="masculino" >Masculino
+                            <input type="radio" class="form-check-input" id="rbMasculino" name="rbsexo" value="masculino" >Masculino
                         </label>
                         </div>
                         <div class="form-check-inline">
                         <label class="form-check-label" for="radio2">
-                            <input type="radio" class="form-check-input" id="rbFemenino" name="rbFemenino" value="femenino">Femenino
+                            <input type="radio" class="form-check-input" id="rbFemenino" name="rbsexo" value="femenino">Femenino
                         </label>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ require_once '../includes/navbar.php';
                     <div class="input-group ">
                         <input type="text" class="form-control" placeholder="Buscar">
                             <div class="input-group-append disabled">
-                            <button class="btn bg-boton" type="submit"><span><i class="fa fa-search"></i></span></button>  
+                            <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos" type="button"><span><i class="fa fa-search"></i></span></button>  
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ require_once '../includes/navbar.php';
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
-    
+      <!-- Modal body -->
       <div class="modal-body">
         <div class="row mb-3">
             <div class="col-md-6">
@@ -272,9 +272,9 @@ require_once '../includes/navbar.php';
 
       </div>
 
-
+    
       <div class="modal-footer">
-        <button type="button" class="btn bg-boton" data-dismiss="modal"><span><i class="fa fa-check-circle"></i></span> Elegir</button>
+        <button type="button" class="btn bg-boton" id="btnElegir" data-dismiss="modal"><span><i class="fa fa-check-circle"></i></span> Elegir</button>
         <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cancelar</button>
       </div>
 
@@ -286,3 +286,4 @@ require_once '../includes/navbar.php';
 <?php
 require_once '../includes/footer.php';
 ?>
+<script src="../../js/articulo/catalogo_functions.js"></script>
