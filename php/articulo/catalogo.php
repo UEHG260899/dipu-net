@@ -53,7 +53,7 @@ require_once '../includes/navbar.php';
                         </label>
                         </div>
                         <div class="form-check-inline">
-                        <label class="form-check-label" for="radio2">
+                        <label class="form-check-label" for="rbFemenino">
                             <input type="radio" class="form-check-input" id="rbFemenino" name="rbsexo" value="femenino">Femenino
                         </label>
                     </div>
@@ -65,7 +65,7 @@ require_once '../includes/navbar.php';
                 <div class="form-group">
                     <label for="pwd">Partido Político:</label>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Buscar">
+                        <input type="text" class="form-control" placeholder="Buscar" id="iptPartidoPolitico">
                             <div class="input-group-append disabled">
                             <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos" type="button"><span><i class="fa fa-search"></i></span></button>  
                         </div>
