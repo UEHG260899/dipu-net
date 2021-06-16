@@ -210,6 +210,7 @@
                         echo "Algo sucedio al momento de obtener los comentarios";
                     }
                 ?>
+                <li class="list-group">
                     <h6>Agregar un comentario:</h6>
                     <div class="row">
                         <div class="col-12">
@@ -226,6 +227,29 @@
         </div>
     </section>
 </main>
+
+<!--Modal de error-->
+<div class="modal fade" id="modalErrores">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    <i class="fa fa-lg fa-times-circle"></i>
+                    Han ocurrido errores de Validación
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                Para poder publicar un comentario debe de introducir texto en el campo requerido.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin modal-->
+
 
 <?php
     require_once(realpath(dirname(__FILE__) . '/../includes/footer.php'));
