@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         /**
          * * Se inicia sesion para guardar al usuario en sesion
          */
-        $sql = "SELECT correo, contrasenia, rol FROM usuarios "
+        $sql = "SELECT id, correo, rol FROM usuarios "
             . "WHERE correo = '$email' AND "
             . "contrasenia = '$pwd'";
         $resultado = mysqli_query($conn, $sql);

@@ -13,7 +13,21 @@ session_start();
 
 
 if (isset($_SESSION['usuario'])) {
+    mysqli_query($conn, "SET NAMES UTF8");
     $correo = $_SESSION['usuario']['correo'];
+    $id = $_SESSION['usuario']['id'];
+    $queryInfo = "SELECT id_usuario,nombre, concat_ws(' ', ap_paterno, ap_materno) as apellidos, fecha_nacimiento 
+                FROM lector WHERE id_usuario = $id";
+    $resultInfo = mysqli_query($conn, $queryInfo);
+    if ($resultInfo) {
+        while ($row = mysqli_fetch_array($resultInfo, MYSQLI_ASSOC)) {
+            $nombre = $row["nombre"];
+            $apellidos = $row["apellidos"];
+            $fecha_nacimiento = $row["fecha_nacimiento"];
+        }
+    } else {
+        echo "Algo ha salido mal al momento de realizar la consulta";
+    }
 }
 ?>
 <div class="container mt-5">
@@ -23,10 +37,10 @@ if (isset($_SESSION['usuario'])) {
         <div class="card-body">
             <div class="row">
                 <div class="offset-lg-1 col-lg-4 col-md-4 col-sm-8 ">
-                    <p>Nombre: <strong>Eduardo</strong></p>
+                    <p>Nombre: <strong><?php echo $nombre; ?></strong></p>
                 </div>
                 <div class="offset-lg-1 col-lg-4 col-md-4 ">
-                    <p>Apellidos: <strong>Jimenez Apodaca</strong></p>
+                    <p>Apellidos: <strong><?php echo $apellidos; ?></strong></p>
                 </div>
             </div>
             <div class="row">
@@ -36,7 +50,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
             <div class="row">
                 <div class="offset-lg-1 col-lg-6 col-md-6 col-sm-8 ">
-                    <p>Fecha de nacimiento: <strong>25/10/1999</strong></p>
+                    <p>Fecha de nacimiento: <strong><?php echo $fecha_nacimiento; ?></strong></p>
                 </div>
             </div>
             <div class="row">
