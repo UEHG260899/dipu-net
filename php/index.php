@@ -16,7 +16,7 @@ $query = "SELECT * FROM partidos";
 $result = mysqli_query($conn, $query);
 ?>
 
-<div class="banner mt-5">
+<div class="banner mt-5 ">
     <p>
         Candidatos y candidatas a diputados
         <br>
@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $query);
 
 </div>
 
-<div class="container mt-3">
+<div class="container mt-3 about">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 my-auto">
             <h2>Acerca de la página</h2>

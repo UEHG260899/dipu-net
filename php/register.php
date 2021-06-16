@@ -53,11 +53,11 @@ if (isset($_POST['submit'])) {
 <div class="container mt-5">
 
     <div class="row " style="margin-top: 120px;">
-        <div class="col-lg-7 col-md-6 col-sm-12">
+        <div class="col-lg-7 col-md-6 col-sm-12 leftToRight" >
 
             <img src="../img/register.png" alt="" width="100%">
         </div>
-        <div class="col-lg-5 col-md-6 col-sm-12">
+        <div class="col-lg-5 col-md-6 col-sm-12 rightToLeft">
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Crear nueva cuenta</h3>
 
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
                             Recordar contraseña
                         </label>
                     </div>
-                    <button type="submit" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="submit">
+                    <button type="submit" class="btn bg-boton mb-2 mt-2 btn-block " value="Crear cuenta" name="submit">
                         <i class="fas fa-sign-in-alt"></i>
                         Crear cuenta
                     </button>
@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 
             </div>
             <hr class="dotted">
-            <div class="section-register">
+            <div class="section-register ">
                 <button class="btn btn-danger"><i class="fas fa-times"></i>Cancelar</button>
                 <div>
                     <p style="margin: 0;" class="text-right">¿Ya tienes cuenta? <a href="login.php" class="text-acento">Inicia sesión</a></p>

@@ -74,3 +74,27 @@ hr.dotted {
 .text-acento:hover {
   color: var(--color-acento);
 }
+/**
+ * Animaciones
+ */
+.leftToRight {
+  animation: fadeInLeft;
+  animation-duration: 1s;
+}
+.rightToLeft {
+  animation: fadeInRight;
+  animation-duration: 1s;
+}
+
+.section-register {
+  animation: fadeInUpBig;
+  animation-duration: 1.2s;
+}
+.about {
+  animation: zoomIn;
+  animation-duration: 1s;
+}
+.banner {
+  animation: slideInDown;
+  animation-duration: 1s;
+}
