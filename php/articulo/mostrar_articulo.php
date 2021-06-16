@@ -6,6 +6,12 @@
     $psw = "";
     $nomBD = "examen-u5";
     $db = mysqli_connect($servidor, $usuarioBD, $psw, $nomBD);
+
+    if(isset($_POST["textComentario"])){
+        if(!isset($_SESSION["usuario"])){
+            header("Location: $root_dir/php/login.php");
+        }
+    }
 ?>
 <link href="<?php echo $root_dir . '/css/styles_articulo.css'?>" rel="stylesheet">
 <main>
@@ -211,8 +217,6 @@
                             echo "Error al momento de obtener lector: " . mysqli_error($db);
                         }
                         
-                    }else{
-                        header("Location: $root_dir/php/login.php");
                     }
                 }
             ?>
