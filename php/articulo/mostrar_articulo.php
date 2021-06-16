@@ -190,12 +190,10 @@
                 if(isset($_POST["textComentario"])){
                     $comentario = $_POST["textComentario"];
                     if(isset($_SESSION["usuario"])){
-                        $correo = $_SESSION["usuario"]["correo"];
+                        $id_usuario = $_SESSION["usuario"]["id"];
                         $query_lector = "SELECT id
                                             FROM lector
-                                            WHERE id_usuario = (SELECT id
-                                                                    FROM usuarios
-                                                                    WHERE correo = '$correo')";
+                                            WHERE id_usuario $id_usuario";
                         $resultadol = mysqli_query($db, $query_lector);
                         if($resultadol){
                             while($rowl = mysqli_fetch_array($resultadol, MYSQLI_ASSOC)){
