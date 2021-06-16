@@ -1,5 +1,19 @@
 <?php
 require_once './includes/navbar.php';
+
+$servidor = "localhost";
+$usuario = "root";
+$pwd = "";
+$nombreBD = "examen-u5";
+$conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
+
+if (!$conn) {
+    echo 'Error de conexión: ' . mysqli_connect_error();
+}
+
+
+$query = "SELECT * FROM partidos";
+$result = mysqli_query($conn, $query);
 ?>
 
 <div class="banner mt-5">
@@ -29,32 +43,44 @@ require_once './includes/navbar.php';
 
     <div id="carouselExampleIndicators" class="carousel slide " data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+
+            <?php
+            if ($result) {
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $id = $row["id"];
+            ?>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $id - 1; ?>" class="<?php if ($id == 1) {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>"></li>
+            <?php
+                }
+            }
+            $query = "SELECT * FROM partidos";
+            $result = mysqli_query($conn, $query);
+            ?>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block " src="../img/partidos/pan.png" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Partido Accion nacional</h5>
-                    <a href="articulos.php" type="button" class="btn  bg-boton">Ver articulos</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block " src="../img/partidos/pan.png" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Partido Accion nacional</h5>
-                    <a href="articulos.php" type="button" class="btn  bg-boton">Ver articulos</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block " src="../img/partidos/pan.png" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <a href="articulos.php" type="button" class="btn  bg-boton">Ver articulos</a>
-
-                </div>
-            </div>
+            <?php
+            if ($result) {
+                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $id = $row["id"];
+                    $nombre = $row["nombre"];
+                    $icon = $row["url_imagen"];
+                    $banner = $row["img_banner"];
+            ?>
+                    <div class="carousel-item <?php if ($id == 1) {
+                                                    echo 'active';
+                                                } ?> ">
+                        <img class="d-block " src="../img/partidos/carusel/<?php echo $banner; ?>" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5><?php echo $nombre; ?></h5>
+                            <a href="articulos.php?<?php echo $id; ?>" type="button" class="btn  bg-boton">Ver articulos</a>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -72,9 +98,12 @@ require_once './includes/navbar.php';
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                <div class="card-header d-flex justify-content-between bg-principal">
+
+                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
                     <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+
+
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
@@ -92,9 +121,12 @@ require_once './includes/navbar.php';
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                <div class="card-header d-flex justify-content-between bg-principal">
+
+                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
                     <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+
+
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
@@ -112,9 +144,12 @@ require_once './includes/navbar.php';
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
+                <div class="card-header d-flex justify-content-between bg-principal">
+
+                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
                     <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+
+
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-center">
