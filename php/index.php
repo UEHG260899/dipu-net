@@ -20,7 +20,7 @@ $result = mysqli_query($conn, $query);
     <p>
         Candidatos y candidatas a diputados
         <br>
-        ¡Conocelos!
+        ¡Conócelos!
     </p>
 
 </div>
@@ -29,7 +29,7 @@ $result = mysqli_query($conn, $query);
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 my-auto">
             <h2>Acerca de la página</h2>
-            <p>Dipunet es una plataforma donde usted puede consultar los arituclos correspondientes a cada uno de los candidatos a diputados del Estado de México.</p>
+            <p>Dipu-net es una plataforma donde usted puede consultar los artículos correspondientes a cada uno de los candidatos a diputados del Estado de México.</p>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-12 ml-auto">
             <figure>
@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $query);
     <hr>
 </main>
 <section class="container mb-large">
-    <h2 class="mb-3">Últimos articulos</h2>
+    <h2 class="mb-3">Últimos artículos</h2>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">

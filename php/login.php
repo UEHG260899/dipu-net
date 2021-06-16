@@ -12,7 +12,7 @@ if (!$conn) {
 /**
  * La peticion es tipo POST -> Se realiza el login
  */
-if (isset($_POST['submit'])) {
+if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $pwd = sha1($pwd);
@@ -27,10 +27,10 @@ if (isset($_POST['submit'])) {
         $_SESSION['usuario'] = $usuario;
         if ($_SESSION['usuario']['rol'] == 'lector') {
             header('Location: articulo/catalogo.php');
-        } elseif ($_SESSION['usuario']['rol'] == 'escritor'){
-            
+        } elseif ($_SESSION['usuario']['rol'] == 'escritor') {
+
             header('Location: Escritor/home.php');
-        }else{
+        } else {
             header('Location: Administrador/home.php');
         }
     } else {
@@ -48,14 +48,14 @@ if (isset($_POST['submit'])) {
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Iniciar Sesión</h3>
 
-                <form action="login.php" id="form-login" name="form-login" method="POST">
+                <form action="login.php" id="form-login" name="form-login" id="form-login" method="POST">
                     <div class="form-group">
                         <label for="">Correo electrónico</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="correo@correo.com">
+                        <input type="email" class="form-control validar" name="email" id="email" placeholder="correo@correo.com">
                     </div>
                     <div class="form-group">
                         <label for="">Contraseña</label>
-                        <input type="password" class="form-control" name="pwd" id="pwd">
+                        <input type="password" class="form-control validar" name="pwd" id="pwd">
                     </div>
 
                     <div class="form-check">
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
                             Recordar contraseña
                         </label>
                     </div>
-                    <button type="submit" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="submit">
+                    <button type="button" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="btn-login" id="btn-login">
                         <i class="fas fa-sign-in-alt"></i>
                         Ingresar
                     </button>
@@ -86,6 +86,29 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
+<!--Modal de errores-->
+<div class="modal fade" id="modalErrores">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    <i class="fa fa-lg fa-times-circle " style="color: red;"></i>
+                    Han ocurrido errores de Validación
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body mx-4">
+                Para poder continuar,debe de hacer caso a las siguientes indicaciones:
+                <p id="listaErrores"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin modal de errores-->
 <?php
 require_once './includes/footer.php';
 ?>
+<script src="<?php echo $root . '/js/login.js' ?>" type="text/javascript"></script>

@@ -14,7 +14,7 @@ if (!$conn) {
  * $email= correo electronico del usuario
  * $pwd = contraseña  del usuario (encriptada)
  */
-if (isset($_POST['submit'])) {
+if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $pwd = sha1($pwd);
@@ -61,26 +61,27 @@ if (isset($_POST['submit'])) {
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Crear nueva cuenta</h3>
 
-                <form action="register.php" id="form-register" name="form-register" method="POST">
+                <form action="register.php" id="form-register" method="POST">
                     <div class="form-group">
                         <label for="">Correo electrónico</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="correo@correo.com">
+                        <input type="email" class="form-control validar " name="email" id="email" placeholder="correo@correo.com">
                     </div>
                     <div class="form-group">
                         <label for="">Contraseña</label>
-                        <input type="password" class="form-control" name="pwd" id="pwd">
+                        <input type="password" class="form-control validar" name="pwd" id="pwd">
                     </div>
                     <div class="form-group">
                         <label for="">Confirmar contraseña</label>
-                        <input type="password" class="form-control" name="pwd-confirm" id="pwd-confirm">
+                        <input type="password" class="form-control validar" name="pwd-confirm" id="pwd-confirm">
                     </div>
+                   
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="">
                         <label class="form-check-label" for="defaultCheck1">
                             Recordar contraseña
                         </label>
                     </div>
-                    <button type="submit" class="btn bg-boton mb-2 mt-2 btn-block " value="Crear cuenta" name="submit">
+                    <button type="button" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="btnRegistro" id="btnRegistro">
                         <i class="fas fa-sign-in-alt"></i>
                         Crear cuenta
                     </button>
@@ -98,6 +99,29 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
+<!--Modal de errores-->
+<div class="modal fade" id="modalErrores">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>
+                    <i class="fa fa-lg fa-times-circle " style="color: red;"></i>
+                    Han ocurrido errores de Validación
+                </h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body mx-3">
+                Para poder continuar,debe de hacer caso a las siguientes indicaciones:
+                <p id="listaErrores"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin modal de errores-->
 <?php
 require_once './includes/footer.php';
 ?>
+<script src="<?php echo $root . '/js/registro.js'?>" type="text/javascript"></script>
