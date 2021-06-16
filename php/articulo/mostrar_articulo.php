@@ -200,7 +200,7 @@
                         $id_usuario = $_SESSION["usuario"]["id"];
                         $query_lector = "SELECT id
                                             FROM lector
-                                            WHERE id_usuario $id_usuario";
+                                            WHERE id_usuario = $id_usuario";
                         $result = mysqli_query($db, $query_lector);
                         if($result){
                             while($rowl = mysqli_fetch_array($result, MYSQLI_ASSOC)){
