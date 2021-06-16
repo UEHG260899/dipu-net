@@ -57,9 +57,10 @@ $(document).ready(function () {
 
     $("#btnLimpiar").click(function (e) { 
         
+        $("#iptNomCandidato").val('');
+
         $('#selGradoAcad').val('Cualquiera').prop('selected', true);
         $('#selRangoEdad').val('Todos').prop('selected', true);
-        //$('#formFiltrado').find('input[name=rbsexo]:checked').prop('checked', false);
         $('#formFiltrado').find('input[id=rbAmbos]').prop('checked', true);
         $('#iptPartidoPolitico').attr('dataId','todos');
         $('#iptPartidoPolitico').val('Todos');
