@@ -18,7 +18,7 @@ require_once '../includes/navbar.php';
         
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
-                      ,a.articulo as articulo                  
+                      ,a.id as id_articulo                  
                   FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                   INNER JOIN candidato c ON a.id_candidato = c.id  
                  WHERE estatus = 'Publicado'";
@@ -140,8 +140,8 @@ require_once '../includes/navbar.php';
 
                         <p class="card-text text-right">Autor: <?php echo $articulo['escritor']?></p>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-info">Ver más tarde</button>
-                            <button class="btn bg-boton">Ver articulo completo</button>
+                            <button class="btn btn-info btnMasTarde" dataId="<?php echo $articulo['id_articulo']?>">Ver más tarde</button>
+                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>">Ver articulo completo</button>
                         </div>
                     </div>
                 </div>
@@ -292,6 +292,37 @@ require_once '../includes/navbar.php';
   </div>
 </div>
 
+<div class="modal fade" id="mdlLogin">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-header">
+        <h4 class="modal-title">¡Aviso!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row mb-3 mt-3">
+            <div class="col-md-12">
+                <p>Estimado usuario, para agregar artículos a su lista de "Leer más tarde" deberá iniciar sesión.</p>
+            </div>
+            
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <form action="../login.php" method="get">
+            <button type="submit" class="btn bg-boton" id="btnIrLogin" data-dismiss="modal"><span><i class="fa fa-sign-in-alt"></i></span> Ir a Login</button>
+            
+        </form>
+        <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <?php
 require_once '../includes/footer.php';

@@ -20,7 +20,8 @@ if($idProceso == 1){
     else{
     
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
-                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor                
+                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
+                       ,a.id as id_articulo                  
                     FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                     INNER JOIN candidato c ON a.id_candidato = c.id   
                     WHERE estatus = 'Publicado'";
@@ -63,7 +64,8 @@ else{
         }
         
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
-                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor                
+                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor  
+                       ,a.id as id_articulo                
                     FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                     INNER JOIN candidato c ON a.id_candidato = c.id  
                                     INNER JOIN partidos p ON c.id_partido = p.id  
@@ -96,8 +98,8 @@ while($articulo = mysqli_fetch_array($resultadoConsulta)){
 
                 <p class="card-text text-right">' . $articulo['escritor'] .'</p>
                 <div class="d-flex justify-content-between">
-                    <button class="btn btn-info">Ver más tarde</button>
-                    <button class="btn bg-boton">Ver articulo completo</button>
+                    <button class="btn btn-info btnMasTarde"  dataId=' .$articulo['id_articulo'] .'>Ver más tarde</button>
+                    <button class="btn bg-boton btnVerCompleto"  dataId='.$articulo['id_articulo'].'>Ver articulo completo</button>
                 </div>
             </div>
         </div>
