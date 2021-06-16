@@ -33,7 +33,7 @@ require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
                         ?>
                     </a>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="register.php">Cerrar sesión</a>
+                    <a class="nav-link " href=<?php echo $root . '/php/index.php?logout' ?>>Cerrar sesión</a>
                     </li>
                 </ul>
             </div>

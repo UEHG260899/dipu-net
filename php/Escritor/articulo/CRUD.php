@@ -29,6 +29,20 @@
 
  }
 
+ if($operacion == "publicar"){
+    $id = $_POST["id"];
+        $query = "UPDATE articulo SET estatus = 'publicado' WHERE id= ".$id."";
+        $result = mysqli_query($db,$query);
+        header("location: ../home.php");
 
+ }
  
+ if($operacion == "eliminar"){
+    $id = $_POST["id"];
+    echo $id;
+        $query = "DELETE FROM articulo  WHERE id= ".$id."";
+        $result = mysqli_query($db,$query);
+        header("location: ../home.php");
+
+ }
 ?>
