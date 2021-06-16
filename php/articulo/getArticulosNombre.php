@@ -23,8 +23,9 @@ else{
                 WHERE estatus = 'Publicado' AND c.nombre  like '$candidato%'";
 
     $resultadoConsulta = mysqli_query($db, $sql);  
-    
+    $contador = 0;
     while($articulo = mysqli_fetch_array($resultadoConsulta)){
+        $contador = $contador + 1;
         echo '
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">
@@ -47,7 +48,15 @@ else{
             </div>
         </div>
         ';
-    }  
+    }
+    
+    if($contador == 0){
+        echo '
+            <div class="col-md-4 offset-md-4">
+                <img src="../../img/articulos/sinArticulos.png" width="300px" height="300px"  alt="Sin resultados">
+            </div>';
+
+    }
         
 }
 
