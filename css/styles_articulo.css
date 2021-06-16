@@ -1,3 +1,7 @@
 main {
     margin-top: 5rem;
 }
+
+textarea{
+    width: 100%;
+}

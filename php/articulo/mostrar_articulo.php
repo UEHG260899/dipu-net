@@ -212,16 +212,18 @@
                 ?>
                 <li class="list-group">
                     <h6>Agregar un comentario:</h6>
-                    <div class="row">
-                        <div class="col-12">
-                            <textarea style="width: 100%"></textarea>
+                    <form action="<?php echo "mostrar_articulo.php?candidato=" . $id_candidato;?>" method="POST" id="formComentario">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea class="form-control" id="textComentario" name="textComentario"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-12 text-right">
-                            <button class="btn btn-success">Agregar</button>
+                        <div class="row mt-2">
+                            <div class="col-12 text-right">
+                                <button type="button" class="btn btn-success" id="btnComentario">Enviar Comentario</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -254,3 +256,5 @@
 <?php
     require_once(realpath(dirname(__FILE__) . '/../includes/footer.php'));
 ?>
+
+<script src="<?php echo $root_dir . "/js/agrega_comentario/script.js"?>"></script>
