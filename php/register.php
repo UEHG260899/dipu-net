@@ -14,7 +14,7 @@ if (!$conn) {
  * $email= correo electronico del usuario
  * $pwd = contraseña  del usuario (encriptada)
  */
-if (isset($_POST['submit'])) {
+if (isset($_POST['email'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $pwd = sha1($pwd);
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Crear nueva cuenta</h3>
 
-                <form action="register.php" id="form-register" name="form-register" method="POST">
+                <form action="register.php" id="form-register" method="POST">
                     <div class="form-group">
                         <label for="">Correo electrónico</label>
                         <input type="email" class="form-control validar " name="email" id="email" placeholder="correo@correo.com">
@@ -74,13 +74,14 @@ if (isset($_POST['submit'])) {
                         <label for="">Confirmar contraseña</label>
                         <input type="password" class="form-control validar" name="pwd-confirm" id="pwd-confirm">
                     </div>
+                   
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="">
                         <label class="form-check-label" for="defaultCheck1">
                             Recordar contraseña
                         </label>
                     </div>
-                    <button type="button" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="submit" id="btnRegistro">
+                    <button type="button" class="btn bg-boton mb-2 mt-2 btn-block" value="Crear cuenta" name="btnRegistro" id="btnRegistro">
                         <i class="fas fa-sign-in-alt"></i>
                         Crear cuenta
                     </button>
