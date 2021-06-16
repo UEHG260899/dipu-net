@@ -46,12 +46,13 @@ require_once '../includes/navbar.php';
     <hr>
     <h4>O bien, seleccione los siguientes criterios</h4>
     <br>
-    <form action="" method="post">
+    <form action="" method="post" id="formFiltrado">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="selGradoAcad">Grado Académico:</label>
                     <select class="form-control" id="selGradoAcad">
+                        <option>Cualquiera</option>
                         <option>Primaria</option>
                         <option>Secundaria</option>
                         <option>Bachillerato</option>
@@ -63,6 +64,7 @@ require_once '../includes/navbar.php';
                 <div class="form-group">
                     <label for="selRangoEdad">Rango de edad:</label>
                     <select class="form-control" id="selRangoEdad">
+                        <option>Todos</option>
                         <option>18 - 29</option>
                         <option>30 - 39</option>
                         <option>40 - 49</option>
@@ -76,12 +78,17 @@ require_once '../includes/navbar.php';
                     <label for="selRangoEdad">Sexo:</label><br>
                     <div class="form-check-inline">
                         <label class="form-check-label" for="rbMasculino">
-                            <input type="radio" class="form-check-input" id="rbMasculino" name="rbsexo" value="masculino" >Masculino
+                            <input type="radio" class="form-check-input" id="rbMasculino" name="rbsexo" value="Masculino" >Masculino
                         </label>
-                        </div>
-                        <div class="form-check-inline">
+                    </div>
+                    <div class="form-check-inline">
                         <label class="form-check-label" for="rbFemenino">
-                            <input type="radio" class="form-check-input" id="rbFemenino" name="rbsexo" value="femenino">Femenino
+                            <input type="radio" class="form-check-input" id="rbFemenino" name="rbsexo" value="Femenino">Femenino
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="rbAmbos">
+                            <input type="radio" class="form-check-input" id="rbAmbos" name="rbsexo" value="ambos" checked>Ambos
                         </label>
                     </div>
                 </div>
@@ -92,7 +99,7 @@ require_once '../includes/navbar.php';
                 <div class="form-group">
                     <label for="pwd">Partido Político:</label>
                     <div class="input-group ">
-                        <input type="text" class="form-control" placeholder="Todos" id="iptPartidoPolitico" disabled>
+                        <input type="text" class="form-control" placeholder="Todos" id="iptPartidoPolitico" dataId="todos" disabled>
                             <div class="input-group-append disabled">
                             <button class="btn bg-boton" data-toggle="modal" data-target="#mdlPartidos" type="button"><span><i class="fa fa-hand-pointer"></i></span></button>  
                         </div>
@@ -101,16 +108,14 @@ require_once '../includes/navbar.php';
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                 <label for="pwd" style="color:white;">Partido Político:</label>
-                <button class="btn bg-boton" type="button" ><span><i class="fa fa-search" ></i></span> Filtrar</button>
+                <button class="btn bg-boton" type="button" id="btnFiltrar"><span><i class="fa fa-search" ></i></span> Filtrar</button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                 <label for="pwd" style="color:white;">Partido Político:</label>
-                <button type="button" class="btn btn-info" data-dismiss="modal" ><span><i class="fa fa-times-circle"></i></span> Limpiar Campos</button>  
+                <button type="button" class="btn btn-info" data-dismiss="modal" id="btnLimpiar"><span><i class="fa fa-times-circle"></i></span> Limpiar Campos</button>  
             </div>
         </div>
-        <div class="row mb-1">
-            
-        </div>
+        
     </form>
     <br>
     <hr>

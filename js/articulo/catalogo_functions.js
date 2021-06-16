@@ -7,6 +7,8 @@ $(document).ready(function () {
         e.preventDefault();
         
         partidoSelected = $('input[name="optradio"]:checked').val();
+
+        $("#iptPartidoPolitico").attr('dataId',partidoSelected);
         
         $("#iptPartidoPolitico").val(getPartidoPolitico(partidoSelected));
     });
@@ -27,6 +29,50 @@ $(document).ready(function () {
         xmlhttp.send();
         
     });
+
+    $("#btnFiltrar").click(function (e) { 
+        
+        $("#iptNomCandidato").val('');
+
+        let gardoAcademico = $('#selGradoAcad').children("option:selected").val();
+        let rangoEdad = $('#selRangoEdad').children("option:selected").val();
+        let partido = $('#iptPartidoPolitico').attr('dataId');
+        let sexo = $('#formFiltrado').find('input[name=rbsexo]:checked').val();
+        
+        
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $("#rowCards").html(this.responseText);
+        }
+        };
+        xmlhttp.open("GET", "../../php/articulo/getArticulosFiltro.php?gradoAcademico=" + gardoAcademico
+                                                                    +"&rangoEdad="+rangoEdad
+                                                                    +"&partido="+partido
+                                                                    +"&sexo="+sexo
+                                                                    +"&idProceso=2", true);
+        xmlhttp.send();
+
+    });
+
+    $("#btnLimpiar").click(function (e) { 
+        
+        $('#selGradoAcad').val('Cualquiera').prop('selected', true);
+        $('#selRangoEdad').val('Todos').prop('selected', true);
+        //$('#formFiltrado').find('input[name=rbsexo]:checked').prop('checked', false);
+        $('#formFiltrado').find('input[id=rbAmbos]').prop('checked', true);
+        $('#iptPartidoPolitico').attr('dataId','todos');
+        $('#iptPartidoPolitico').val('Todos');
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $("#rowCards").html(this.responseText);
+        }
+        };
+        xmlhttp.open("GET", "../../php/articulo/getArticulosFiltro.php?idProceso=1", true);
+        xmlhttp.send();
+    });    
 });
 
 function getPartidoPolitico(value){
