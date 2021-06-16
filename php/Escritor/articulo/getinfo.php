@@ -29,7 +29,7 @@ while($row = $resultado->fetch_array()){
         echo "<div class='carousel-item'>";
     }
     echo "
-<div class='col-md-3' style='float:left'>
+<div class='col-md-3 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
         <div class='card-header' style='background-color: #d80065; color:white'>
             <p class='card-text text-left'>".$row['nombre'] ." ". $row['ap_paterno'] ." ". $row['ap_materno']."</p>
@@ -194,7 +194,7 @@ if (isset($_GET['getModalPublicar'])) {
     
     while($row = $resultado->fetch_array()){
         echo "            
-        <div id='modalPublicar' class='modal fade' role='dialog'>
+        <div id='modalPublicar' class='modal fade about' role='dialog'>
         <div class='modal-dialog modal-lg'>
 
             <!-- Modal content-->
@@ -249,7 +249,7 @@ if (isset($_GET['getModalPublicar'])) {
         $resultado = mysqli_query($conn, $sql);
         while($row = $resultado->fetch_array()){
             echo "            
-            <div id='modalEliminar' class='modal fade' role='dialog'>
+            <div id='modalEliminar' class='modal fade about' role='dialog'>
             <div class='modal-dialog modal-lg'>
     
                 <!-- Modal content-->
@@ -316,7 +316,7 @@ if (isset($_GET['candidatoBHome'])) {
             echo "<div class='carousel-item'>";
         }
         echo "
-        <div class='col-md-4' style='float:left'>
+        <div class='col-md-4 about' style='float:left'>
             <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
                 <div class='card-header'>
                     <p class='card-text text-left'>".$row['nombre']."<a

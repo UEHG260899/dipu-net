@@ -1,422 +1,371 @@
 <?php
 require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
+
+$serv = "localhost";
+$usr = "root";
+$pwd = "";
+$nomBD = "examen-u5";
+$db = mysqli_connect($serv, $usr, $pwd, $nomBD);
+    if(!$db){
+        die("La conexión fallo: " . mysqli_connect_error());
+    }else{
+
+        $sqlPublicados = "SELECT COUNT(id) AS publicados FROM articulo WHERE  estatus = 'publicado'";
+        $publicados = mysqli_query($db, $sqlPublicados);
+        $nuPublicados = mysqli_fetch_assoc($publicados);  
+
+        $sqlLectores = "SELECT COUNT(id) AS lectores FROM usuarios WHERE  rol = 'lector'";
+        $lectores = mysqli_query($db, $sqlLectores);
+        $nulectores = mysqli_fetch_assoc($lectores);  
+
+        $sqlEscritores = "SELECT COUNT(id) AS escritores FROM usuarios WHERE  rol = 'escritor'";
+        $escritores = mysqli_query($db, $sqlEscritores);
+        $nuescritores= mysqli_fetch_assoc($escritores);  
+
+        $sqlCandidato = "SELECT COUNT(id) AS candidatos FROM candidato";
+        $candidatos = mysqli_query($db, $sqlCandidato);
+        $nucandidatos = mysqli_fetch_assoc($candidatos);  
+    }
+
 ?>
 <link rel="stylesheet" href="<?php echo $root . "/css/escritor/estilos.css"; ?>">
-<div class="container mb-5">
-    <div class="col-12 mt-5" style="text-align:right">
-        <img src="../../img/avatar.png" alt="" width="65px" height="65px" class="text-center mt-4">
-    </div>
-    <!--Sección escritor-->
-    <div class="row justify-content-md-center mb-5">
-        <div class="col-md-4" style="text-align:center">
+<div class="container mb-5 mt-5">
+    <!--Sección administrador-->
+    <div class="row justify-content-md-center mb-5 about">
+        <div class="col-md-4 mt-5" style="text-align:center">
             <h2>Administrador</h2>
         </div>
     </div>
-    <div class="row justify-content-around">
-        <div class="col-lg-3 col-md-3 col-sm-12">
+    <div class="row justify-content-around ">
+        <div class="col-lg-3 col-md-3 col-sm-12 leftToRight">
             <div class="card" style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Artículos Publicados</p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-center">10</p>
+                    <p class="card-text text-center"><?php echo $nuPublicados['publicados']; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 leftToRight">
             <div class="card" style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Lectores</p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-center">10</p>
+                    <p class="card-text text-center"><?php echo $nulectores['lectores']; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 rightToLeft">
             <div class="card" style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Escritores</p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-center">10</p>
+                    <p class="card-text text-center"><?php echo $nuescritores['escritores']; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 rightToLeft">
             <div class="card" style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Candidatos</p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-center">10</p>
+                    <p class="card-text text-center"><?php echo $nucandidatos['candidatos']; ?></p>
                 </div>
             </div>
         </div>
     </div>
-    <!--Fin Sección escritor-->
+    <!--Fin Sección administrador-->
     <div class="col-md-12">
         <hr />
     </div>
     <!--Sección articulos publicados-->
-    <div class="row justify-content-md-center mt-5">
+    <div class="row justify-content-md-center mt-5 about">
         <div class="col-md-6" style="text-align:center">
             <h2>Artículos publicados en la página</h2>
         </div>
     </div>
-    <!--Carousel Wrapper-->
-    <div class="col-md-12">
+    <!--Carousel-->
+    <div class="col-md-12 ">
         <div class="mb-5">
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <div id="carruselPublicados" class="carousel slide carousel-multi-item about" data-ride="carousel">
 
                 <!--Controls-->
                 <div class="controls-top">
-                    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
+                    <a class="btn-floating" href="#carruselPublicados" data-slide="prev"><i
                             class="fas fa-chevron-left"></i></a>
-                    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
+                    <a class="btn-floating" href="#carruselPublicados" data-slide="next"><i
                             class="fas fa-chevron-right"></i></a>
                 </div>
                 <!--/.Controls-->
 
-                <!--Indicators
-                <ol class="carousel-indicators" style="text-align: center;">
-                    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                    <li data-target="#multi-item-example" data-slide-to="1"></li>
-
-                </ol>
-                Indicators-->
-
                 <!--Slides-->
                 <div class="carousel-inner" role="listbox">
 
-                    <!--First slide-->
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 10px;">
-                                    <div class="card-header">
-                                        <p class="card-text text-left">Jose Antonio Garcia Garcia <a
-                                                style="color:green; float:right"> Publicado</a></p>
-                                    </div>
-                                    <div class="d-flex align-self-end">
-                                        <img src="../../img/partidos/iconos/pan.png" class="po" alt="" width="50px"
-                                            height="50px">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
+                    <?php
+                    
+$sql = "SELECT articulo.no_vistas,articulo.id,CONCAT_WS(' ',escritor.nombre ,escritor.ap_paterno ,escritor.ap_materno) AS nombreEsc ,CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id  INNER JOIN escritor ON articulo.id_escritor = escritor.id WHERE  articulo.estatus = 'publicado'";
+$resultado = mysqli_query($db, $sql);
 
-                                            <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                                class="text-center">
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Comentarios</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Vistas</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                        </div>
+$i = 0;
 
-                                    </div>
-                                </div>
-                            </div>
+while($row = $resultado->fetch_array()){
+    $sqlComentarios = "SELECT COUNT(comentarios.id_articulo) as comentarios FROM comentarios INNER JOIN articulo ON comentarios.id_articulo = articulo.id WHERE articulo.id =" . $row['id'] ." ";
+    $comentarios = mysqli_query($db, $sqlComentarios);
+    $nuComentarios = mysqli_fetch_assoc($comentarios);  
 
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 10px;">
-                                    <div class="card-header">
-                                        <p class="card-text text-left">Jose Antonio Garcia Garcia <a
-                                                style="color:green; float:right"> Publicado</a></p>
-                                    </div>
-                                    <div class="d-flex align-self-end">
-                                        <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px"
-                                            class="po">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
+    if($i == 0){
+        echo "<div class='carousel-item active'>";
+    }else if($i % 3 == 0){
+        echo "<div class='carousel-item'>";
+    }
+    echo "
+<div class='col-md-4 about' style='float:left'>
+    <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
+        <div class='card-header'>
+            <p class='card-text text-left'>".$row['nombre']."<a
+            style='color:green; float:right'> Publicado</a></p>
+        </div>
+        <div class='d-flex align-self-end'>
+            <img src='../../img/partidos/iconos/". $row['imagenPar'] ."' alt='' width='50px' height='50px'
+                class='po'>
+        </div>
+        <div class='card-body'>
+            <div class='d-flex justify-content-center'>
 
-                                            <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                                class="text-center">
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Comentarios</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Vistas</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card" style="border-radius: 10px;">
-                                    <div class="card-header">
-                                        <p class="card-text text-left">Jose Antonio Garcia Garcia <a
-                                                style="color:green; float:right"> Publicado</a></p>
-                                    </div>
-                                    <div class="d-flex align-self-end">
-                                        <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px"
-                                            class="po">
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-center">
-
-                                            <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                                class="text-center">
-                                        </div>
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Comentarios</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="card">
-                                                    <div class="card-header co">Vistas</div>
-                                                    <div class="card-body co">10</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <img src='../../img/".$row['imagenCan']."' alt='' width='200px' height='200px'
+                    class='text-center'>
+            </div>
+            <p class='card-text text-left'>Autor: ".$row['nombreEsc']."</p>
+            <div class='row mt-3'>
+            <div class='col-md-6'>
+                <div class='card'>
+                    <div class='card-header co bg-boton'>Comentarios</div>
+                    <div class='card-body co '>".$nuComentarios['comentarios']."</div>
+                </div>
+            </div>
+            <div class='col-md-6'>
+                <div class='card'>
+                    <div class='card-header co bg-boton'>Vistas</div>
+                    <div class='card-body co'>".$row['no_vistas']."</div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Fin Sección articulos publicados-->
-    <!--Sección candidatos-->
-    <div class="col-md-12">
-        <hr />
-    </div>
-    <div class="row justify-content-md-center justify-content-sm-center mt-5">
-        <div class="col-md-6 col-sm-8" style="text-align:center">
-            <h2>Candidatos</h2>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-sm-4" style="text-align:left">
-            <button class="btn btn-sm btn-primary">Crear candidato</button>
-        </div>
-    </div>
-    <div class="mb-5">
-        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-            <!--Controls-->
-            <div class="controls-top">
-                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
-                        class="fas fa-chevron-left"></i></a>
-                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                        class="fas fa-chevron-right"></i></a>
-            </div>
-            <!--/.Controls-->
-
-            <!--Indicators
-            <ol class="carousel-indicators" style="text-align: center;">
-                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                <li data-target="#multi-item-example" data-slide-to="1"></li>
-            </ol>
-            /.Indicators-->
-
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-
-                <!--First slide-->
-                <div class="carousel-item active">
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Tipo candidatura:</p>
-                                <p class="card-text text-left">Distrito:</p>
-                                <div class="row justify-content-center mt-2">
-                                    <div class="col-md-6" style="text-align:right">
-                                        <button class="btn btn-sm btn-info">Actualizar</button>
-                                    </div>
-                                    <div class="col-md-6" style="text-align:left">
-                                        <button class="btn btn-sm btn-danger">Eliminar</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Tipo candidatura:</p>
-                                <p class="card-text text-left">Distrito:</p>
-                                <div class="row justify-content-center mt-2">
-                                    <div class="col-md-6" style="text-align:right">
-                                        <button class="btn btn-sm btn-info">Editar</button>
-                                    </div>
-                                    <div class="col-md-6" style="text-align:left">
-                                        <button class="btn btn-sm btn-danger">Eliminar</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Tipo candidatura:</p>
-                                <p class="card-text text-left">Distrito:</p>
-                                <div class="row justify-content-center mt-2">
-                                    <div class="col-md-6" style="text-align:right">
-                                        <button class="btn btn-sm btn-info">Actualizar</button>
-                                    </div>
-                                    <div class="col-md-6" style="text-align:left">
-                                        <button class="btn btn-sm btn-danger">Eliminar</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Fin sección candidatos-->
-
-    <!--Sección candidatos-->
-    <div class="col-md-12">
-        <hr />
-    </div>
-    <div class="row justify-content-md-center justify-content-sm-center mt-5">
-        <div class="col-md-6 col-sm-8" style="text-align:center">
-            <h2>Escritor</h2>
-        </div>
-    </div>
-    <div class="mb-5">
-        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-            <!--Controls-->
-            <div class="controls-top">
-                <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
-                        class="fas fa-chevron-left"></i></a>
-                <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-                        class="fas fa-chevron-right"></i></a>
-            </div>
-            <!--/.Controls-->
-
-            <!--Indicators
-            <ol class="carousel-indicators" style="text-align: center;">
-                <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                <li data-target="#multi-item-example" data-slide-to="1"></li>
-            </ol>
-            /.Indicators-->
-
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-
-                <!--First slide-->
-                <div class="carousel-item active">
-
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Empleo:</p>
-                                <p class="card-text text-left">Organización:</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Empleo:</p>
-                                <p class="card-text text-left">Organización:</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="float:left">
-                        <div class="card" style="border-radius: 10px;">
-                            <div class="card-header">
-                                <p class="card-text text-left">Jose Antonio Garcia Garcia</p>
-                            </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-center mb-3">
-
-                                    <img src="../../img/avatar.png" alt="" width="200px" height="200px"
-                                        class="text-center">
-                                </div>
-                                <p class="card-text text-left">Empleo:</p>
-                                <p class="card-text text-left">Organización:</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Fin sección candidatos-->
-    <div class="mb-5">
-        <br>
     </div>
 </div>
-<?php
+
+";
+$i++;
+if($i % 3 == 0){
+    echo "</div>";
+}
+}
+$temp = mysqli_query($db, $sql);
+if($temp->fetch_array() == 0){
+    echo "<div class='text-center'>
+    <img src='../../img/escritor/vacio.png' alt=' ' width='350' height='350'
+    class='text-center'>
+    </div>";
+    }else{
+        echo "</div>";
+
+    }
+                    ?>
+                    
+                </div>
+            </div>
+        </div>
+        <!--Fin Sección articulos publicados-->
+
+        <div class="col-md-12">
+            <hr />
+        </div>
+
+        <!--Sección candidatos-->
+        <div class="row justify-content-md-center mt-5 about">
+            <div class="col-md-6" style="text-align:center">
+                <h2>Candidatos</h2>
+            </div>
+        </div>
+        <!--Carousel-->
+        <div class="col-md-12 ">
+            <div class="mb-5">
+                <div id="carruselCandidatos" class="carousel slide carousel-multi-item about" data-ride="carousel">
+
+                    <!--Controls-->
+                    <div class="controls-top">
+                        <a class="btn-floating" href="#carruselCandidatos" data-slide="prev"><i
+                                class="fas fa-chevron-left"></i></a>
+                        <a class="btn-floating" href="#carruselCandidatos" data-slide="next"><i
+                                class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <!--/.Controls-->
+
+                    <!--Slides-->
+                    <div class="carousel-inner" role="listbox">
+
+                        <?php
+                    
+$sql = "SELECT id, CONCAT_WS(' ',nombre ,ap_paterno ,ap_materno) AS nombre, url_imagen , tipo_candidatura, distrito FROM candidato";
+$resultado = mysqli_query($db, $sql);
+
+$i = 0;
+
+while($row = $resultado->fetch_array()){
+
+    if($i == 0){
+        echo "<div class='carousel-item active'>";
+    }else if($i % 3 == 0){
+        echo "<div class='carousel-item'>";
+    }
+    echo "
+<div class='col-md-4 about' style='float:left'>
+    <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
+        <div class='card-header bg-boton' >
+            <p class='card-text text-left'>".$row['nombre']."</p>
+        </div>
+        <div class='card-body'>
+            <div class='d-flex justify-content-center'>
+                <img src='../../img/".$row['url_imagen']."' alt='' width='200px' height='200px'
+                    class='text-center'>
+            </div>
+            <p class='card-text text-left'>Tipo candidatura: ".$row['tipo_candidatura']."</p>
+            <p class='card-text text-left'>Distrito: ".$row['distrito']."</p>
+            <div class='row justify-content-center mt-2'>
+            <div class='col-md-5' style='text-align:center'>
+                <button class='btn btn-sm btn-info'>Editar</button>
+            </div>
+            <div class='col-md-5' style='text-align:center'>
+            <button class='btn btn-sm btn-danger' type='button'>Eliminar</button>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+";
+$i++;
+if($i % 3 == 0){
+    echo "</div>";
+}
+}
+$temp = mysqli_query($db, $sql);
+if($temp->fetch_array() == 0){
+    echo "<div class='text-center'>
+    <img src='../../img/escritor/vacio.png' alt=' ' width='350' height='350'
+    class='text-center'>
+    </div>";
+    }else{
+        echo "</div>";
+
+    }
+                    ?>
+                      >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <hr />
+            </div>
+            <!--Fin Sección candidatos-->
+
+            <!--Sección escritores-->
+            <div class="row justify-content-md-center mt-5 about">
+                <div class="col-md-6" style="text-align:center">
+                    <h2>Escritores</h2>
+                </div>
+            </div>
+            <!--Carousel -->
+            <div class="col-md-12 ">
+                <div class="mb-5">
+                    <div id="carruselEscritores" class="carousel slide carousel-multi-item about" data-ride="carousel">
+
+                        <!--Controls-->
+                        <div class="controls-top">
+                            <a class="btn-floating" href="#carruselEscritores" data-slide="prev"><i
+                                    class="fas fa-chevron-left"></i></a>
+                            <a class="btn-floating" href="#carruselEscritores" data-slide="next"><i
+                                    class="fas fa-chevron-right"></i></a>
+                        </div>
+                        <!--/.Controls-->
+
+                        <!--Slides-->
+                        <div class="carousel-inner" role="listbox">
+
+                            <?php
+                    
+$sql = "SELECT id, CONCAT_WS(' ',nombre ,ap_paterno ,ap_materno) AS nombre, url_imagen , empleo, organizacion FROM escritor";
+$resultado = mysqli_query($db, $sql);
+
+$i = 0;
+
+while($row = $resultado->fetch_array()){
+
+    if($i == 0){
+        echo "<div class='carousel-item active'>";
+    }else if($i % 3 == 0){
+        echo "<div class='carousel-item'>";
+    }
+    echo "
+<div class='col-md-4 about' style='float:left'>
+    <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
+        <div class='card-header bg-boton'>
+            <p class='card-text text-left'>".$row['nombre']."</p>
+        </div>
+        <div class='card-body'>
+            <div class='d-flex justify-content-center'>
+                <img src='../../img/".$row['url_imagen']."' alt='' width='200px' height='200px'
+                    class='text-center'>
+            </div>
+            <p class='card-text text-left'>Empleo: ".$row['empleo']."</p>
+            <p class='card-text text-left'>Organización: ".$row['organizacion']."</p>
+            <div class='row justify-content-center mt-2'>
+            <div class='col-md-5' style='text-align:center'>
+                <button class='btn btn-sm btn-info'>Editar</button>
+            </div>
+            <div class='col-md-5' style='text-align:center'>
+            <button class='btn btn-sm btn-danger' type='button'>Eliminar</button>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+
+";
+$i++;
+if($i % 3 == 0){
+    echo "</div>";
+}
+}
+$temp = mysqli_query($db, $sql);
+if($temp->fetch_array() == 0){
+    echo "<div class='text-center'>
+    <img src='../../img/escritor/vacio.png' alt=' ' width='350' height='350'
+    class='text-center'>
+    </div>";
+    }else{
+        echo "</div>";
+
+    }
+                    ?>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                </div>
+                <!--Fin Sección escritores-->
+                <div class="mb-5">
+                    <br>
+                </div>
+            </div>
+            <?php
 require_once(realpath(dirname(__FILE__) . "../../includes/footer.php"));
 ?>

@@ -18,7 +18,7 @@ $escritor = mysqli_fetch_assoc($resultado);
 ?>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-principal ">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="#">
                 <p class="my-0">Dipu-net</p>
             </a>
 
@@ -28,14 +28,14 @@ $escritor = mysqli_fetch_assoc($resultado);
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="../home.php">Inicio</a>
+                        <a class="nav-link " href="<?php echo $root . '/php/escritor/home.php' ?>">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Artículo
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="articulo/crear.php">Crear artículo</a>
+                            <a class="dropdown-item" href="<?php echo $root . '/php/escritor/articulo/crear.php' ?>">Crear artículo</a>
                             <a class="dropdown-item" href="#">Actualizar artículo</a>
                         </div>
                     </li>
