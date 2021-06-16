@@ -3,6 +3,7 @@ require_once '../includes/navbar.php';
 ?>
 
 <?php 
+  
     $servidor = "localhost";
     $usuarioBD = "root";
     $pwdBD = "";
@@ -313,11 +314,39 @@ require_once '../includes/navbar.php';
         
       </div>
       <div class="modal-footer">
-        <form action="../login.php" method="get">
+        <form action="../login.php" method="get" id="formLogin">
             <button type="submit" class="btn bg-boton" id="btnIrLogin" data-dismiss="modal"><span><i class="fa fa-sign-in-alt"></i></span> Ir a Login</button>
             
         </form>
         <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mdlError">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-header">
+        <h4 class="modal-title" id="titleResult">¡Error!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row mb-3 mt-3">
+            <div class="col-md-12">
+                <p id="pResult">Ocurrió un problema inesperado al agregar el artículo.</p>
+            </div>
+            
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cerrar</button>
       </div>
 
     </div>
