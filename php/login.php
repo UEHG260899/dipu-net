@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
     <div class="row " style="margin-top: 120px;">
 
-        <div class="col-lg-5 col-md-6 col-sm-12">
+        <div class="col-lg-5 col-md-6 col-sm-12 leftToRight">
             <div class="form-panel">
                 <h3 class="mb-3 text-center">Iniciar Sesión</h3>
 
@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
 
             </div>
             <hr class="dotted">
-            <div class="section-register">
+            <div class="section-register ">
                 <button class="btn btn-danger"><i class="fas fa-times"></i>Cancelar</button>
                 <div>
                     <p style="margin: 0;" class="text-right">¿No tienes cuenta? <a href="register.php" class="text-acento">Registrarse</a></p>
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
-        <div class="col-lg-7 col-md-6 col-sm-12">
+        <div class="col-lg-7 col-md-6 col-sm-12 rightToLeft">
 
             <img src="../img/login.png" alt="" width="100%">
         </div>
