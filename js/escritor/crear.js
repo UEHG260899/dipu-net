@@ -38,3 +38,34 @@ $(document).ready(function () {
     });
   });
   
+  function mostrarCandidatos(str) {
+    if (str == "") {
+        document.getElementById("candidatos").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("candidatos").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "getinfo.php?candidatoB=" + str, true);
+        xmlhttp.send();
+    }
+}
+
+function mostrarDatosCandidato(str) {
+    if (str == "") {
+        document.getElementById("candidato").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("candidato").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "getinfo.php?submitElegir=" + str, true);
+        xmlhttp.send();
+    }
+}
