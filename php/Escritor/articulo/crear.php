@@ -136,8 +136,8 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <textarea id="preArticulo" name="preArticulo" rows="8" style="width:100%; height:100%"
-                                            disabled="disabled"></textarea>
+                                        <textarea id="preArticulo" name="preArticulo" rows="8"
+                                            style="width:100%; height:100%" disabled="disabled"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -224,7 +224,8 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                         </div>
                         <input id="opcion" name="opcion" value="" hidden class="form-control">
                         <input id="idC" name="idC" value="" hidden class="form-control">
-                        <input id="idEscritor" name="idEscritor" value="<?php echo $escritor['id']; ?>" hidden class="form-control">
+                        <input id="idEscritor" name="idEscritor" value="<?php echo $escritor['id']; ?>" hidden
+                            class="form-control">
                         <input id="operacion" name="operacion" value="crear" hidden class="form-control">
 
                     </form>
@@ -242,7 +243,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
     <div class="mb-5">
         <br>
     </div>
-    <div id="modal" class="modal fade" role="dialog">
+    <div id="modalValida" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -254,7 +255,25 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                     <p>Por favor seleccione un candiato</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default bg-boton" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default bg-boton" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="modalElegido" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Candidato seleccionado</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Candidato seleccionado correctamente, verifique su selección en el apartado vista previa del artículo</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn bg-boton" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
 

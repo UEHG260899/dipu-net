@@ -28,14 +28,14 @@ $escritor = mysqli_fetch_assoc($resultado);
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="index.php">Inicio</a>
+                        <a class="nav-link " href="../home.php">Inicio</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Artículo
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Crear artículo</a>
+                            <a class="dropdown-item" href="articulo/crear.php">Crear artículo</a>
                             <a class="dropdown-item" href="#">Actualizar artículo</a>
                         </div>
                     </li>
@@ -48,7 +48,7 @@ $escritor = mysqli_fetch_assoc($resultado);
                         ?>
                     </a>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link " href="register.php">Cerrar sesión</a>
+                    <a class="nav-link " href=<?php echo $root . '/php/index.php?logout' ?>>Cerrar sesión</a>
                     </li>
                 </ul>
             </div>
