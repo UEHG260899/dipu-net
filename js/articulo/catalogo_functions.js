@@ -11,6 +11,22 @@ $(document).ready(function () {
         $("#iptPartidoPolitico").val(getPartidoPolitico(partidoSelected));
     });
 
+    $("#btnBuscar").click(function (e) { 
+        
+        e.preventDefault();
+
+        var str = $("#iptNomCandidato").val();
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            $("#rowCards").html(this.responseText);
+        }
+        };
+        xmlhttp.open("GET", "../../php/articulo/getArticulosNombre.php?candidato=" + str, true);
+        xmlhttp.send();
+        
+    });
 });
 
 function getPartidoPolitico(value){

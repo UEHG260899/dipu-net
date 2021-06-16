@@ -39,7 +39,7 @@ require_once '../includes/navbar.php';
             <input type="text" class="form-control" id="iptNomCandidato">
         </div>
         <div class="col-md-4">
-            <button class="btn bg-boton"><span><i class="fa fa-search"></i></span> Buscar</button>
+            <button class="btn bg-boton" id="btnBuscar"><span><i class="fa fa-search"></i></span> Buscar</button>
         </div>
     </div>
     <br>
@@ -116,7 +116,7 @@ require_once '../includes/navbar.php';
     <hr>
     <h4>Resultados de la búsqueda</h4>
     <br>
-    <div class="row">
+    <div class="row" id="rowCards">
 
         <?php 
             while($articulo = mysqli_fetch_array($resultadoConsulta)){
