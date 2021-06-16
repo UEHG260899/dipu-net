@@ -52,6 +52,7 @@
                         $tipo = $row["tipo_candidatura"];
                         $distrito = $row["distrito"];
                     }
+                    mysqli_free_result($result);
                 }else{
                     echo "Algo ha salido mal al momento de realizar la consulta";
                 }
@@ -146,15 +147,15 @@
                                 ON e.id = a.id_escritor
                                 WHERE a.estatus = 'publicado'
                                 AND a.id_candidato = $id_candidato";
-            $result_art = mysqli_query($db, $query_articulo);
-            if($result_art){
-                while($row_art = mysqli_fetch_array($result_art, MYSQLI_ASSOC)){
+            $result = mysqli_query($db, $query_articulo);
+            if($result){
+                while($row_art = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                     $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
                     $articulo = $row_art["articulo"];
                     $vistas = (int) $row_art["no_vistas"];
                     $id_art = (int) $row_art["id"];
                 }
-
+                mysqli_free_result($result);
                 $vistas ++;
                 $sql = "UPDATE articulo
                             SET no_vistas = $vistas
@@ -194,12 +195,12 @@
                         $query_lector = "SELECT id
                                             FROM lector
                                             WHERE id_usuario $id_usuario";
-                        $resultadol = mysqli_query($db, $query_lector);
-                        if($resultadol){
-                            while($rowl = mysqli_fetch_array($resultadol, MYSQLI_ASSOC)){
+                        $result = mysqli_query($db, $query_lector);
+                        if($result){
+                            while($rowl = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                                 $id_l = $rowl["id"];
                             }
-                            mysqli_free_result($resultadol);
+                            mysqli_free_result($result);
                             $fecha_creacion = date('Y-m-d');
                             $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_l', '$comentario', '$fecha_creacion')";
                             $resultadol = mysqli_query($db, $insert);
@@ -223,9 +224,9 @@
                                         FROM comentarios c JOIN lector l
                                         ON c.id_lector = l.id
                                         WHERE c.id_articulo = $id_art";
-                    $resul_coment = mysqli_query($db, $query_coment);
-                    if($resul_coment){
-                        while($row_com = mysqli_fetch_array($resul_coment, MYSQLI_ASSOC)){
+                    $result = mysqli_query($db, $query_coment);
+                    if($result){
+                        while($row_com = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                             $nombre_lector = $row_com["nombre"];
                             $comentario = $row_com["comentario"];
                             $ap_pat = $row_com["ap_paterno"];
@@ -234,12 +235,13 @@
                                     <p>'. $comentario .'</p>
                                   </li>';
                         }
+                        mysqli_free_result($result);
                         mysqli_close($db);
                     }else{
                         echo "Algo sucedio al momento de obtener los comentarios";
                     }
                 ?>
-                <li class="list-group">
+                <li class="list-group-item">
                     <h6>Agregar un comentario:</h6>
                     <form action="<?php echo "mostrar_articulo.php?candidato=" . $id_candidato;?>" method="POST" id="formComentario">
                         <div class="row">
