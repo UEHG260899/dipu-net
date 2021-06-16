@@ -186,6 +186,37 @@
     <section class="container">
         <h3>Comentarios</h3>
         <div class="card">
+            <?php
+                if(isset($_POST["textComentario"])){
+                    $comentario = $_POST["textComentario"];
+                    if(isset($_SESSION["usuario"])){
+                        $correo = $_SESSION["usuario"]["correo"];
+                        $query_lector = "SELECT id
+                                            FROM lector
+                                            WHERE id_usuario = (SELECT id
+                                                                    FROM usuarios
+                                                                    WHERE correo = '$correo')";
+                        $resultadol = mysqli_query($db, $query_lector);
+                        if($resultadol){
+                            while($rowl = mysqli_fetch_array($resultadol, MYSQLI_ASSOC)){
+                                $id_l = $rowl["id"];
+                            }
+                            mysqli_free_result($resultadol);
+                            $fecha_creacion = date('Y-m-d');
+                            $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_l', '$comentario', '$fecha_creacion')";
+                            $resultadol = mysqli_query($db, $insert);
+                            if(!$resultadol){
+                                echo "Error al momento de insertar comentario: " . mysqli_error($db);
+                            }
+                        }else{
+                            echo "Error al momento de obtener lector: " . mysqli_error($db);
+                        }
+                        
+                    }else{
+                        header("Location: $root_dir/php/login.php");
+                    }
+                }
+            ?>
             <ul class="list-group list-group-flush">
                 <?php
                     $query_coment = "SELECT c.comentario,
