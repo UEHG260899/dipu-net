@@ -13,15 +13,9 @@ session_start();
 
 
 if (isset($_SESSION['usuario'])) {
-    $email = $_SESSION['usuario']['correo'];
     mysqli_query($conn, "SET NAMES UTF8");
     $correo = $_SESSION['usuario']['correo'];
-    $sql = "SELECT id FROM usuarios "
-        . "WHERE correo = '$email' ";
-    $resultado = mysqli_query($conn, $sql);
-    $usuario = mysqli_fetch_assoc($resultado);
-    $id = $usuario['id'];
-
+    $id = $_SESSION['usuario']['id'];
     $queryInfo = "SELECT id_usuario,nombre, concat_ws(' ', ap_paterno, ap_materno) as apellidos, fecha_nacimiento 
                 FROM lector WHERE id_usuario = $id";
     $resultInfo = mysqli_query($conn, $queryInfo);

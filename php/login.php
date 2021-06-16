@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $pwd = sha1($pwd);
 
-    $sql = "SELECT correo, contrasenia, rol FROM usuarios "
+    $sql = "SELECT id,correo, rol FROM usuarios "
         . "WHERE correo = '$email' AND "
         . "contrasenia = '$pwd'";
     $resultado = mysqli_query($conn, $sql);
