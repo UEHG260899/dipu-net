@@ -22,15 +22,10 @@ else{
     }
     else{
 
-        $sql = "SELECT id             
-                  FROM lector 
-                 WHERE id_usuario = '$usuario'";
-
-        $resultado = mysqli_query($db, $sql);
-        if ($resultado->num_rows == 1) {
+        if (isset($_SESSION['id_lector'])) {
             
-            $lector = mysqli_fetch_assoc($resultado);
-            $idLector = $lector ['id'];
+            
+            $idLector = $_SESSION['id_lector'];
 
             $sql = "INSERT INTO mas_tarde( id_lector, id_articulo) "
             . "VALUES( '$idLector','$idArticulo')";

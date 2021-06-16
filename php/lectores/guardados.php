@@ -2,6 +2,30 @@
 require_once '../includes/navbar.php';
 ?>
 
+<?php 
+  
+    $servidor = "localhost";
+    $usuarioBD = "root";
+    $pwdBD = "";
+    $nomBD = "examen-u5";
+
+    $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
+
+    if (!$db) {
+        
+        die("La conexión fallo: ". mysqli_connect_error());
+    }
+    else{
+        
+        $sql = "SELECT *                  
+                  FROM mas_tarde
+                 WHERE id_lector = 'Publicado'";
+
+        $resultadoConsulta = mysqli_query($db, $sql);  
+
+    }
+?>
+
 <br>
 <br>
 <br>
