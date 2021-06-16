@@ -1,5 +1,20 @@
 <?php
 require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
+$servidor = "localhost";
+$usuario = "root";
+$pwd = "";
+$nombreBD = "examen-u5";
+$conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
+
+if (!$conn) {
+    echo 'Error de conexión: ' . mysqli_connect_error();
+}
+session_start();
+
+$sql = "SELECT * FROM escritor WHERE id_usuario = ".$_SESSION['usuario']['id'] ." ";
+$resultado = mysqli_query($conn, $sql);
+$escritor = mysqli_fetch_assoc($resultado);
+
 ?>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-principal ">
         <div class="container">
@@ -28,8 +43,8 @@ require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
 
                 <ul class="nav navbar-nav ml-auto">
                     <a class="ml-auto" style="float:right; padding: .5rem 1rem;">
-                        <?php    session_start();
-                        echo "Bienvenido: " . substr( $_SESSION['usuario']['correo'],0, strpos( $_SESSION['usuario']['correo'],'@'))  ; 
+                        <?php   
+                        echo "Bienvenido: " . $escritor['nombre'] ; 
                         ?>
                     </a>
                     <li class="nav-item" role="presentation">
