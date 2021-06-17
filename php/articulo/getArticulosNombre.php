@@ -41,8 +41,8 @@ else{
 
                     <p class="card-text text-right">' . $articulo['escritor'] .'</p>
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
+                        <button class="btn btn-info" dataId='$articulo['id_articulo']'>Ver más tarde</button>
+                        <button class="btn bg-boton" dataId='$articulo['id_articulo']'>Ver articulo completo</button>
                     </div>
                 </div>
             </div>

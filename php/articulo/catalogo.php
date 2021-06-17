@@ -113,7 +113,7 @@ require_once '../includes/navbar.php';
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 col-12">
                 <label for="pwd" style="color:white;">Partido Político:</label>
-                <button type="button" class="btn btn-info" data-dismiss="modal" id="btnLimpiar"><span><i class="fa fa-times-circle"></i></span> Limpiar Campos</button>  
+                <button type="button" class="btn btn-info" id="btnLimpiar"><span><i class="fa fa-times-circle"></i></span> Limpiar Campos</button>  
             </div>
         </div>
         
