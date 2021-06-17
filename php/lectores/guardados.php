@@ -3,27 +3,42 @@ require_once '../includes/navbar.php';
 ?>
 
 <?php 
-  
-    $servidor = "localhost";
-    $usuarioBD = "root";
-    $pwdBD = "";
-    $nomBD = "examen-u5";
+    
+    session_start();
 
-    $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
-
-    if (!$db) {
+    if (isset($_SESSION['id_lector'])) {
+        $servidor = "localhost";
+        $usuarioBD = "root";
+        $pwdBD = "";
+        $nomBD = "examen-u5";
         
-        die("La conexión fallo: ". mysqli_connect_error());
+        $idLector = $_SESSION['id_lector'];
+        
+        $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
+
+        if (!$db) {
+            
+            die("La conexión fallo: ". mysqli_connect_error());
+        }
+        else{
+
+            $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
+                      ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
+                      ,a.id as id_articulo                  
+                  FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
+                                  INNER JOIN candidato c ON a.id_candidato = c.id  
+                 WHERE  a.id IN (SELECT id_articulo                  
+                                   FROM mas_tarde
+                                  WHERE id_lector = '$idLector')";
+            
+            $resultadoConsulta = mysqli_query($db, $sql);  
+
+        }
     }
     else{
-        
-        $sql = "SELECT *                  
-                  FROM mas_tarde
-                 WHERE id_lector = 'Publicado'";
-
-        $resultadoConsulta = mysqli_query($db, $sql);  
 
     }
+    
 ?>
 
 <br>
@@ -45,68 +60,33 @@ require_once '../includes/navbar.php';
     <br>
     <h4>Resultados de la búsqueda</h4>
     <br>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
-                    <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
+    <div class="row" id="rowCardsSaved">
+        <?php 
+            while($articulo = mysqli_fetch_array($resultadoConsulta)){
+        ?>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card">
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
+                        <p class="my-1 ml-3"><?php echo $articulo['candidato']?></p>
+                        <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+
+                            <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                        </div>
+
+                        <p class="card-text text-right">Autor: <?php echo $articulo['escritor']?></p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-info btnMasTarde" dataId="<?php echo $articulo['id_articulo']?>">Eliminar</button>
+                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>">Ver articulo completo</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
-                    <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3">Jose Antonio Garcia Garcia</p>
-                    <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <?php     
+            }  
+        ?>
     </div>
 </div>
 
