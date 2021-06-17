@@ -1,12 +1,7 @@
 <?php
 require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"));
 
-$serv = "localhost";
-$usr = "root";
-$pwd = "";
-$nomBD = "examen-u5";
-$db = mysqli_connect($serv, $usr, $pwd, $nomBD);
-    if(!$db){
+    if(!$conn){
         die("La conexión fallo: " . mysqli_connect_error());
     }else{
         $sqlEscritor = "SELECT * FROM escritor WHERE id_usuario = ".$_SESSION['usuario']['id'] ." ";
@@ -30,17 +25,17 @@ $db = mysqli_connect($serv, $usr, $pwd, $nomBD);
 <link rel="stylesheet" href="<?php echo $root . "/css/escritor/estilos.css"; ?>">
 <div class="container mb-5">
     <div class="col-12 mt-5" style="text-align:right">
-        <img src="../../img/avatar.png" alt="" width="65px" height="65px" class="text-center mt-4">
+        <img src="../../img/<?php echo $id['url_imagen']; ?>" alt="" width="65px" height="65px" class="text-center mt-4 rightToLeft">
     </div>
     <!--Sección escritor-->
-    <div class="row justify-content-md-center mb-3">
+    <div class="row justify-content-md-center mb-3 about">
         <div class="col-md-4" style="text-align:center">
             <h2>Escritor</h2>
         </div>
     </div>
     <div class="row justify-content-around">
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card" style="border-radius: 10px;">
+            <div class="card leftToRight" style="border-radius: 10px;" >
                 <div class="card-header">
                     <p class="card-text text-center">Artículos Publicados</p>
                 </div>
@@ -50,7 +45,7 @@ $db = mysqli_connect($serv, $usr, $pwd, $nomBD);
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card" style="border-radius: 10px;">
+            <div class="card about"  style="border-radius: 10px;">
                 <div class="card-header">
                     <p class="card-text text-center">Artículos Escritos</p>
                 </div>
@@ -60,7 +55,7 @@ $db = mysqli_connect($serv, $usr, $pwd, $nomBD);
             </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="card" style="border-radius: 10px;">
+            <div class="card rightToLeft" style="border-radius: 10px;">
                 <div class="card-header">
                     <p class="card-text text-center">Número de comentarios</p>
                 </div>
@@ -75,15 +70,15 @@ $db = mysqli_connect($serv, $usr, $pwd, $nomBD);
         <hr />
     </div>
     <!--Sección articulos publicados-->
-    <div class="row justify-content-md-center mt-5">
+    <div class="row justify-content-md-center mt-5 about">
         <div class="col-md-6" style="text-align:center">
             <h2>Artículos publicados por usted</h2>
         </div>
     </div>
-    <!--Carousel Wrapper-->
-    <div class="col-md-12">
+    <!--Carousel-->
+    <div class="col-md-12 ">
         <div class="mb-5">
-            <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <div id="multi-item-example" class="carousel slide carousel-multi-item about" data-ride="carousel">
 
                 <!--Controls-->
                 <div class="controls-top">
@@ -94,7 +89,7 @@ $db = mysqli_connect($serv, $usr, $pwd, $nomBD);
                 </div>
                 <!--/.Controls-->
 
-                <!--Slides-->
+                
                 <div class="carousel-inner" role="listbox">
 
                     <?php
@@ -115,7 +110,7 @@ while($row = $resultado->fetch_array()){
         echo "<div class='carousel-item'>";
     }
     echo "
-<div class='col-md-4' style='float:left'>
+<div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
         <div class='card-header'>
             <p class='card-text text-left'>".$row['nombre']."<a
@@ -175,7 +170,7 @@ if($temp->fetch_array() == 0){
         <div class="col-md-12">
             <hr />
         </div>
-        <!--Sección articulos guardados-->
+        
 
         <div class="row justify-content-md-center justify-content-sm-center mt-5">
             <div class="col-md-6 col-sm-8" style="text-align:center">
@@ -199,10 +194,10 @@ if($temp->fetch_array() == 0){
                 </div>
                 <!--/.Controls-->
 
-                <!--Slides-->
+                
                 <div class="carousel-inner" role="listbox">
 
-                    <!--First slide-->
+                    
                     <?php
                     
 $sql = "SELECT articulo.id, CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id WHERE articulo.id_escritor = " . $escritor['id'] ." AND articulo.estatus = 'guardado'";
@@ -218,7 +213,7 @@ while($row = $resultado->fetch_array()){
         echo "<div class='carousel-item'>";
     }
     echo "
-<div class='col-md-4' style='float:left'>
+<div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
         <div class='card-header'>
             <p class='card-text text-left'>".$row['nombre']."<a
@@ -328,11 +323,9 @@ if($temp->fetch_array() == 0){
                         <!--/.Controls-->
 
 
-                        <!--Slides-->
                         <div class="carousel-inner" role="listbox">
-                            <!--slide-->
+                            
                             <div id="candidatos"></div>
-                            <!---->
 
                         </div>
                     </div>

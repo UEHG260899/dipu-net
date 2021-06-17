@@ -6,19 +6,19 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
 <div class="container mb-5">
     <div class="col-12 mt-5" style="text-align:right">
         <img src="../../../img/<?php echo $escritor['url_imagen']; ?>" alt=" " width="75px" height="75px"
-            class="text-center mt-4">
+            class="text-center mt-4 rightToLeft">
     </div>
-    <div class="row justify-content-md-center mb-3">
+    <div class="row justify-content-md-center mb-3 about">
         <div class="col-md-4" style="text-align:center">
             <h2>Artículo</h2>
         </div>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 rightToLeft">
         <hr />
     </div>
     <!--Sección ver articulo-->
     <div class="row mb-3">
-        <div class="col-md-2 col-sm-4" style="text-align:left">
+        <div class="col-md-2 col-sm-4 leftToRight" style="text-align:left">
             <button class="btn btn-sm btn-primary" onclick="$('#mostrar').slideToggle();">Vista previa </button>
         </div>
     </div>
@@ -150,15 +150,15 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
     <!--Fin sección ver articulo-->
 
     <!--Sección seleccion candidato-->
-    <div class="col-md-12">
+    <div class="col-md-12 rightToLeft">
         <hr />
     </div>
-    <div class="row justify-content-md-center mt-5">
+    <div class="row justify-content-md-center mt-5 about">
         <div class="col-md-4" style="text-align:center">
             <h2>Selección Candidato</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row leftToRight">
         <div class="col-md-4 col-sm-4" style="text-align:left">
             <div class="form-group">
                 <label>Buscar</label>
@@ -179,7 +179,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
                     <!--Controls-->
-                    <div class="controls-top">
+                    <div class="controls-top about">
                         <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i
                                 class="fas fa-chevron-left"></i></a>
                         <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
