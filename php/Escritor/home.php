@@ -112,9 +112,9 @@ while($row = $resultado->fetch_array()){
     echo "
 <div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
-        <div class='card-header'>
-            <p class='card-text text-left'>".$row['nombre']."<a
-            style='color:green; float:right'> Publicado</a></p>
+        <div class='card-header bg-boton'>
+            <p class='card-text text-left text-white'>".$row['nombre']."<a
+            style='float:right'> Publicado</a></p>
         </div>
         <div class='d-flex align-self-end'>
             <img src='../../img/partidos/iconos/". $row['imagenPar'] ."' alt='' width='50px' height='50px'
@@ -215,9 +215,9 @@ while($row = $resultado->fetch_array()){
     echo "
 <div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
-        <div class='card-header'>
-            <p class='card-text text-left'>".$row['nombre']."<a
-            style='color:coral; float:right'> Guardado</a></p>
+        <div class='card-header bg-boton'>
+            <p class='card-text text-left text-white'>".$row['nombre']."<a
+            style='float:right'> Guardado</a></p>
         </div>
         <div class='d-flex align-self-end'>
             <img src='../../img/partidos/iconos/". $row['imagenPar'] ."' alt='' width='50px' height='50px'
@@ -236,7 +236,7 @@ while($row = $resultado->fetch_array()){
         </div>
         <div class='row justify-content-center mt-2'>
             <div class='col-md-5' style='text-align:center'>
-                <button class='btn btn-sm btn-info'>Actualizar</button>
+            <a class='btn btn-sm btn-info' href='Edit_noPublicado.php?idEditar=".$row['id']."' >Actualizar</a>
             </div>
             <div class='col-md-5' style='text-align:center'>
             <button class='btn btn-sm btn-danger' type='button' onclick='EliminarArticulo(".$row['id'].")'>Eliminar artículo</button>
