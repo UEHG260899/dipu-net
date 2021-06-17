@@ -75,55 +75,63 @@ $(document).ready(function () {
         xmlhttp.send();
     });  
     
-    $(".btnVerCompleto").click(function (e) { 
-        let idArticulo = $(this).attr('dataId');
-        
-
-    });  
-
     $(".btnMasTarde").click(function (e) { 
 
-        let idArticulo = $(this).attr('dataId');
-        
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            //$("#rowCards").html(this.responseText);
-            
-            if(this.responseText == 2){
-                $("#mdlLogin").modal('show');
-            }
-            else if(this.responseText == 1){
-                $("#titleResult").html("¡Error!");
-                $("#pResult").html("Ocurrió un problema inesperado al agregar el artículo.");
-                $("#mdlError").modal('show');
-            }
-            else if(this.responseText == 0){
-                $("#titleResult").html("¡Guardado!");
-                $("#pResult").html("El artículo se ha agregado a su lista para leer más tarde.")
-                $("#mdlError").modal('show');
+        masTarde($(this).attr('dataId'));
 
-                
-            }
-            else{
-                $("#titleResult").html("¡Error!");
-                $("#pResult").html("El usuario no se encuentra registrado como lector.");
-                $("#mdlError").modal('show');
-            }
-        }
-        };
-        xmlhttp.open("GET", "../../php/articulo/insertMasTarde.php?idArticulo="+idArticulo, true);
-        xmlhttp.send();
+        
     });
     
-    $("#btnLimpiar").click(function (e) { 
+    $(".btnVerCompleto").click(function (e) { 
     
+        verCompleto($(this).attr('id_candidato'));
+        
     });
 
     $("#btnIrLogin").click(function (e) { 
         $("#formLogin").submit();
-    });     
+    });
+    
 });
+
+function masTarde(idArticulo){
+    
+        
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        //$("#rowCards").html(this.responseText);
+        
+        if(this.responseText == 2){
+            $("#mdlLogin").modal('show');
+        }
+        else if(this.responseText == 1){
+            $("#titleResult").html("¡Error!");
+            $("#pResult").html("Ocurrió un problema inesperado al agregar el artículo.");
+            $("#mdlError").modal('show');
+        }
+        else if(this.responseText == 0){
+            $("#titleResult").html("¡Guardado!");
+            $("#pResult").html("El artículo se ha agregado a su lista para leer más tarde.")
+            $("#mdlError").modal('show');
+
+            
+        }
+        else{
+            $("#titleResult").html("¡Error!");
+            $("#pResult").html("El usuario no se encuentra registrado como lector.");
+            $("#mdlError").modal('show');
+        }
+    }
+    };
+    xmlhttp.open("GET", "../../php/articulo/insertMasTarde.php?idArticulo="+idArticulo, true);
+    xmlhttp.send();
+}
+
+function verCompleto(idCandidato){
+    $("#candidato").val(idCandidato);    
+    $("#formIdArt").submit();
+}
 
 function getPartidoPolitico(value){
     

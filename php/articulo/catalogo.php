@@ -19,7 +19,8 @@ require_once '../includes/navbar.php';
         
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
-                      ,a.id as id_articulo                  
+                      ,a.id as id_articulo
+                      ,a.id_candidato as id_candidato                  
                   FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                   INNER JOIN candidato c ON a.id_candidato = c.id  
                  WHERE estatus = 'Publicado'";
@@ -135,14 +136,13 @@ require_once '../includes/navbar.php';
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-
                             <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
                         </div>
 
                         <p class="card-text text-right">Autor: <?php echo $articulo['escritor']?></p>
                         <div class="d-flex justify-content-between">
                             <button class="btn btn-info btnMasTarde" dataId="<?php echo $articulo['id_articulo']?>">Ver más tarde</button>
-                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>">Ver articulo completo</button>
+                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>" id_candidato = "<?php echo $articulo['id_candidato']?>">Ver articulo completo</button>
                         </div>
                     </div>
                 </div>
@@ -352,6 +352,10 @@ require_once '../includes/navbar.php';
     </div>
   </div>
 </div>
+
+<form action="mostrar_articulo.php" method="get" id="formIdArt" hidden>
+    <input type="text" name="candidato" id="candidato">
+</form>
 
 <?php
 require_once '../includes/footer.php';

@@ -21,7 +21,9 @@ if (isset($_SESSION['id_lector'])) {
     else{
         
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
-                    ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor                
+                      ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor 
+                      ,a.id as id_articulo
+                      ,a.id_candidato as id_candidato       
                     FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                     INNER JOIN candidato c ON a.id_candidato = c.id  
                     WHERE a.estatus = 'Publicado' AND 
@@ -49,8 +51,8 @@ if (isset($_SESSION['id_lector'])) {
 
                         <p class="card-text text-right">' . $articulo['escritor'] .'</p>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-info" dataId='$articulo['id_articulo']'>Eliminar</button>
-                            <button class="btn bg-boton" dataId='$articulo['id_articulo']'>Ver articulo completo</button>
+                            <button class="btn btn-info btnEliminarGuardado" dataId='.$articulo['id_articulo'].' onclick="eliminar('.$articulo['id_articulo'].')">Eliminar</button>
+                            <button class="btn bg-boton btnVerCompleto" dataId='.$articulo['id_articulo'].' id_candidato='.$articulo['id_candidato'].' onclick="verCompleto('.$articulo['id_candidato'].')">Ver articulo completo</button>
                         </div>
                     </div>
                 </div>

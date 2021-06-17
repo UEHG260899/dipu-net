@@ -17,7 +17,9 @@ if (!$db) {
 else{
     
     $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
-                   ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor                
+                   ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
+                   ,a.id as id_articulo
+                   ,a.id_candidato as id_candidato                  
                 FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                 INNER JOIN candidato c ON a.id_candidato = c.id  
                 WHERE estatus = 'Publicado' AND c.nombre  like '$candidato%'";
@@ -26,28 +28,28 @@ else{
     $contador = 0;
     while($articulo = mysqli_fetch_array($resultadoConsulta)){
         $contador = $contador + 1;
-        echo '
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="d-flex justify-content-between">
-                    <p class="my-1 ml-3"> ' . $articulo['candidato']. '</p>
-                    <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+        echo "
+        <div class='col-lg-4 col-md-4 col-sm-12'>
+            <div class='card'>
+                <div class='d-flex justify-content-between'>
+                    <p class='my-1 ml-3'> " . $articulo['candidato']. "</p>
+                    <img src='../../img/partidos/iconos/pan.png' alt=' width='50px' height='50px'>
                 </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
+                <div class='card-body'>
+                    <div class='d-flex justify-content-center'>
 
-                        <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                        <img src='../../img/avatar.png' alt=' width='200px' height='200px' class='text-center'>
                     </div>
 
-                    <p class="card-text text-right">' . $articulo['escritor'] .'</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info" dataId='$articulo['id_articulo']'>Ver más tarde</button>
-                        <button class="btn bg-boton" dataId='$articulo['id_articulo']'>Ver articulo completo</button>
+                    <p class='card-text text-right'>" . $articulo['escritor'] ."</p>
+                    <div class='d-flex justify-content-between'>
+                        <button class='btn btn-info btnMasTarde' dataId=".$articulo['id_articulo']." onclick='masTarde(".$articulo['id_articulo'].")'>Ver más tarde</button>
+                        <button class='btn bg-boton btnVerCompleto' dataId=".$articulo['id_articulo']." id_candidato=".$articulo['id_candidato']." onclick='verCompleto(".$articulo['id_candidato'].")'>Ver artículo completo</button>
                     </div>
                 </div>
             </div>
         </div>
-        ';
+        ";
     }
     
     if($contador == 0){

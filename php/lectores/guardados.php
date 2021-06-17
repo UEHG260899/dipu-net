@@ -24,7 +24,8 @@ require_once '../includes/navbar.php';
 
             $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
-                      ,a.id as id_articulo                  
+                      ,a.id as id_articulo   
+                      ,a.id_candidato as id_candidato                 
                   FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                   INNER JOIN candidato c ON a.id_candidato = c.id  
                  WHERE  a.id IN (SELECT id_articulo                  
@@ -49,10 +50,10 @@ require_once '../includes/navbar.php';
     <br>
     <div class="row">
         <div class=" col-lg-4 col-md-4 col-sm-8 col-8">
-            <input type="text" class="form-control" id="iptNomCandidato" placeholder="Nombre del candidato">
+            <input type="text" class="form-control" id="iptNomCandidatoSaved" placeholder="Nombre del candidato">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-            <button class="btn bg-boton"><span><i class="fa fa-search"></i></span> Buscar</button>
+            <button class="btn bg-boton" id="btnBuscarGuardados"><span><i class="fa fa-search"></i></span> Buscar</button>
         </div>
     </div>
     <br>
@@ -78,8 +79,8 @@ require_once '../includes/navbar.php';
 
                         <p class="card-text text-right">Autor: <?php echo $articulo['escritor']?></p>
                         <div class="d-flex justify-content-between">
-                            <button class="btn btn-info btnMasTarde" dataId="<?php echo $articulo['id_articulo']?>">Eliminar</button>
-                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>">Ver articulo completo</button>
+                            <button class="btn btn-info btnEliminarGuardado" dataId="<?php echo $articulo['id_articulo']?>">Eliminar</button>
+                            <button class="btn bg-boton btnVerCompleto" dataId="<?php echo $articulo['id_articulo']?>" id_candidato = "<?php echo $articulo['id_candidato']?>">Ver articulo completo</button>
                         </div>
                     </div>
                 </div>
@@ -90,9 +91,73 @@ require_once '../includes/navbar.php';
     </div>
 </div>
 
+<div class="modal fade" id="mdlConfirm">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-header">
+        <h4 class="modal-title">¡Confirmar Operación!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row mb-3 mt-3">
+            <div class="col-md-12">
+                <p>¿Está seguro de que desea eliminar el artículo de su lista para "Leer más tarde"?</p>
+            </div>
+            
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <form action="../login.php" method="get" id="formLogin">
+            <button type="submit" class="btn bg-boton" id="btnAcept" data-dismiss="modal"><span><i class="fa fa-check"></i></span> Aceptar</button>
+            
+        </form>
+        <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="mdlErrorSaved">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-header">
+        <h4 class="modal-title" id="titleResultSaved">¡Error!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row mb-3 mt-3">
+            <div class="col-md-12">
+                <p id="pResultSaved">Ocurrió un problema inesperado al eliminar el artículo.</p>
+            </div>
+            
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"><span><i class="fa fa-times-circle"></i></span> Cerrar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
+<form action="../articulo/mostrar_articulo.php" method="get" id="formIdArt" hidden>
+    <input type="text" name="candidato" id="candidato">
+</form>
 
 <?php
 require_once '../includes/footer.php';
 ?>
+
+<script src="../../js/articulo/guardado_functions.js"></script>
