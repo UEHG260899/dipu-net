@@ -126,8 +126,8 @@ while($row = $resultado->fetch_array()){
 <div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
         <div class='card-header'>
-            <p class='card-text text-left'>".$row['nombre']."<a
-            style='color:green; float:right'> Publicado</a></p>
+            <p class='card-text text-left bg-boton'>".$row['nombre']."<a
+            style='float:right; color: black'> Publicado</a></p>
         </div>
         <div class='d-flex align-self-end'>
             <img src='../../img/partidos/iconos/". $row['imagenPar'] ."' alt='' width='50px' height='50px'
@@ -139,7 +139,7 @@ while($row = $resultado->fetch_array()){
                 <img src='../../img/".$row['imagenCan']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
-            <p class='card-text text-left'>Autor: ".$row['nombreEsc']."</p>
+            <p class='card-text text-left'><Strong>Autor:</Strong> ".$row['nombreEsc']."</p>
             <div class='row mt-3'>
             <div class='col-md-6'>
                 <div class='card'>
@@ -233,14 +233,14 @@ while($row = $resultado->fetch_array()){
                 <img src='../../img/".$row['url_imagen']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
-            <p class='card-text text-left'>Tipo candidatura: ".$row['tipo_candidatura']."</p>
-            <p class='card-text text-left'>Distrito: ".$row['distrito']."</p>
+            <p class='card-text text-left'><strong>Tipo candidatura:</strong> ".$row['tipo_candidatura']."</p>
+            <p class='card-text text-left'><strong>Distrito:</strong> ".$row['distrito']."</p>
             <div class='row justify-content-center mt-2'>
             <div class='col-md-5' style='text-align:center'>
-                <button class='btn btn-sm btn-info'>Editar</button>
+            <a class='btn btn-sm btn-info' href='../candidatos/registrar.php?id=".$row['id']."&operacion=editar'>Editar</a>
             </div>
             <div class='col-md-5' style='text-align:center'>
-            <button class='btn btn-sm btn-danger' type='button'>Eliminar</button>
+            <a class='btn btn-sm btn-danger' type='button' href='../candidatos/eliminar.php?id=".$row['id']."'>Eliminar</a>
             </div>
 
         </div>
@@ -322,8 +322,8 @@ while($row = $resultado->fetch_array()){
                 <img src='../../img/".$row['url_imagen']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
-            <p class='card-text text-left'>Empleo: ".$row['empleo']."</p>
-            <p class='card-text text-left'>Organización: ".$row['organizacion']."</p>
+            <p class='card-text text-left'><strong>Empleo:</strong> ".$row['empleo']."</p>
+            <p class='card-text text-left'><strong>Organización:</strong> ".$row['organizacion']."</p>
         </div>
     </div>
 </div>
