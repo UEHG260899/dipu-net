@@ -13,7 +13,7 @@
         }
     }
 ?>
-<link href="<?php echo $root_dir . '/css/styles_articulo.css'?>" rel="stylesheet">
+<link href="<?php echo $root_dir . '/css/articulos/styles_articulo.css'?>" rel="stylesheet">
 <main>
     <?php
         if(isset($_GET["candidato"])){
@@ -146,6 +146,7 @@
         <?php
            $query_articulo = "SELECT e.nombre,
                                 e.ap_paterno,
+                                a.id_escritor,
                                 a.articulo,
                                 a.no_vistas,
                                 a.id
@@ -158,6 +159,7 @@
                 while($row_art = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                     $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
                     $articulo = $row_art["articulo"];
+                    $id_escritor = $row_art["id_escritor"];
                     $vistas = (int) $row_art["no_vistas"];
                     $id_art = (int) $row_art["id"];
                 }
@@ -178,7 +180,7 @@
         ?>
     <section class="container">
         <h3>Artículo</h3>
-        <h4>Por: <a href="#"><?php echo $nombre_autor;?></a></h4>
+        <h4>Por: <a href="<?php echo $root_dir . "/php/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
         <br>
         <div class="row">
             <div class="col-12">

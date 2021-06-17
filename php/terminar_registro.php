@@ -37,7 +37,7 @@
     }
 ?>
 
-<link href="<?php echo $root_directory . '/css/styles_fin_registro.css'?>" rel="stylesheet">
+<link href="<?php echo $root_directory . '/css/articulos/styles_fin_registro.css'?>" rel="stylesheet">
 <main>
     <section class="container">
         <h2 class="text-center">Terminemos de Registrarte!</h2>
