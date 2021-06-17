@@ -265,7 +265,7 @@ if($temp->fetch_array() == 0){
 
     }
                     ?>
-                      >
+                      
                     </div>
                 </div>
             </div>
@@ -324,15 +324,6 @@ while($row = $resultado->fetch_array()){
             </div>
             <p class='card-text text-left'>Empleo: ".$row['empleo']."</p>
             <p class='card-text text-left'>Organización: ".$row['organizacion']."</p>
-            <div class='row justify-content-center mt-2'>
-            <div class='col-md-5' style='text-align:center'>
-                <button class='btn btn-sm btn-info'>Editar</button>
-            </div>
-            <div class='col-md-5' style='text-align:center'>
-            <button class='btn btn-sm btn-danger' type='button'>Eliminar</button>
-            </div>
-
-        </div>
         </div>
     </div>
 </div>
