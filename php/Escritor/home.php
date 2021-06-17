@@ -36,7 +36,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"))
     <div class="row justify-content-around">
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="card leftToRight" style="border-radius: 10px;" >
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Artículos Publicados</p>
                 </div>
                 <div class="card-body">
@@ -46,7 +46,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"))
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="card about"  style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Artículos Escritos</p>
                 </div>
                 <div class="card-body">
@@ -56,7 +56,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"))
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12">
             <div class="card rightToLeft" style="border-radius: 10px;">
-                <div class="card-header">
+                <div class="card-header bg-boton">
                     <p class="card-text text-center">Número de comentarios</p>
                 </div>
                 <div class="card-body">
@@ -129,13 +129,13 @@ while($row = $resultado->fetch_array()){
             <div class='row mt-3'>
             <div class='col-md-6'>
                 <div class='card'>
-                    <div class='card-header co'>Comentarios</div>
+                    <div class='card-header co bg-boton'>Comentarios</div>
                     <div class='card-body co'>".$nuComentarios['comentarios']."</div>
                 </div>
             </div>
             <div class='col-md-6'>
                 <div class='card'>
-                    <div class='card-header co'>Vistas</div>
+                    <div class='card-header co bg-boton'>Vistas</div>
                     <div class='card-body co'>".$row['no_vistas']."</div>
                 </div>
             </div>
