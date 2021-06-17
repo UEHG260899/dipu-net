@@ -67,9 +67,9 @@
     ?>
     <section class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-3 text-center">
+                <div class="col-sm-12 col-md-3 col-lg-3 text-center leftToRight">
                     <div>
-                        <img src="../hola.jpg" alt="Nombre del candidato">
+                        <img src="<?php echo $root_dir . "/img/candidatos/" . $imagen?>" class="imagen-candidato mb-2" alt="Nombre del candidato">
                     </div>
                     <div>
                         <img src="<?php echo $root_dir . '/img/partidos/iconos/' . $imagen_partido;?>" alt="Imagen Partido">
@@ -78,69 +78,74 @@
                         <h3><?php echo $nombre . " " . $apP . " " . $apM;?></h3>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-9 col-lg-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Nombre Completo:</h5>
-                                    <p><?php echo $nombre . " " . $apP . " " . $apM;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Genero:</h5>
-                                    <p><?php echo $genero;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Fecha de nacimiento:</h5>
-                                    <p><?php echo $fecha_nacimiento;?></p>
+                <div class="col-sm-12 col-md-9 col-lg-9 rightToLeft">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card card-informacion">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Nombre Completo:</h5>
+                                            <p><?php echo $nombre . " " . $apP . " " . $apM;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Genero:</h5>
+                                            <p><?php echo $genero;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Fecha de nacimiento:</h5>
+                                            <p><?php echo $fecha_nacimiento;?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <h5>Estado de Nacimiento:</h5>
+                                            <p><?php echo $estado;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <h5>Municipio:</h5>
+                                            <p><?php echo $municipio;?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <h5>Estado de Nacimiento:</h5>
-                                    <p><?php echo $estado;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <h5>Municipio:</h5>
-                                    <p><?php echo $municipio;?></p>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <div class="card card-informacion">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Carrera:</h5>
+                                            <p><?php echo $carrera;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Escuela de procedencia:</h5>
+                                            <p><?php echo $escuela;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <h5>Puesto Actual:</h5>
+                                            <p><?php echo $puesto;?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <h5>Distrito:</h5>
+                                            <p><?php echo $distrito;?></p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <h5>Tipo de candidatura</h5>
+                                            <p><?php echo $distrito;?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-sm-12 col-md-9 col-lg-9 offset-md-3 offset-lg-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Carrera:</h5>
-                                    <p><?php echo $carrera;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Escuela de procedencia:</h5>
-                                    <p><?php echo $escuela;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-4 col-lg-4">
-                                    <h5>Puesto Actual:</h5>
-                                    <p><?php echo $puesto;?></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <h5>Distrito:</h5>
-                                    <p><?php echo $distrito;?></p>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <h5>Tipo de candidatura</h5>
-                                    <p><?php echo $distrito;?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <hr>
     </section>
         <?php
@@ -178,7 +183,7 @@
                 echo "Algo ocurrió al momento de ejecutar la consulta";
             }
         ?>
-    <section class="container">
+    <section class="container leftToRight">
         <h3>Artículo</h3>
         <h4>Por: <a href="<?php echo $root_dir . "/php/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
         <br>
@@ -192,7 +197,7 @@
         <hr>
     </section>
 
-    <section class="container">
+    <section class="container rightToLeft">
         <h3>Comentarios</h3>
         <div class="card">
             <?php
@@ -222,7 +227,7 @@
                     }
                 }
             ?>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush seccion-comentarios">
                 <?php
                     $query_coment = "SELECT c.comentario,
                                         l.nombre,
