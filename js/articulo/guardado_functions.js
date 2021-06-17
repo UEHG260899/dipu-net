@@ -8,9 +8,9 @@ $(document).ready(function () {
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            $("#rowCardsSaved").html(this.responseText);
-        }
+            if (this.readyState == 4 && this.status == 200) {
+                $("#rowCardsSaved").html(this.responseText);
+            }
         };
         xmlhttp.open("GET", "../../php/articulo/getGuardados.php?candidato=" + str, true);
         xmlhttp.send();
@@ -51,9 +51,9 @@ function eliminar(idArticulo){
             if(this.responseText == 0){
                 var xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    $("#rowCardsSaved").html(this.responseText);
-                }
+                    if (this.readyState == 4 && this.status == 200) {
+                        $("#rowCardsSaved").html(this.responseText);
+                    }
                 };
                 xmlhttp.open("GET", "../../php/articulo/getGuardados.php?candidato=" + str, true);
                 xmlhttp.send();
