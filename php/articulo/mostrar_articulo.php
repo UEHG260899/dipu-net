@@ -7,64 +7,120 @@
     $nomBD = "examen-u5";
     $db = mysqli_connect($servidor, $usuarioBD, $psw, $nomBD);
 
+    //Consulta para los datos del candidato
+    if(isset($_GET["candidato"])){
+        if(!$db){
+            die("Error al conectarse a la Base de datos" . mysqli_connect_error());
+        }else{
+            mysqli_query($db, "SET NAMES UTF8");
+            $id_candidato = $_GET["candidato"];
+            $query = "SELECT c.id,
+                            c.nombre,
+                            c.ap_paterno,
+                            c.ap_materno,
+                            c.genero,
+                            c.fecha_nacimiento,
+                            c.estado,
+                            c.municipio,
+                            c.url_imagen,
+                            c.carrera,
+                            c.escuela,
+                            c.puesto_actual,
+                            d.url_imagen AS imagen,
+                            c.tipo_candidatura,
+                            c.distrito
+                            FROM candidato c JOIN partidos d
+                            ON c.id_partido = d.id
+                            WHERE c.id = $id_candidato";
+            $result = mysqli_query($db, $query);
+            if($result){
+                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $nombre = $row["nombre"];
+                    $apP = $row["ap_paterno"];
+                    $apM = $row["ap_materno"];
+                    $genero = $row["genero"];
+                    $fecha_nacimiento = $row["fecha_nacimiento"];
+                    $estado = $row["estado"];
+                    $municipio = $row["municipio"];
+                    $imagen = $row["url_imagen"];
+                    $carrera = $row["carrera"];
+                    $escuela = $row["escuela"];
+                    $puesto = $row["puesto_actual"];
+                    $imagen_partido = $row["imagen"];
+                    $tipo = $row["tipo_candidatura"];
+                    $distrito = $row["distrito"];
+                }
+                mysqli_free_result($result);
+            }else{
+                echo "Algo ha salido mal al momento de realizar la consulta";
+            }
+        }
+    }
+
+    //Consulta para el árticulo del candidato
+    $query_articulo = "SELECT e.nombre,
+                                e.ap_paterno,
+                                a.id_escritor,
+                                a.articulo,
+                                a.no_vistas,
+                                a.id
+                                FROM escritor e JOIN articulo a
+                                ON e.id = a.id_escritor
+                                WHERE a.estatus = 'publicado'
+                                AND a.id_candidato = $id_candidato";
+    $result = mysqli_query($db, $query_articulo);
+    if($result){
+        while($row_art = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
+            $articulo = $row_art["articulo"];
+            $id_escritor = $row_art["id_escritor"];
+            $vistas = (int) $row_art["no_vistas"];
+            $id_art = (int) $row_art["id"];
+        }
+        mysqli_free_result($result);
+        $vistas ++;
+        $sql = "UPDATE articulo
+                    SET no_vistas = $vistas
+                    WHERE articulo.id_candidato = $id_candidato
+                    AND articulo.id = $id_art";
+        $result_sql = mysqli_query($db, $sql);
+        if(!$result_sql){
+            echo "Algo fallo en la actualización de las vistas del articulo";
+        }
+    }else{
+        echo "Algo ocurrió al momento de ejecutar la consulta";
+    }
+
+    //Validación de los comentarios
     if(isset($_POST["textComentario"])){
         if(!isset($_SESSION["usuario"])){
             header("Location: $root_dir/php/login.php");
+        }else{
+            $comentario = $_POST["textComentario"];
+            $id_usuario = $_SESSION["usuario"]["id"];
+            $query_lector = "SELECT id
+                                FROM lector
+                                WHERE id_usuario = $id_usuario";
+            $result = mysqli_query($db, $query_lector);
+            if($result){
+                while($rowl = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $id_l = $rowl["id"];
+                }
+                mysqli_free_result($result);
+                $fecha_creacion = date('Y-m-d');
+                $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_l', '$comentario', '$fecha_creacion')";
+                $resultadol = mysqli_query($db, $insert);
+                if(!$resultadol){
+                    echo "Error al momento de insertar comentario: " . mysqli_error($db);
+                }
+            }else{
+                echo "Error al momento de obtener lector: " . mysqli_error($db);
+            }
         }
     }
 ?>
 <link href="<?php echo $root_dir . '/css/articulos/styles_articulo.css'?>" rel="stylesheet">
 <main>
-    <?php
-        if(isset($_GET["candidato"])){
-            if(!$db){
-                die("Error al conectarse a la Base de datos" . mysqli_connect_error());
-            }else{
-                mysqli_query($db, "SET NAMES UTF8");
-                $id_candidato = $_GET["candidato"];
-                $query = "SELECT c.id,
-                                c.nombre,
-                                c.ap_paterno,
-                                c.ap_materno,
-                                c.genero,
-                                c.fecha_nacimiento,
-                                c.estado,
-                                c.municipio,
-                                c.url_imagen,
-                                c.carrera,
-                                c.escuela,
-                                c.puesto_actual,
-                                d.url_imagen AS imagen,
-                                c.tipo_candidatura,
-                                c.distrito
-                                FROM candidato c JOIN partidos d
-                                ON c.id_partido = d.id
-                                WHERE c.id = $id_candidato";
-                $result = mysqli_query($db, $query);
-                if($result){
-                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                        $nombre = $row["nombre"];
-                        $apP = $row["ap_paterno"];
-                        $apM = $row["ap_materno"];
-                        $genero = $row["genero"];
-                        $fecha_nacimiento = $row["fecha_nacimiento"];
-                        $estado = $row["estado"];
-                        $municipio = $row["municipio"];
-                        $imagen = $row["url_imagen"];
-                        $carrera = $row["carrera"];
-                        $escuela = $row["escuela"];
-                        $puesto = $row["puesto_actual"];
-                        $imagen_partido = $row["imagen"];
-                        $tipo = $row["tipo_candidatura"];
-                        $distrito = $row["distrito"];
-                    }
-                    mysqli_free_result($result);
-                }else{
-                    echo "Algo ha salido mal al momento de realizar la consulta";
-                }
-            }
-        }
-    ?>
     <section class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center leftToRight">
@@ -148,44 +204,9 @@
 
             <hr>
     </section>
-        <?php
-           $query_articulo = "SELECT e.nombre,
-                                e.ap_paterno,
-                                a.id_escritor,
-                                a.articulo,
-                                a.no_vistas,
-                                a.id
-                                FROM escritor e JOIN articulo a
-                                ON e.id = a.id_escritor
-                                WHERE a.estatus = 'publicado'
-                                AND a.id_candidato = $id_candidato";
-            $result = mysqli_query($db, $query_articulo);
-            if($result){
-                while($row_art = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    $nombre_autor = $row_art["nombre"] . " " . $row_art["ap_paterno"];
-                    $articulo = $row_art["articulo"];
-                    $id_escritor = $row_art["id_escritor"];
-                    $vistas = (int) $row_art["no_vistas"];
-                    $id_art = (int) $row_art["id"];
-                }
-                mysqli_free_result($result);
-                $vistas ++;
-                $sql = "UPDATE articulo
-                            SET no_vistas = $vistas
-                            WHERE articulo.id_candidato = $id_candidato
-                            AND articulo.id = $id_art";
-                $result_sql = mysqli_query($db, $sql);
-                if(!$result_sql){
-                    echo "Algo fallo en la actualización de las vistas del articulo";
-                }
-
-            }else{
-                echo "Algo ocurrió al momento de ejecutar la consulta";
-            }
-        ?>
     <section class="container leftToRight">
         <h3>Artículo</h3>
-        <h4>Por: <a href="<?php echo $root_dir . "/php/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
+        <h4>Por: <a href="<?php echo $root_dir . "/php/articulo/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
         <br>
         <div class="row">
             <div class="col-12">
@@ -200,33 +221,6 @@
     <section class="container rightToLeft">
         <h3>Comentarios</h3>
         <div class="card">
-            <?php
-                if(isset($_POST["textComentario"])){
-                    $comentario = $_POST["textComentario"];
-                    if(isset($_SESSION["usuario"])){
-                        $id_usuario = $_SESSION["usuario"]["id"];
-                        $query_lector = "SELECT id
-                                            FROM lector
-                                            WHERE id_usuario = $id_usuario";
-                        $result = mysqli_query($db, $query_lector);
-                        if($result){
-                            while($rowl = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                                $id_l = $rowl["id"];
-                            }
-                            mysqli_free_result($result);
-                            $fecha_creacion = date('Y-m-d');
-                            $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_l', '$comentario', '$fecha_creacion')";
-                            $resultadol = mysqli_query($db, $insert);
-                            if(!$resultadol){
-                                echo "Error al momento de insertar comentario: " . mysqli_error($db);
-                            }
-                        }else{
-                            echo "Error al momento de obtener lector: " . mysqli_error($db);
-                        }
-                        
-                    }
-                }
-            ?>
             <ul class="list-group list-group-flush seccion-comentarios">
                 <?php
                     $query_coment = "SELECT c.comentario,
