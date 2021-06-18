@@ -20,9 +20,11 @@ require_once '../includes/navbar.php';
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
                       ,a.id as id_articulo
-                      ,a.id_candidato as id_candidato                  
+                      ,a.id_candidato as id_candidato 
+                      ,p.nombre_corto as partido                  
                   FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                   INNER JOIN candidato c ON a.id_candidato = c.id  
+                                  INNER JOIN partidos p ON c.id_partido = p.id 
                  WHERE estatus = 'Publicado'";
 
         $resultadoConsulta = mysqli_query($db, $sql);  
@@ -33,7 +35,7 @@ require_once '../includes/navbar.php';
 <br>
 <br>
 <br>
-<div class="container mb-large">
+<div class="container mb-large" >
     <h4>Para una búsqueda más exacta, ingrese el nombre del candidato</h4>
     <br>
     <div class="row">
@@ -54,11 +56,11 @@ require_once '../includes/navbar.php';
                 <div class="form-group">
                     <label for="selGradoAcad">Grado Académico:</label>
                     <select class="form-control" id="selGradoAcad">
-                        <option>Cualquiera</option>
-                        <option>Primaria</option>
-                        <option>Secundaria</option>
-                        <option>Bachillerato</option>
-                        <option>Universidad</option>
+                        <option value="cualquiera">Cualquiera</option>
+                        <option value="primaria">Primaria</option>
+                        <option value="secundaria">Secundaria</option>
+                        <option value="bachillerato">Bachillerato</option>
+                        <option value="universidad">Universidad</option>
                     </select>
                 </div>
             </div>
@@ -66,12 +68,12 @@ require_once '../includes/navbar.php';
                 <div class="form-group">
                     <label for="selRangoEdad">Rango de edad:</label>
                     <select class="form-control" id="selRangoEdad">
-                        <option>Todos</option>
-                        <option>18 - 29</option>
-                        <option>30 - 39</option>
-                        <option>40 - 49</option>
-                        <option>50 - 59</option>
-                        <option>60 +</option>
+                        <option value="1">Todos</option>
+                        <option value="2">18 - 29</option>
+                        <option value="3">30 - 39</option>
+                        <option value="4">40 - 49</option>
+                        <option value="5">50 - 59</option>
+                        <option value="6">60 +</option>
                     </select>
                 </div>
             </div>
@@ -96,7 +98,7 @@ require_once '../includes/navbar.php';
                 </div>
             </div>
         </div>
-        <div class="row  mb-3">
+        <div class="row  mb-3" >
             <div class="col-md-8 col-lg-8 col-sm-12 col-12">
                 <div class="form-group">
                     <label for="pwd">Partido Político:</label>
@@ -129,10 +131,10 @@ require_once '../includes/navbar.php';
             while($articulo = mysqli_fetch_array($resultadoConsulta)){
         ?>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card">
+                <div class="card" style="box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);">
                     <div class="d-flex justify-content-between">
                         <p class="my-1 ml-3"><?php echo $articulo['candidato']?></p>
-                        <img src="../../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                        <img src="../../img/partidos/iconos/<?php echo $articulo['partido']?>.png" alt="" width="50px" height="50px">
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">

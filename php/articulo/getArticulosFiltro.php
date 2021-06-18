@@ -34,11 +34,12 @@ if($idProceso == 1){
 }
 else{
 
-    $gadoAcademico = $_REQUEST["gradoAcademico"];
+    $gradoAcademico = $_REQUEST["gradoAcademico"];
     $rangoEdad = $_REQUEST["rangoEdad"];
     $partido = $_REQUEST["partido"];
     $sexo = $_REQUEST["sexo"];
 
+    $filtroEdad = "";
     $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
     
     if (!$db) {
@@ -47,13 +48,12 @@ else{
     }
     else{
     
-        if($gadoAcademico == "Cualquiera"){
-            $gadoAcademico = "";
+        if($gradoAcademico == "cualquiera"){
+            $gradoAcademico = "";
         }
+        
     
-        if($rangoEdad == "Todos"){
-            $rangoEdad = "";
-        }
+        
     
         if($sexo == "ambos"){
             $sexo = "";
@@ -61,6 +61,28 @@ else{
     
         if($partido == "todos"){
             $partido = "";
+        }
+
+        switch($rangoEdad)
+        {
+            case "1":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())>=18";
+                break;
+            case "2":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())>=18 AND TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())<=29";
+                break;
+            case "3":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())>=30 AND TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())<=39";
+                break;
+            case "4":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())>=40 AND TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())<=49";
+                break; 
+            case "5":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())>=50 AND TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())<=59";
+                break;
+            case "6":
+                $filtroEdad = "TIMESTAMPDIFF(YEAR, c.fecha_nacimiento, CURDATE())<=60";
+                break;                    
         }
         
         $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
@@ -70,9 +92,9 @@ else{
                                     INNER JOIN candidato c ON a.id_candidato = c.id  
                                     INNER JOIN partidos p ON c.id_partido = p.id  
                     WHERE estatus = 'Publicado' AND c.genero  like '$sexo%'
-                                                AND c.fecha_nacimiento  like '$rangoEdad%'                           
-                                                AND p.nombre  like '$partido%'                           
-                                                                           ";
+                                                AND $filtroEdad                         
+                                                AND p.nombre_corto  like '$partido%'                           
+                                                AND c.carrera  like '$gradoAcademico%'";
     
         $resultadoConsulta = mysqli_query($db, $sql);  
         
