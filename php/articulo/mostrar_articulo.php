@@ -185,7 +185,7 @@
         ?>
     <section class="container leftToRight">
         <h3>Artículo</h3>
-        <h4>Por: <a href="<?php echo $root_dir . "/php/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
+        <h4>Por: <a href="<?php echo $root_dir . "/php/articulo/acerca_autor.php?id=" . $id_escritor . "&articulo=" . $id_candidato;?>"><?php echo $nombre_autor;?></a></h4>
         <br>
         <div class="row">
             <div class="col-12">
