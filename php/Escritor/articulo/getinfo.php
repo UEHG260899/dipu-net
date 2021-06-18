@@ -41,10 +41,10 @@ while($row = $resultado->fetch_array()){
         <div class='card-body'>
             <div class='d-flex justify-content-center'>
 
-                <img src='../../../img/".$row['url_imagen']."' alt='' width='200px' height='200px'
+                <img src='../../../img/candidatos/".$row['url_imagen']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
-            <p class='card-text text-left'><strong>Tipo candidatura:</strong> ".$row['tipo_candidatura']."</p>
+            <p class='card-text text-left mt-2'><strong>Tipo candidatura:</strong> ".$row['tipo_candidatura']."</p>
             <p class='card-text text-left'><strong>Distrito:</strong> ".$row['distrito']."</p>
             <div class='row justify-content-center mt-2'>
                 <div class='col-md-5' style='text-align:center'>
@@ -95,7 +95,7 @@ if (isset($_GET['submitElegir'])) {
     echo "  
     <div class='col-md-3 mt-5' style='text-align:center'>
     <p class='card-text text-center' >".$row['nombre']."</p>
-  <img src='../../../img/".$row['url_imagen']."' alt='' width='150px' height='150px'
+  <img src='../../../img/candidatos/".$row['url_imagen']."' alt='' width='150px' height='150px'
         class='text-center mb-4' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);'>
 
     <div class='col-12'>
@@ -208,7 +208,7 @@ if (isset($_GET['getModalPublicar'])) {
                         <div class='card-body row'>
                             <div class='col-md-3' style='text-align:center'>
                                 <p class='card-text text-center'>". $row['nombre'] ."</p>
-                                <img src='../../img/". $row['imagenCan'] ."' alt='' width='150px' height='150px'
+                                <img src='../../img/candidatos/". $row['imagenCan'] ."' alt='' width='150px' height='150px'
                                     class='text-center mb-4'
                                     style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
 
@@ -263,7 +263,7 @@ if (isset($_GET['getModalPublicar'])) {
                             <div class='card-body row'>
                                 <div class='col-md-3' style='text-align:center'>
                                     <p class='card-text text-center'>". $row['nombre'] ."</p>
-                                    <img src='../../img/". $row['imagenCan'] ."' alt='' width='150px' height='150px'
+                                    <img src='../../img/candidatos/". $row['imagenCan'] ."' alt='' width='150px' height='150px'
                                         class='text-center mb-4'
                                         style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
     
@@ -329,7 +329,7 @@ if (isset($_GET['candidatoBHome'])) {
                 <div class='card-body'>
                     <div class='d-flex justify-content-center'>
         
-                        <img src='../../img/".$row['imagenCan']."' alt='' width='200px' height='200px'
+                        <img src='../../img/candidatos/".$row['imagenCan']."' alt='' width='200px' height='200px'
                             class='text-center'>
                     </div>
                     <div class='row justify-content-center mt-3'>

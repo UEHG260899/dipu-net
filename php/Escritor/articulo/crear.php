@@ -5,7 +5,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
 
 <div class="container mb-5">
     <div class="col-12 mt-5" style="text-align:right">
-        <img src="../../../img/<?php echo $escritor['url_imagen']; ?>" alt=" " width="75px" height="75px"
+        <img src="../../../img/autores/<?php echo $escritor['url_imagen']; ?>" alt=" " width="75px" height="75px"
             class="text-center mt-4 rightToLeft">
     </div>
     <div class="row justify-content-md-center mb-3 about">
@@ -32,7 +32,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                         <div id="candidato" class="row">
                             <div class="col-md-3 mt-5" style="text-align:center">
                                 <p class="card-text text-center"></p>
-                                <img src="../../../img/avatar.png" alt="" width="150px" height="150px"
+                                <img src="../../../img/candidatos/no-image.jpg" alt="" width="150px" height="150px"
                                     class="text-center mb-4" style="box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);">
 
                                 <div class="col-12">
