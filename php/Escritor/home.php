@@ -25,7 +25,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"))
 <link rel="stylesheet" href="<?php echo $root . "/css/escritor/estilos.css"; ?>">
 <div class="container mb-5">
     <div class="col-12 mt-5" style="text-align:right">
-        <img src="../../img/<?php echo $id['url_imagen']; ?>" alt="" width="65px" height="65px" class="text-center mt-4 rightToLeft">
+        <img src="../../img/autores/<?php echo $id['url_imagen']; ?>" alt="" width="65px" height="65px" class="text-center mt-4 rightToLeft">
     </div>
     <!--Sección escritor-->
     <div class="row justify-content-md-center mb-3 about">
@@ -123,7 +123,7 @@ while($row = $resultado->fetch_array()){
         <div class='card-body'>
             <div class='d-flex justify-content-center'>
 
-                <img src='../../img/".$row['imagenCan']."' alt='' width='200px' height='200px'
+                <img src='../../img/candidatos/".$row['imagenCan']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
             <div class='row mt-3'>
@@ -226,7 +226,7 @@ while($row = $resultado->fetch_array()){
         <div class='card-body'>
             <div class='d-flex justify-content-center'>
 
-                <img src='../../img/".$row['imagenCan']."' alt='' width='200px' height='200px'
+                <img src='../../img/candidatos/".$row['imagenCan']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
             <div class='row justify-content-center mt-3'>
