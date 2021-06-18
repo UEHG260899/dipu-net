@@ -125,8 +125,8 @@ while($row = $resultado->fetch_array()){
     echo "
 <div class='col-md-4 about' style='float:left'>
     <div class='card' style='border-radius: 10px;' style='box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);'>
-        <div class='card-header'>
-            <p class='card-text text-left bg-boton'>".$row['nombre']."<a
+        <div class='card-header bg-boton'>
+            <p class='card-text text-left'>".$row['nombre']."<a
             style='float:right; color: black'> Publicado</a></p>
         </div>
         <div class='d-flex align-self-end'>
@@ -299,7 +299,7 @@ if($temp->fetch_array() == 0){
 
                             <?php
                     
-$sql = "SELECT id, CONCAT_WS(' ',nombre ,ap_paterno ,ap_materno) AS nombre, url_imagen , empleo, organizacion FROM escritor";
+$sql = "SELECT id, acerca_de, CONCAT_WS(' ',nombre ,ap_paterno ,ap_materno) AS nombre, url_imagen , empleo, organizacion FROM escritor";
 $resultado = mysqli_query($db, $sql);
 
 $i = 0;
@@ -324,6 +324,9 @@ while($row = $resultado->fetch_array()){
             </div>
             <p class='card-text text-left'><strong>Empleo:</strong> ".$row['empleo']."</p>
             <p class='card-text text-left'><strong>Organización:</strong> ".$row['organizacion']."</p>
+            <p class='card-text text-left'><strong>Acerca de: </strong></p>
+            <textarea class='form-control' name='articulo' rows='4'
+                                style='width:100%; height:100%' readonly>".$row['acerca_de']."</textarea>
         </div>
     </div>
 </div>
@@ -348,9 +351,6 @@ if($temp->fetch_array() == 0){
                            
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <hr />
                 </div>
                 <!--Fin Sección escritores-->
                 <div class="mb-5">
