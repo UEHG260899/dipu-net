@@ -21,7 +21,8 @@ require_once '../includes/navbar.php';
                       ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
                       ,a.id as id_articulo
                       ,a.id_candidato as id_candidato 
-                      ,p.nombre_corto as partido                  
+                      ,p.url_imagen as img_partido
+                      ,c.url_imagen as img_candidato                    
                   FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                   INNER JOIN candidato c ON a.id_candidato = c.id  
                                   INNER JOIN partidos p ON c.id_partido = p.id 
@@ -134,11 +135,11 @@ require_once '../includes/navbar.php';
                 <div class="card" style="box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);">
                     <div class="d-flex justify-content-between">
                         <p class="my-1 ml-3"><?php echo $articulo['candidato']?></p>
-                        <img src="../../img/partidos/iconos/<?php echo $articulo['partido']?>.png" alt="" width="50px" height="50px">
+                        <img src="../../img/partidos/iconos/<?php echo $articulo['img_partido']?>" alt="" width="50px" height="50px">
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img src="../../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
+                            <img src="../../img/candidatos/<?php echo $articulo['img_candidato']?>" alt="" width="200px" height="200px" class="text-center">
                         </div>
 
                         <p class="card-text text-right">Autor: <?php echo $articulo['escritor']?></p>

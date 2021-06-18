@@ -19,9 +19,12 @@ else{
     $sql = "SELECT CONCAT_WS(' ',c.nombre ,c.ap_paterno ,c.ap_materno) as candidato
                    ,CONCAT_WS(' ',e.nombre , e.ap_paterno , e.ap_materno) as escritor
                    ,a.id as id_articulo
-                   ,a.id_candidato as id_candidato                  
+                   ,a.id_candidato as id_candidato 
+                   ,p.url_imagen as img_partido
+                   ,c.url_imagen as img_candidato                     
                 FROM articulo a INNER JOIN escritor e ON a.id_escritor = e.id
                                 INNER JOIN candidato c ON a.id_candidato = c.id  
+                                INNER JOIN partidos p ON c.id_partido = p.id   
                 WHERE estatus = 'Publicado' AND c.nombre  like '$candidato%'";
 
     $resultadoConsulta = mysqli_query($db, $sql);  
@@ -33,12 +36,12 @@ else{
             <div class='card'>
                 <div class='d-flex justify-content-between'>
                     <p class='my-1 ml-3'> " . $articulo['candidato']. "</p>
-                    <img src='../../img/partidos/iconos/pan.png' alt=' width='50px' height='50px'>
+                    <img src='../../img/partidos/iconos/".$articulo['img_partido']."' alt='' width='50px' height='50px'>
                 </div>
                 <div class='card-body'>
                     <div class='d-flex justify-content-center'>
 
-                        <img src='../../img/avatar.png' alt=' width='200px' height='200px' class='text-center'>
+                        <img src='../../img/candidatos/".$articulo['img_candidato']."' alt='' width='200px' height='200px' class='text-center'>
                     </div>
 
                     <p class='card-text text-right'>" . $articulo['escritor'] ."</p>
