@@ -1,0 +1,21 @@
+main {
+    margin-top: 5rem;
+}
+
+textarea{
+    width: 100%;
+}
+
+.imagen-candidato {
+    width: 70%;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.card-informacion {
+    box-shadow: 0px 0px 10px gray;
+}
+
+.seccion-comentarios {
+    box-shadow: 5px 5px 10px gray;
+}
