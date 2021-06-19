@@ -28,8 +28,16 @@ if ($_SERVER['QUERY_STRING'] == 'logout') {
                 <?php
                 if (isset($_SESSION['usuario']['correo'])) {
                 ?>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link " href=<?php echo $root . '/php/mi-cuenta.php' ?>><?php echo $_SESSION['usuario']['correo']; ?></a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <?php echo $_SESSION['usuario']['correo']; ?>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?php echo $root . '/php/mi-cuenta.php' ?>">Mi cuenta</a>
+                            <a class="dropdown-item" href="<?php echo $root . '/php/lectores/editar.php' ?>">Actualizar mis datos</a>
+                            <a class="dropdown-item" href=<?php echo $root . '/php/lectores/guardados.php' ?>>Ver articulos guardados</a>
+                        </div>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link " href=<?php echo $root . '/php/index.php?logout' ?>>Cerrar sesión</a>
