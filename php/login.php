@@ -26,6 +26,18 @@ if (isset($_POST['email'])) {
         $usuario = mysqli_fetch_assoc($resultado);
         $_SESSION['usuario'] = $usuario;
         if ($_SESSION['usuario']['rol'] == 'lector') {
+            $idUsr = $usuario['id'];
+
+            $sql = "SELECT id             
+                  FROM lector 
+                 WHERE id_usuario = '$idUsr'";
+
+            $resultado = mysqli_query($conn, $sql);
+            if ($resultado->num_rows == 1) {
+
+                $lector = mysqli_fetch_assoc($resultado);
+                $_SESSION['id_lector'] = $lector['id'];
+            }
             header('Location: articulo/catalogo.php');
         } elseif ($_SESSION['usuario']['rol'] == 'escritor') {
 
