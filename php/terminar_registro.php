@@ -29,7 +29,17 @@
                 //TODO : Redirigir a la página de error
                 echo "Error al insertar al nuevo lector: " . mysqli_error($db);
             }else{
-                header("Location: index.php");
+                $query_lector = "SELECT id
+                                    FROM lector
+                                    WHERE id_usuario = $id";
+
+                $result = mysqli_query($db, $query_lector);
+                if($result->num_rows == 1){
+                    $lector = mysqli_fetch_assoc($result);
+                    $_SESSION["id_lector"] = $lector["id"];
+                    mysqli_free_result($result);
+                    header("Location: index.php");
+                }
             }
         }else{
             echo "Error al obtener el id del usuario: " . mysqli_error($db);
