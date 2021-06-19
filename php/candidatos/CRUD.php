@@ -81,7 +81,6 @@ switch ($opc) {
             $msg = "Error: " . $sql . ":" . mysqli_error($db);
             echo json_encode(array('msg' => $msg));
         }
-        header("location: ../Administrador/home.php");
 
         break;
 
@@ -96,7 +95,6 @@ switch ($opc) {
             $json_array = $row;
         }
         echo (json_encode($json_array));
-        header("location: ../Administrador/home.php");
         break;
 
 

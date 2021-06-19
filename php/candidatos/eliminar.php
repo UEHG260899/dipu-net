@@ -1,11 +1,12 @@
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_admin.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 ?>
 
-<link rel="stylesheet" href="<?php echo $root . "/css/candiatos/estilos.css"; ?>">
+
+<link rel="stylesheet" href="<?php echo $root . "/css/candidatos/estilos.css"; ?>">
 
 <main>
-    <section class="container mb-5">
+    <section class="container mb-5 about">
         <from id="formBorrar">
             <br><br>
 

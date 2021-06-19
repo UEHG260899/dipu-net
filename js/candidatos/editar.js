@@ -59,6 +59,9 @@ $(document).ready(function () {
 
             },
             success: function (response) {
+                
+                $(location).attr('href',"http://localhost/dipu-net/php/Administrador/home.php");
+                
             }
         });
     });

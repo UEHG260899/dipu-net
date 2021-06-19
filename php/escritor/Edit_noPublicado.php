@@ -1,7 +1,6 @@
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 ?>
-
 
 
 
@@ -30,15 +29,15 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
 
 <main>
 
-    <section class="container mb-5">
+    <section class="container mb-5 mt-5 about">
         <from>
             <br><br>
 
             <div class="text-center">
                 <h3 class=""><b>Editar Artículo no publicado</b></h3>
             </div>
-            <div class="card mt-5 mt-5 mb-5" style="background-color: #ab49ccce;">
-                <h4 class="card-header"><b>Información de artículo no publicado:</b></h4>
+            <div class="card mt-5 mb-5 ">
+                <h4 class="card-header"  style="background-color: #ab49ccce;"><b>Información de artículo no publicado:</b></h4>
                 <div class="card-body">
 
                     <div class="form-row">
@@ -110,14 +109,14 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
                 </div>
             </div>
 
-            <button class="btn guardar float-right text-white" type="button" id="actualizar">Actualizar</button>
+            <button class="btn guardar float-right text-white" style="background-color: #ff0077;" type="button" id="actualizar">Actualizar</button>
         </from>
         <hr>
     </section>
 </main>
 
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/footer.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/footer.php"));
 echo '<script>var id=' . $id = $_GET["id"] . '</script>';
 ?>
 <script src="<?php echo $root . "/js/escritor/actualizar_noPublicado.js"; ?>"></script>
