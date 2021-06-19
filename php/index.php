@@ -96,75 +96,46 @@ $result = mysqli_query($conn, $query);
 <section class="container mb-large">
     <h2 class="mb-3">Últimos artículos</h2>
     <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
+        <?php
+        $sql = "SELECT articulo.no_vistas,articulo.id,CONCAT_WS(' ',escritor.nombre ,escritor.ap_paterno ,escritor.ap_materno) AS nombreEsc ,CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id  INNER JOIN escritor ON articulo.id_escritor = escritor.id WHERE  articulo.estatus = 'publicado' ORDER BY articulo.id DESC LIMIT 3";
+        $resultado = mysqli_query($conn, $sql);
 
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+        while ($row = $resultado->fetch_array()) {
+
+        ?>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between bg-principal">
+
+                        <p class="card-text text-left"><?php echo $row['nombre']; ?> </p>
+                        <img src="../img/partidos/iconos/<?php echo $row['imagenPar']; ?>" alt="" width="50px" height="50px">
 
 
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
                     </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
 
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
+                            <img src="../img/candidatos/<?php echo $row['imagenCan']; ?>" alt="" width="200px" height="200px" class="text-center">
+                        </div>
 
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
-
-
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
+                        <p class="card-text text-right mt-2">Autor: <strong><?php echo $row['nombreEsc']; ?> </strong></p>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-info">Ver más tarde</button>
+                            <a href="articulo/mostrar_articulo.php?candidato=<?php echo $row['id']; ?>" class="btn bg-boton">Ver articulo completo</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
-
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
 
 
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
+        <?php
+           
+        }
+        ?>
 
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
 
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
     </div>
 </section>
