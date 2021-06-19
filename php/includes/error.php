@@ -2,29 +2,18 @@
 require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php"));
 ?>
 
+<link rel="stylesheet" href="<?php echo $root . "/css/error/estilos.css"; ?>">
 
 <?php
 
-$error = $_GET["error"];
-if (substr($error, 0, 1) == '4') {
-    $tipo = "Error en el cliente";
-    $descipcion = "ha ocurrido un problema con la solicitud del lado del cliente, por lo que no se puede cargar la página.";
-    $recomendacion = "
-    <li>Verifica la URL solicitada</li>
-    <li>Revisa las cookies del navegador</li>
-    <li>Borra la caché DNS</li>
-    <li>Contactar con el administrador de la pagina</li>
+$tipo = "Error";
+$descipcion = "ha ocurrido un problemaal cargar la pagina.";
+$recomendacion = "
+    <li>Verifica la URL solicitada.</li>
+    <li>Revisa las cookies del navegador.</li>
+    <li>Interntar más tarde.</li>
+    <li>Contactar con el administrador de la pagina.</li>
     ";
-    $img = "error_400.png";
-}else{
-    $tipo = "Error en el servidor";
-    $descipcion = "ha ocurrido un problema con la solicitud del lado del servidor, por lo que no se puede mostrar la página correctamente.";
-    $recomendacion = "
-    <li>Intenta refrescar la página</li>
-    <li>Al ser un problema por parte del servidor se recomienda contactar directamente al administrador del sitio</li>";
-    $img = "error_500.png";
-}
-
 ?>
 
 <main>
@@ -33,17 +22,24 @@ if (substr($error, 0, 1) == '4') {
         <br><br>
 
         <div class="card mt-5 mt-5 mb-5">
-            <h4 class="card-header"><?php echo $tipo . "-" ?><b>Error: <?php echo $error ?></b></h4>
+            <h4 class="card-header" style="background-color: #ab49ccce;"><?php echo $tipo ?><b></b></h4>
             <div class="card-body">
 
                 <div class="form-row">
 
                     <div class="col-5">
-                        <div>
-
-                            <div class="text-center">
-                                <img src="<?php echo $root . '/img/errores/' . $img ?>" class="img-fluid" alt="Responsive image">
+                        <div class="face">
+                            <div class="band">
+                                <div class="red"></div>
+                                <div class="white"></div>
+                                <div class="blue"></div>
                             </div>
+                            <div class="eyes"></div>
+                            <div class="dimples"></div>
+                            <div class="mouth"></div>
+                            <center class="mt-5">
+                                <h2 style="color: #8e22bb;"><b>DIPU-NET</b></h2>
+                            </center>
                         </div>
 
                     </div>
@@ -59,9 +55,7 @@ if (substr($error, 0, 1) == '4') {
 
                         <h5> <?php echo $recomendacion ?> </h5>
                         <br>
-
-                        <h8> Código de error: <?php echo $error ?> </h8>
-
+                        <button class="btn btn-sm float-right mt-5">Regresar a Inicio</button>
                     </div>
                 </div>
 

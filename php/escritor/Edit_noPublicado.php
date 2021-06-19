@@ -2,6 +2,9 @@
 require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php"));
 ?>
 
+
+
+
 <?php
 
 $serv = "localhost";
@@ -34,7 +37,7 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
             <div class="text-center">
                 <h3 class=""><b>Editar Artículo no publicado</b></h3>
             </div>
-            <div class="card mt-5 mt-5 mb-5">
+            <div class="card mt-5 mt-5 mb-5" style="background-color: #ab49ccce;">
                 <h4 class="card-header"><b>Información de artículo no publicado:</b></h4>
                 <div class="card-body">
 

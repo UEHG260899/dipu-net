@@ -2,6 +2,8 @@
 require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_admin.php"));
 ?>
 
+<link rel="stylesheet" href="<?php echo $root . "/css/candiatos/estilos.css"; ?>">
+
 <main>
     <section class="container mb-5">
         <from id="formRegistrar">
