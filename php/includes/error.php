@@ -1,5 +1,5 @@
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"));
 ?>
 
 <link rel="stylesheet" href="<?php echo $root . "/css/error/estilos.css"; ?>">
@@ -7,18 +7,18 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
 <?php
 
 $tipo = "Error";
-$descipcion = "ha ocurrido un problemaal cargar la pagina.";
+$descipcion = "Ha ocurrido un problema al cargar la página.";
 $recomendacion = "
     <li>Verifica la URL solicitada.</li>
     <li>Revisa las cookies del navegador.</li>
-    <li>Interntar más tarde.</li>
-    <li>Contactar con el administrador de la pagina.</li>
+    <li>Inténtelo más tarde.</li>
+    <li>Contactar con el administrador de la página.</li>
     ";
 ?>
 
 <main>
 
-    <section class="container mb-5">
+    <section class="container mb-5 about">
         <br><br>
 
         <div class="card mt-5 mt-5 mb-5">
@@ -55,7 +55,16 @@ $recomendacion = "
 
                         <h5> <?php echo $recomendacion ?> </h5>
                         <br>
-                        <button class="btn btn-sm float-right mt-5">Regresar a Inicio</button>
+                        <?php
+                        if ($_SESSION['usuario']['rol'] == 'lector') {
+                            $home= "index.php";
+                        } elseif ($_SESSION['usuario']['rol'] == 'escritor') {
+                            $home= "Escritor/home.php";
+                        } else {
+                            $home= "Administrador/home.php";
+                        }
+                        ?>
+                        <button class="btn btn-sm float-right mt-5"><a class="text-white" style="text-decoration: none;" href="http://localhost/dipu-net/php/<?php echo $home?>">Regresar a Inicio</a></button>
                     </div>
                 </div>
 
@@ -65,5 +74,5 @@ $recomendacion = "
 </main>
 
 <?php
-require_once(realpath(dirname(__FILE__) . "../../../includes/footer.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/footer.php"));
 ?>

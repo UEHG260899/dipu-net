@@ -40,8 +40,9 @@ $(document).ready(function () {
                 id : id
             },
             success: function (response) {
-                var jsonData = JSON.parse(response);
-                alert(jsonData.msg);
+                
+                $(location).attr('href',"http://localhost/dipu-net/php/Administrador/home.php");
+                
             }
         });
     });
