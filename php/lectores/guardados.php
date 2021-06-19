@@ -69,7 +69,7 @@ require_once '../includes/navbar.php';
             while($articulo = mysqli_fetch_array($resultadoConsulta)){
         ?>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card">
+                <div class="card about">
                     <div class="d-flex justify-content-between">
                         <p class="my-1 ml-3"><?php echo $articulo['candidato']?></p>
                         <img src="../../img/partidos/iconos/<?php echo $articulo['img_partido']?>" alt="" width="50px" height="50px">

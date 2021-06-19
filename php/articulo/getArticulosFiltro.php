@@ -114,7 +114,7 @@ while($articulo = mysqli_fetch_array($resultadoConsulta)){
     $contador = $contador + 1;
     echo '
     <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="card">
+        <div class="card about">
             <div class="d-flex justify-content-between">
                 <p class="my-1 ml-3"> ' . $articulo['candidato']. '</p>
                 <img src="../../img/partidos/iconos/'.$articulo['img_partido'].'" alt="" width="50px" height="50px">
@@ -138,7 +138,7 @@ while($articulo = mysqli_fetch_array($resultadoConsulta)){
 
 if($contador == 0){
     echo '
-        <div class="col-md-4 offset-md-4">
+        <div class="col-md-4 offset-md-4 about">
             <img src="../../img/articulos/sinArticulos.png" width="300px" height="300px"  alt="Sin resultados">
         </div>';
 

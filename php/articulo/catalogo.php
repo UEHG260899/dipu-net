@@ -37,9 +37,9 @@ require_once '../includes/navbar.php';
 <br>
 <br>
 <div class="container mb-large" >
-    <h4>Para una búsqueda más exacta, ingrese el nombre del candidato</h4>
+    <h4 class="about">Para una búsqueda más exacta, ingrese el nombre del candidato</h4>
     <br>
-    <div class="row">
+    <div class="row about">
         <div class="col-md-4">
             <input type="text" class="form-control" id="iptNomCandidato">
         </div>
@@ -49,10 +49,10 @@ require_once '../includes/navbar.php';
     </div>
     <br>
     <hr>
-    <h4>O bien, seleccione los siguientes criterios</h4>
+    <h4 class="rightToLeft">O bien, seleccione los siguientes criterios</h4>
     <br>
     <form action="" method="post" id="formFiltrado">
-        <div class="row">
+        <div class="row leftToRight">
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="selGradoAcad">Grado Académico:</label>
@@ -99,7 +99,7 @@ require_once '../includes/navbar.php';
                 </div>
             </div>
         </div>
-        <div class="row  mb-3" >
+        <div class="row  mb-3 rightToLeft" >
             <div class="col-md-8 col-lg-8 col-sm-12 col-12">
                 <div class="form-group">
                     <label for="pwd">Partido Político:</label>
@@ -124,7 +124,7 @@ require_once '../includes/navbar.php';
     </form>
     <br>
     <hr>
-    <h4>Resultados de la búsqueda</h4>
+    <h4 class="about">Resultados de la búsqueda</h4>
     <br>
     <div class="row" id="rowCards">
 
@@ -132,7 +132,7 @@ require_once '../includes/navbar.php';
             while($articulo = mysqli_fetch_array($resultadoConsulta)){
         ?>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card" style="box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);">
+                <div class="card about" style="box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);">
                     <div class="d-flex justify-content-between">
                         <p class="my-1 ml-3"><?php echo $articulo['candidato']?></p>
                         <img src="../../img/partidos/iconos/<?php echo $articulo['img_partido']?>" alt="" width="50px" height="50px">

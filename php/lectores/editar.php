@@ -50,14 +50,14 @@ else{
 <br>
 <br>
 <br>
-<div class="container mb-large">
+<div class="container mb-large about">
     <div class="row align-items-center mt-3">
         <div class="col-md-8 offset-md-2">
             <h4>¡Actualiza tu información y continúa leyendo!</h4>
         </div>
         
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 about">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-boton">Información del lector</div>
