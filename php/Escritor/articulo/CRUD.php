@@ -45,4 +45,14 @@
         header("location: ../home.php");
 
  }
+
+ if($operacion == "editar_noPublicado"){
+    $id = $_POST["id"];
+    $art = $_POST["articulo"];
+    echo $id;
+    $query = "UPDATE articulo SET articulo = '$art' WHERE id= ".$id."";
+        $result = mysqli_query($db,$query);
+        header("location: ../home.php");
+
+ }
 ?>
