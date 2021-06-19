@@ -98,23 +98,12 @@
         }else{
             $comentario = $_POST["textComentario"];
             $id_usuario = $_SESSION["usuario"]["id"];
-            $query_lector = "SELECT id
-                                FROM lector
-                                WHERE id_usuario = $id_usuario";
-            $result = mysqli_query($db, $query_lector);
-            if($result){
-                while($rowl = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    $id_l = $rowl["id"];
-                }
-                mysqli_free_result($result);
-                $fecha_creacion = date('Y-m-d');
-                $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_l', '$comentario', '$fecha_creacion')";
-                $resultadol = mysqli_query($db, $insert);
-                if(!$resultadol){
-                    echo "Error al momento de insertar comentario: " . mysqli_error($db);
-                }
-            }else{
-                echo "Error al momento de obtener lector: " . mysqli_error($db);
+            $id_lector = $_SESSION["id_lector"];
+            $fecha_creacion = date('Y-m-d');
+            $insert = "INSERT INTO comentarios VALUES (NULL, '$id_art', '$id_lector', '$comentario', '$fecha_creacion')";
+            $resultadol = mysqli_query($db, $insert);
+            if(!$resultadol){
+                echo "Error al momento de insertar comentario: " . mysqli_error($db);
             }
         }
     }
