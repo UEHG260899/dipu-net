@@ -20,8 +20,7 @@ require_once(realpath(dirname(__DIR__) . '/includes/header.php'));
                             Candidatos
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Crear candidato</a>
-                            <a class="dropdown-item" href="#">Actualizar candidato</a>
+                            <a class="dropdown-item" href="<?php echo $root . '/php/candidatos/registrar.php' ?>">Crear candidato</a>
                         </div>
                     </li>
                 </ul>

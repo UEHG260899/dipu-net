@@ -237,7 +237,7 @@ while($row = $resultado->fetch_array()){
             <p class='card-text text-left'><strong>Distrito:</strong> ".$row['distrito']."</p>
             <div class='row justify-content-center mt-2'>
             <div class='col-md-5' style='text-align:center'>
-            <a class='btn btn-sm btn-info' href='../candidatos/registrar.php?id=".$row['id']."&operacion=editar'>Editar</a>
+            <a class='btn btn-sm btn-info' href='../candidatos/registrar.php?id=".$row['id']."'>Editar</a>
             </div>
             <div class='col-md-5' style='text-align:center'>
             <a class='btn btn-sm btn-danger' type='button' href='../candidatos/eliminar.php?id=".$row['id']."'>Eliminar</a>

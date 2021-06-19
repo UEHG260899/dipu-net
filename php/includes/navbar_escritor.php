@@ -36,7 +36,6 @@ $escritor = mysqli_fetch_assoc($resultado);
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="<?php echo $root . '/php/escritor/articulo/crear.php' ?>">Crear artículo</a>
-                            <a class="dropdown-item" href="#">Actualizar artículo</a>
                         </div>
                     </li>
                 </ul>
