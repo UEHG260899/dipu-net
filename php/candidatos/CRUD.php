@@ -105,6 +105,6 @@ switch ($opc) {
         $id = $_POST["id"];
         $query = "DELETE FROM candidato  WHERE id= " . $id . "";
         $result = mysqli_query($db, $query);
-        header("location: ..//Administrador/home.php");
+        header("location: ../Administrador/home.php");
         break;
 }

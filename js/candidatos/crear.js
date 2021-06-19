@@ -30,8 +30,6 @@ $(document).ready(function () {
 
             },
             success: function (response) {
-                var jsonData = JSON.parse(response);
-                alert(jsonData.msg);
             }
         });
     });
