@@ -10,10 +10,19 @@ $conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
 if (!$conn) {
     echo 'Error de conexión: ' . mysqli_connect_error();
 }
+if (isset($_POST['submit-later'])) {
+    $lector = mysqli_real_escape_string($conn, $_POST['id-lector']);
+    $articulo = mysqli_real_escape_string($conn, $_POST['id-articulo']);
+    $sql = "INSERT INTO mas_tarde( id, id_lector, id_articulo) "
+        . "VALUES( NULL, '$lector', '$articulo')";
+    $resultado = mysqli_query($conn, $sql);
+    header('Location:' . $root . '/php/index.php#latest');
+}
 
 
 $query = "SELECT * FROM partidos";
 $result = mysqli_query($conn, $query);
+
 ?>
 
 <div class="banner mt-5 ">
@@ -93,78 +102,73 @@ $result = mysqli_query($conn, $query);
     </div>
     <hr>
 </main>
-<section class="container mb-large">
+<section class="container mb-large" id="latest">
     <h2 class="mb-3">Últimos artículos</h2>
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
+    <div class="row animate__animated animate__zoomIn">
+        <?php
+        $sql = "SELECT articulo.no_vistas,articulo.id,CONCAT_WS(' ',escritor.nombre ,escritor.ap_paterno ,escritor.ap_materno) AS nombreEsc ,CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id  INNER JOIN escritor ON articulo.id_escritor = escritor.id WHERE  articulo.estatus = 'publicado' ORDER BY articulo.id DESC LIMIT 3";
+        $resultado = mysqli_query($conn, $sql);
 
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+        while ($row = $resultado->fetch_array()) {
+
+        ?>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between bg-principal">
+
+                        <p class="card-text text-left"><?php echo $row['nombre']; ?> </p>
+                        <img src="../img/partidos/iconos/<?php echo $row['imagenPar']; ?>" alt="" width="50px" height="50px">
 
 
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
                     </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
 
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
+                            <img src="../img/candidatos/<?php echo $row['imagenCan']; ?>" alt="" width="200px" height="200px" class="text-center">
+                        </div>
 
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
+                        <p class="card-text text-right mt-2">Autor: <strong><?php echo $row['nombreEsc']; ?> </strong></p>
+                        <div class="d-flex justify-content-between">
+                            <?php
+                            if (isset($_SESSION['usuario']['correo'])) {
+                                $id_lector =  $_SESSION['id_lector'];
 
+                                $sqlAgregado = "SELECT id FROM mas_tarde "
+                                    . "WHERE id_articulo =" . $row['id'] . " AND id_lector = $id_lector";
 
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
+                                $resultadoAgregado = mysqli_query($conn, $sqlAgregado);
+                                /**
+                                 * ?Si El articulo se encuentra en "ver mas tarde " se habilita boton para ver todos los guardados
+                                 */
+                                if ($resultadoAgregado->num_rows == 1) {
+                                    echo ' <a href="lectores/guardados.php" class="btn bg-success text-white">Ver guardados</a>';
+                                } else {
+                            ?>
+                                    <form action="index.php" method="POST">
+                                        <input type="text" name="id-lector" value="<?php echo $_SESSION['id_lector']; ?>" style="display: none;">
+                                        <input type="text" name="id-articulo" value="<?php echo $row['id']; ?>" style="display: none;">
+                                        <button type="submit" class="btn btn-info" name="submit-later">Ver más tarde</button>
+                                    </form>
+                            <?php
+                                }
+                            }
+                            ?>
 
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex justify-content-between bg-principal">
-
-                    <p class="card-text text-left">Jose Antonio Garcia Garcia </p>
-                    <img src="../img/partidos/iconos/pan.png" alt="" width="50px" height="50px">
-
-
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-center">
-
-                        <img src="../img/avatar.png" alt="" width="200px" height="200px" class="text-center">
-                    </div>
-
-                    <p class="card-text text-right">Autor: Eduardo Apodaca</p>
-                    <div class="d-flex justify-content-between">
-                        <button class="btn btn-info">Ver más tarde</button>
-                        <button class="btn bg-boton">Ver articulo completo</button>
+                            <a href="articulo/mostrar_articulo.php?candidato=<?php echo $row['id']; ?>" class="btn bg-boton">Ver articulo completo</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+
+        <?php
+
+        }
+        ?>
+
+
+
+
 
     </div>
 </section>
