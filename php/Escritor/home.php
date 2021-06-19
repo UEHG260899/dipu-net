@@ -236,7 +236,7 @@ while($row = $resultado->fetch_array()){
         </div>
         <div class='row justify-content-center mt-2'>
             <div class='col-md-5' style='text-align:center'>
-            <a class='btn btn-sm btn-info' href='Edit_noPublicado.php?idEditar=".$row['id']."' >Actualizar</a>
+            <a class='btn btn-sm btn-info' href='Edit_noPublicado.php?id=".$row['id']."' >Actualizar</a>
             </div>
             <div class='col-md-5' style='text-align:center'>
             <button class='btn btn-sm btn-danger' type='button' onclick='EliminarArticulo(".$row['id'].")'>Eliminar artículo</button>
