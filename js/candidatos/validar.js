@@ -148,7 +148,7 @@ function validarCampos(formData) {
 
 
       case 'gradoCan':
-        if (value == null) {
+        if (!exp.test(value)) {
           valResult.success = false;
           highlightError(field, true);
           $('.gradoCan').html("Seleccione una opción");

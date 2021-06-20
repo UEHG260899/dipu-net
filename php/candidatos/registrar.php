@@ -2,9 +2,8 @@
 require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 ?>
 
-<link rel="stylesheet" href="<?php echo $root . "/css/candidatos/estilos.css"; ?>">
 
-<main>
+<main class="mb-5">
     <section class="container mb-5 about">
         <from id="formRegistrar">
             <br><br>
@@ -332,29 +331,12 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 
                     <div class="form-row mb-4">
                         <div class="form-group col-4">
-                            <label class="font-weight-bold" class="font-weight-bold" for="gradoCan">Grado académico (Carrera)</label>
+                            <label class="font-weight-bold" class="font-weight-bold" for="gradoCan">Carrera</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-graduation-cap"></i></span>
                                 </div>
-                                <select id="gradoCan" name="gradoCan" class="form-control validar">
-                                    <option disabled hidden selected value="0">Seleccione un grado academico</option>
-                                    <option value="Doctorado Titulado(a)">Doctorado Titulado(a)</option>
-                                    <option value="Doctorado Concluido(a)">Doctorado Concluido(a)</option>
-                                    <option value="Doctorado Trunco(a)">Doctorado Trunco(a)</option>
-                                    <option value="Maestría Titulado(a)">Maestría Titulado(a)</option>
-                                    <option value="Maestría Concluido(a)">Maestría Concluido(a)</option>
-                                    <option value="Maestría Trunco(a)">Maestría Trunco(a)</option>
-                                    <option value="Especialidad Titulado(a)">Especialidad Titulado(a)</option>
-                                    <option value="Especialidad Concluido(a)">Especialidad Concluido(a)</option>
-                                    <option value="Licenciatura Titulado(a)">Licenciatura Titulado(a)</option>
-                                    <option value="Licenciatura Concluido(a)">Licenciatura Concluido(a)</option>
-                                    <option value="Licenciatura Trunco(a)">Licenciatura Trunco(a)</option>
-                                    <option value="Educación media superior Concluido(a)">Educación media superior Concluido(a)</option>
-                                    <option value="Educación media superior Trunca">Educación media superior Trunca</option>
-                                    <option value="Educación Basica Concluido(a)">Educación Basica Concluido(a)</option>
-                                    <option value="Educación Basica Trunca">Educación Basica Trunca</option>
-                                </select>
+                                <input type="text" class="form-control validar" id="gradoCan" name="gradoCan" placeholder="Ingrese Carrera del candidato">
                                 <div class="invalid-feedback gradoCan"></div>
                             </div>
                         </div>
@@ -392,7 +374,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
             <?php
 
             if (array_key_exists('id', $_GET)) {
-                echo '<button class="btn guardar float-right text-white" type="button" id="actualizar">Actualizar</button>';
+                echo '<button class="btn guardar float-right text-white mb-5" type="button" id="actualizar">Actualizar</button>';
             } else {
                 echo '<button class="btn guardar float-right text-white" type="button" id="guardar">Guardar</button>';
             }
@@ -416,5 +398,6 @@ if (array_key_exists('id', $_GET)) {
     echo '<script src="' . $root . "/js/candidatos/crear.js" . '"></script>';
 }
 ?>
+
 
 <script src="<?php echo $root . "/js/candidatos/validar.js"; ?>"></script>

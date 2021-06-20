@@ -5,7 +5,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 
 <link rel="stylesheet" href="<?php echo $root . "/css/candidatos/estilos.css"; ?>">
 
-<main>
+<main class="mb-5">
     <section class="container mb-5 about">
         <from id="formBorrar">
             <br><br>
@@ -389,7 +389,7 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
                 </div>
             </div>
 
-            <button class="btn guardar float-right text-white" type="button" id="borrar">Borrar</button>
+            <button class="btn guardar float-right text-white mb-5" type="button" id="borrar">Borrar</button>
 
         </from>
         <hr>
