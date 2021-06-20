@@ -1,5 +1,5 @@
 <?php
-require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"));
+require_once(realpath(dirname(__FILE__) . "../../includes/header.php"));
 ?>
 
 <link rel="stylesheet" href="<?php echo $root . "/css/error/estilos.css"; ?>">
@@ -16,7 +16,7 @@ $recomendacion = "
     ";
 ?>
 
-<main>
+<main class="mb-5">
 
     <section class="container mb-5 about">
         <br><br>
@@ -64,7 +64,7 @@ $recomendacion = "
                             $home= "Administrador/home.php";
                         }
                         ?>
-                        <button class="btn btn-sm float-right mt-5"><a class="text-white" style="text-decoration: none;" href="http://localhost/dipu-net/php/<?php echo $home?>">Regresar a Inicio</a></button>
+                        <button class="btn btn-sm float-right mt-5 mb-5"><a class="text-white" style="text-decoration: none;" href="http://localhost/dipu-net/php/<?php echo $home?>">Regresar a Inicio</a></button>
                     </div>
                 </div>
 
