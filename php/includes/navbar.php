@@ -21,7 +21,7 @@ if ($_SERVER['QUERY_STRING'] == 'logout') {
                     <a class="nav-link " href=<?php echo $root . '/php/index.php' ?>>Inicio</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link " href=<?php echo $root . '/php/catalogo.php' ?>>Articulos</a>
+                    <a class="nav-link " href=<?php echo $root . '/php/articulo/catalogo.php' ?>>Articulos</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav ml-auto">
