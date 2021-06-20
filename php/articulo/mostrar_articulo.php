@@ -11,6 +11,7 @@
     if(isset($_GET["candidato"])){
         if(!$db){
             die("Error al conectarse a la Base de datos" . mysqli_connect_error());
+            header("Location : ../includes/error.php");
         }else{
             mysqli_query($db, "SET NAMES UTF8");
             $id_candidato = $_GET["candidato"];
@@ -53,6 +54,7 @@
                 mysqli_free_result($result);
             }else{
                 echo "Algo ha salido mal al momento de realizar la consulta";
+                header("Location : ../includes/error.php");
             }
         }
     }
@@ -89,6 +91,7 @@
         }
     }else{
         echo "Algo ocurrió al momento de ejecutar la consulta";
+        header("Location : ../includes/error.php");
     }
 
     //Validación de los comentarios
@@ -104,6 +107,7 @@
             $resultadol = mysqli_query($db, $insert);
             if(!$resultadol){
                 echo "Error al momento de insertar comentario: " . mysqli_error($db);
+                header("Location : ../includes/error.php");
             }
         }
     }
@@ -233,6 +237,7 @@
                         mysqli_close($db);
                     }else{
                         echo "Algo sucedio al momento de obtener los comentarios";
+                        header("Location : ../includes/error.php");
                     }
                 ?>
                 <li class="list-group-item">
