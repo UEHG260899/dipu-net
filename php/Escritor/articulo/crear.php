@@ -236,6 +236,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                         <div class="col-md-5" style="text-align:right">
                             <button class="btn btn-sm bg-boton" type="submit" id="guardar">Guardar</button>
                             <button class="btn btn-sm btn-primary" type="submit" id="publicar">Publicar</button>
+                            <a class="btn btn-sm btn-danger " href="<?php echo $root . '/php/escritor/home.php' ?>">Cancelar</a>
                         </div>
                     </div>
                 </div>
