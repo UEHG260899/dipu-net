@@ -83,7 +83,7 @@ $result = mysqli_query($conn, $query);
                         <img class="d-block " src="../img/partidos/carusel/<?php echo $banner; ?>" alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5><?php echo $nombre; ?></h5>
-                            <a href="articulos.php?<?php echo $id; ?>" type="button" class="btn  bg-boton">Ver articulos</a>
+                            <a href="articulo/catalogo.php" type="button" class="btn  bg-boton">Ver articulos</a>
                         </div>
                     </div>
             <?php
