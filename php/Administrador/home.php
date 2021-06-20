@@ -210,7 +210,7 @@ if($temp->fetch_array() == 0){
 
                         <?php
                     
-$sql = "SELECT id, CONCAT_WS(' ',nombre ,ap_paterno ,ap_materno) AS nombre, url_imagen , tipo_candidatura, distrito FROM candidato";
+$sql = "SELECT candidato.id,candidato.municipio,candidato.carrera,candidato.escuela,candidato.puesto_actual, CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen , partidos.url_imagen as imagenPar, candidato.tipo_candidatura, candidato.distrito FROM candidato INNER JOIN partidos ON candidato.id_partido = partidos.id";
 $resultado = mysqli_query($db, $sql);
 
 $i = 0;
@@ -228,12 +228,20 @@ while($row = $resultado->fetch_array()){
         <div class='card-header bg-boton' >
             <p class='card-text text-left'>".$row['nombre']."</p>
         </div>
+        <div class='d-flex align-self-end'>
+            <img src='../../img/partidos/iconos/". $row['imagenPar'] ."' alt='' width='50px' height='50px'
+            class='po'>
+        </div>
         <div class='card-body'>
             <div class='d-flex justify-content-center'>
                 <img src='../../img/candidatos/".$row['url_imagen']."' alt='' width='200px' height='200px'
                     class='text-center'>
             </div>
-            <p class='card-text text-left mt-2'><strong>Tipo candidatura:</strong> ".$row['tipo_candidatura']."</p>
+            <p class='card-text text-left'><strong>Municipio:</strong> ".$row['municipio']."</p>
+            <p class='card-text text-left'><strong>Carrera:</strong> ".$row['carrera']."</p>
+            <p class='card-text text-left'><strong>Escuela:</strong> ".$row['escuela']."</p>
+            <p class='card-text text-left'><strong>Puesto:</strong> ".$row['puesto_actual']."</p>
+            <p class='card-text text-left'><strong>Tipo candidatura:</strong> ".$row['tipo_candidatura']."</p>
             <p class='card-text text-left'><strong>Distrito:</strong> ".$row['distrito']."</p>
             <div class='row justify-content-center mt-2'>
             <div class='col-md-5' style='text-align:center'>
