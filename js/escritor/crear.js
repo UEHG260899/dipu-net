@@ -35,7 +35,7 @@ $(document).ready(function () {
 
   var editor = new Jodit('#editor');
   $("#editor").on('change', function(e) {
-      $("#preArticulo").val("<p>"+editor.value+"</p>");
+      $("#preArticulo").html("<p>"+editor.value+"</p>");
       $("#articulo").val(editor.value);
   });
 
