@@ -109,7 +109,7 @@
     }
 ?>
 <link href="<?php echo $root_dir . '/css/articulos/styles_articulo.css'?>" rel="stylesheet">
-<main>
+<main class="mb-5">
     <section class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3 text-center leftToRight">
