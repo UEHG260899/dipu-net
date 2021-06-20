@@ -12,7 +12,7 @@ function validarCampos(formData) {
                 if (value < 1) {
                     valResult.success = false;
                     highlightError(field, true);
-                    $('.art').html("Ingrese información");
+                    $('.art').html("Ingrese información en la sección de edición de arriba");
                 } else {
                     highlightError(field, false);
                     $('.art').html("");

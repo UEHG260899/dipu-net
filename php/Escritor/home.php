@@ -266,7 +266,7 @@ if($temp->fetch_array() == 0){
                     ?>
                 </div>
             </div>
-        </div>
+       
         <!--Fin Sección articulos guardados-->
         <div class="mb-5">
             <br>
