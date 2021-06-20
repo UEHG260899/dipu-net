@@ -221,8 +221,7 @@ if (isset($_GET['getModalPublicar'])) {
                             <div class='col-md-9'>
                                 <div class='col-md-12'>
                                     <p class='card-text text-center'>Artículo</p>
-                                    <textarea id='articulo' class='form-control validar' name='articulo'
-                                        rows='8' style='width:100%; height:100%' readonly>". $row['articulo'] ."</textarea>
+                                    <p>". $row['articulo'] ."</p>
                                 </div>
                             </div>
                         </div>
@@ -276,8 +275,7 @@ if (isset($_GET['getModalPublicar'])) {
                                 <div class='col-md-9'>
                                     <div class='col-md-12'>
                                         <p class='card-text text-center'>Artículo</p>
-                                        <textarea id='articulo' class='form-control validar' name='articulo'
-                                            rows='8' style='width:100%; height:100%' readonly>". $row['articulo'] ."</textarea>
+                                        <p>". $row['articulo'] ."</p>
                                     </div>
                                 </div>
                             </div>

@@ -33,10 +33,12 @@ $(document).ready(function () {
     }
   });
 
-  $("#articulo").keyup(function(){
-    $("#preArticulo").val($("#articulo").val());
+  var editor = new Jodit('#editor');
+  $("#editor").on('change', function(e) {
+      $("#preArticulo").val("<p>"+editor.value+"</p>");
+      $("#articulo").val(editor.value);
   });
-  
+
 });
 
 
