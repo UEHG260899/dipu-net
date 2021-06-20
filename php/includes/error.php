@@ -1,5 +1,6 @@
 <?php
 require_once(realpath(dirname(__FILE__) . "../../includes/header.php"));
+session_start();
 ?>
 
 <link rel="stylesheet" href="<?php echo $root . "/css/error/estilos.css"; ?>">
