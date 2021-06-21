@@ -104,7 +104,7 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
                         <div class="form-group col-12">
                             <div id="editor" style="width: 100%; height: 1500px; background-color: #ffffff">
                             </div>
-                            <textarea id="articulo" name="articulo" class="form-control" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
+                            <textarea hidden id="articulo" name="articulo" class="form-control" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
                             
                             <div class="invalid-feedback art"></div>
                         </div>

@@ -6,27 +6,23 @@ $(document).ready(function () {
     });
 
 
-    $("#articulo").click(function () {
+    $("#actualizar").click(function () {
         var valResult = validarCampos($('.validar'));
         if (valResult.success) {
-            if ($('#idC').val().length != 0) {
-                $.ajax({
-                    type: "POST",
-                    url: "articulo/CRUD.php",
-                    data: {
-                        operacion: "editar_noPublicado",
-                        id: id,
-                        articulo: $('#taArticulo').val()
-        
-                    },
-                    success: function (response) {
-                        var jsonData = JSON.parse(response);
-                        alert(jsonData.msg);
-                    }
-                });
-            } else {
-                
-            }
+            $.ajax({
+                type: "POST",
+                url: "articulo/CRUD.php",
+                data: {
+                    operacion: "editar_noPublicado",
+                    id: id,
+                    articulo: $('#articulo').val()
+
+                },
+                success: function (response) {
+                    var jsonData = JSON.parse(response);
+                    alert(jsonData.msg);
+                }
+            });
 
         }
 

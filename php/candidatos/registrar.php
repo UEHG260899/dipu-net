@@ -3,6 +3,8 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
 ?>
 
 
+<link rel="stylesheet" href="<?php echo $root . "/css/candidatos/estilos.css"; ?>">
+
 <main class="mb-5">
     <section class="container mb-5 about">
         <from id="formRegistrar">
