@@ -37,7 +37,7 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
                 <h3 class=""><b>Editar Artículo no publicado</b></h3>
             </div>
             <div class="card mt-5 mb-5 ">
-                <h4 class="card-header"  style="background-color: #ab49ccce;"><b>Información de artículo no publicado:</b></h4>
+                <h4 class="card-header" style="background-color: #ab49ccce;"><b>Información de artículo no publicado:</b></h4>
                 <div class="card-body">
 
                     <div class="form-row">
@@ -102,7 +102,11 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
 
                         <h4 class=""><b>Articulo</b></h4>
                         <div class="form-group col-12">
-                            <textarea id="taArticulo" class="form-control" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
+                            <div id="editor" style="width: 100%; height: 1500px; background-color: #ffffff">
+                            </div>
+                            <textarea id="articulo" name="articulo" class="form-control" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
+                            
+                            <div class="invalid-feedback art"></div>
                         </div>
                     </div>
 
@@ -119,4 +123,9 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
 require_once(realpath(dirname(__FILE__) . "../../includes/footer.php"));
 echo '<script>var id=' . $id = $_GET["id"] . '</script>';
 ?>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.js"></script>
+
+
 <script src="<?php echo $root . "/js/escritor/actualizar_noPublicado.js"; ?>"></script>
