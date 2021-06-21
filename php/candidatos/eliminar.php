@@ -332,30 +332,13 @@ require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
                 <div class="card-body">
 
                     <div class="form-row mb-4">
-                        <div class="form-group col-4">
-                            <label class="font-weight-bold" class="font-weight-bold" for="gradoCan">Grado académico (Carrera)</label>
+                    <div class="form-group col-4">
+                            <label class="font-weight-bold" class="font-weight-bold" for="gradoCan">Carrera</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-graduation-cap"></i></span>
                                 </div>
-                                <select disabled id="gradoCan" name="gradoCan" class="form-control validar">
-                                    <option disabled hidden selected value="0">Seleccione un grado academico</option>
-                                    <option value="Doctorado Titulado(a)">Doctorado Titulado(a)</option>
-                                    <option value="Doctorado Concluido(a)">Doctorado Concluido(a)</option>
-                                    <option value="Doctorado Trunco(a)">Doctorado Trunco(a)</option>
-                                    <option value="Maestría Titulado(a)">Maestría Titulado(a)</option>
-                                    <option value="Maestría Concluido(a)">Maestría Concluido(a)</option>
-                                    <option value="Maestría Trunco(a)">Maestría Trunco(a)</option>
-                                    <option value="Especialidad Titulado(a)">Especialidad Titulado(a)</option>
-                                    <option value="Especialidad Concluido(a)">Especialidad Concluido(a)</option>
-                                    <option value="Licenciatura Titulado(a)">Licenciatura Titulado(a)</option>
-                                    <option value="Licenciatura Concluido(a)">Licenciatura Concluido(a)</option>
-                                    <option value="Licenciatura Trunco(a)">Licenciatura Trunco(a)</option>
-                                    <option value="Educación media superior Concluido(a)">Educación media superior Concluido(a)</option>
-                                    <option value="Educación media superior Trunca">Educación media superior Trunca</option>
-                                    <option value="Educación Basica Concluido(a)">Educación Basica Concluido(a)</option>
-                                    <option value="Educación Basica Trunca">Educación Basica Trunca</option>
-                                </select>
+                                <input disabled type="text" class="form-control validar" id="gradoCan" name="gradoCan" placeholder="Ingrese Carrera del candidato">
                                 <div class="invalid-feedback gradoCan"></div>
                             </div>
                         </div>

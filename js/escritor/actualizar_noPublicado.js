@@ -19,8 +19,11 @@ $(document).ready(function () {
 
                 },
                 success: function (response) {
-                    var jsonData = JSON.parse(response);
-                    alert(jsonData.msg);
+                    
+                    
+                $(location).attr('href',"http://localhost/dipu-net/php/Escritor/home.php");
+
+
                 }
             });
 

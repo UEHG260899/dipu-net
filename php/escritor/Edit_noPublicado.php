@@ -105,7 +105,7 @@ $imgPartido = mysqli_fetch_assoc($resultPartido)["url_imagen"];
                             <div id="editor" style="width: 100%; height: 1500px; background-color: #ffffff">
 							<?php echo $data['articulo']; ?>
                             </div>
-                            <textarea hidden id="articulo" name="articulo" class="form-control" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
+                            <textarea hidden id="articulo" name="articulo" class="form-control validar" rows="3" style="min-width: 100%; min-height: 300px;"><?php echo $data['articulo']; ?></textarea>
                             
                             <div class="invalid-feedback art"></div>
                         </div>
@@ -129,4 +129,5 @@ echo '<script>var id=' . $id = $_GET["id"] . '</script>';
 <script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.js"></script>
 
 
+<script src="<?php echo $root . "/js/escritor/validaciones.js"; ?>"></script>
 <script src="<?php echo $root . "/js/escritor/actualizar_noPublicado.js"; ?>"></script>
