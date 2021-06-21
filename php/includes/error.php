@@ -1,6 +1,13 @@
 <?php
 require_once(realpath(dirname(__FILE__) . "../../includes/header.php"));
 session_start();
+if ($_SESSION['usuario']['rol'] == 'lector') {
+    require_once(realpath(dirname(__FILE__) . "../../includes/navbar.php"));
+} elseif ($_SESSION['usuario']['rol'] == 'escritor') {
+    require_once(realpath(dirname(__FILE__) . "../../includes/navbar_escritor.php"));
+} else {
+    require_once(realpath(dirname(__FILE__) . "../../includes/navbar_admin.php"));
+}
 ?>
 
 <link rel="stylesheet" href="<?php echo $root . "/css/error/estilos.css"; ?>">
