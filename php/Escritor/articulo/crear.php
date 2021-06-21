@@ -221,7 +221,7 @@ require_once(realpath(dirname(__FILE__) . "../../../includes/navbar_escritor.php
                         <div id="editor" style="width: 100%; height: 1500px; background-color: #ffffff">
                             </div>
                             <textarea id="articulo" class="form-control validar" name="articulo" rows="8"
-                                style="width:100%; height:100%" readonly></textarea>
+                                style="width:100%; height:100%" hidden></textarea>
 
                             <div class="invalid-feedback art"></div>
                         </div>
