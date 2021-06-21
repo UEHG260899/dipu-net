@@ -9,7 +9,7 @@ function validarCampos(formData) {
     var id = $(field).attr('id');
     var expNom = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/g;
     var expFecha = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))+$/g;
-    var exp = /^[A-Za-zÁÉÍÓÚáéíóúñÑ 0-9.-_]+$/g;
+    var exp = /^[A-Za-zÁÉÍÓÚáéíóúñÑ 0-9._-]+$/g;
     
     switch (id) {
 
