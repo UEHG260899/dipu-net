@@ -106,7 +106,7 @@ $result = mysqli_query($conn, $query);
     <h2 class="mb-3">Últimos artículos</h2>
     <div class="row animate__animated animate__zoomIn">
         <?php
-        $sql = "SELECT articulo.no_vistas,articulo.id,CONCAT_WS(' ',escritor.nombre ,escritor.ap_paterno ,escritor.ap_materno) AS nombreEsc ,CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id  INNER JOIN escritor ON articulo.id_escritor = escritor.id WHERE  articulo.estatus = 'publicado' ORDER BY articulo.id DESC LIMIT 3";
+        $sql = "SELECT articulo.no_vistas,articulo.id,CONCAT_WS(' ',escritor.nombre ,escritor.ap_paterno ,escritor.ap_materno) AS nombreEsc ,CONCAT_WS(' ',candidato.nombre ,candidato.ap_paterno ,candidato.ap_materno) AS nombre, candidato.url_imagen as imagenCan,candidato.id as idCandidato, partidos.url_imagen as imagenPar FROM articulo INNER JOIN candidato ON candidato.id = articulo.id_candidato INNER JOIN partidos ON candidato.id_partido = partidos.id  INNER JOIN escritor ON articulo.id_escritor = escritor.id WHERE  articulo.estatus = 'publicado' ORDER BY articulo.id DESC LIMIT 3";
         $resultado = mysqli_query($conn, $sql);
 
         while ($row = $resultado->fetch_array()) {
@@ -154,7 +154,7 @@ $result = mysqli_query($conn, $query);
                             }
                             ?>
 
-                            <a href="articulo/mostrar_articulo.php?candidato=<?php echo $row['id']; ?>" class="btn bg-boton">Ver articulo completo</a>
+                            <a href="articulo/mostrar_articulo.php?candidato=<?php echo $row['idCandidato']; ?>" class="btn bg-boton">Ver articulo completo</a>
                         </div>
                     </div>
                 </div>
